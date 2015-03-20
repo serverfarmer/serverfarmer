@@ -19,7 +19,7 @@ Farmer was used semi-commercially since 2008, and proving its usefulness, was re
 in 2015 as open source.
 
 
-# Advantages of Farmer over Puppet, Chef etc.
+# Advantages over Puppet, Chef etc.
 
 1. Featherweight.
 2. No customer passwords, private keys etc. in repository. All customer-specific or
@@ -38,15 +38,13 @@ Farmer was built around Debian/Ubuntu Linux. It currently supports:
 - Debian 5.x (Lenny)
 - Debian 6.x (Squeeze)
 - Debian 7.x (Wheezy) - current as of 2015
-
 - Ubuntu 9.04 (Jaunty Jackalope)
 - Ubuntu 10.04 LTS (Lucid Lynx)
 - Ubuntu 10.10 (Maverick Meerkat)
-
 - Oracle Linux 6.3 (also Red Hat Enterprise Linux 6.3 and CentOS 6.3)
 
 
-# Adding support for more operating systems
+# Adding support for new OS/distro
 
 Support for more distributions can ba added very easily. To do it yourself, look at
 latest dist subdirectory:
@@ -64,7 +62,9 @@ machines:
 On first VM you can view exact differences between default configuration files
 and ones from repository, by running e.g.:
 
-`diff -u /etc/postfix/main.cf /opt/farm/dist/debian-wheezy/postfix.tpl
+```
+diff -u /etc/postfix/main.cf /opt/farm/dist/debian-wheezy/postfix.tpl
+```
 
 On second VM you can replicate these changes. Note that you don't have to add
 all files for all services. If you don't want to configura Postfix on your
@@ -79,8 +79,7 @@ Solutions Sp. z o.o.). If you want to fork this repository, you probably will
 want to change them:
 
 - grep for "tomaszklim.pl" and replace it with other domain with **enabled catch-all**
-- common/backup.pub - gpg key used to encrypt all backups (referenced in scripts
-as "backup@tomaszklim.pl", you have to change it as well)
+- common/backup.pub - gpg key used to encrypt all backups
 - common/standby.conf - list of standby devices
 - dist/*/snmpd.conf, scripts/cacti/send.sh - Cacti addresses
 
