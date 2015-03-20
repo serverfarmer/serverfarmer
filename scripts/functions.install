@@ -1,0 +1,59 @@
+install_copy() {
+	src=$1
+	dst=$2
+	cp -f $src $dst
+	chmod +r $dst
+}
+
+install_link() {
+	src=$1
+	dst=$2
+	ln -sf $src $dst
+}
+
+install_customize() {
+	src=$1
+	dst=$2
+	cat $src |sed s/%%host%%/`hostname`/g >$dst
+}
+
+install_deb() {
+	pkg=$1
+	echo "checking for debian package $pkg"
+	if [ "`dpkg -l $pkg 2>/dev/null |grep ^ii`" = "" ]; then
+		echo "installing package $pkg"
+		apt-get install $pkg
+	fi
+}
+
+install_rpm() {
+	pkg=$1
+	echo "checking for rpm package $pkg"
+	rpm -q $pkg &>/dev/null || yum install $pkg
+}
+
+uninstall_deb() {
+	pkg=$1
+	if [ "`dpkg -l $pkg 2>/dev/null |egrep \"^(ii|rc)\"`" != "" ]; then
+		echo "uninstalling package $pkg"
+		apt-get purge $pkg
+	fi
+}
+
+uninstall_rpm() {
+	pkg=$1
+	if [ "`rpm -q $pkg &>/dev/null && echo installed`" != "" ]; then
+		echo "uninstalling package $pkg"
+		rpm -e $pkg
+	fi
+}
+
+install_cpan() {
+	pkg=$1
+	echo "checking for perl package $pkg"
+	if [ "`perl -e \"use $pkg \" 2>&1`" != "" ]; then
+		echo "installing package $pkg"
+		cpan -fi $pkg
+	fi
+}
+

@@ -1,0 +1,10 @@
+/var/log/newrelic/nrsysmond.log {
+	monthly
+	missingok
+	rotate 24
+	compress
+	dateext
+	notifempty
+	sharedscripts
+	copytruncate
+}

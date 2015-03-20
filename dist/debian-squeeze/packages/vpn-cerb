@@ -1,0 +1,10 @@
+vpnc
+mono-runtime
+mono-utils
+libmono-corlib1.0-cil
+libmono-corlib2.0-cil
+libmono-i18n1.0-cil
+libmono-i18n2.0-cil
+libmono-microsoft8.0-cil
+libmono-security2.0-cil
+libmono-system2.0-cil

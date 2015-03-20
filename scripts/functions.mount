@@ -1,0 +1,59 @@
+mount_luks_drive() {
+	path=$1
+	device="/dev/disk/by-id/$2"
+	options=$3
+
+	variable=${device##*_}
+	variable=${variable/part/}
+	map="disk-$variable"
+
+	case "$path" in
+		/*) ;;
+		*)  path="/srv/mounts/$1" ;;
+	esac
+
+	if [ "$options" = "" ]; then
+		options="rw,noatime"
+	fi
+
+	if [ -e $device ]; then
+		if [ ! -e /dev/mapper/$map ]; then
+			if [ "`mount |grep \" on $path \"`" = "" ]; then
+				cryptsetup luksOpen $device $map
+				mount -o $options /dev/mapper/$map $path
+			fi
+		fi
+	fi
+}
+
+mount_drive() {
+	path=$1
+	device="/dev/disk/by-id/$2"
+	options=$3
+
+	case "$path" in
+		/*) ;;
+		*)  path="/srv/mounts/$1" ;;
+	esac
+
+	if [ "$options" = "" ]; then
+		options="rw,noatime"
+	fi
+
+	if [ -e $device ]; then
+		if [ "`mount |grep \" on $path \"`" = "" ]; then
+			mount -o $options $device $path
+		fi
+	fi
+}
+
+standby() {
+	device="/dev/disk/by-id/$1"
+	secs=$2
+	if [ -h $device ]; then
+		if [ "$secs" != "" ] && [ "$secs" != "0" ]; then
+			sleep $secs
+		fi
+		hdparm -y $device
+	fi
+}

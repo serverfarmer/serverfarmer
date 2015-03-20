@@ -1,0 +1,4 @@
+linux-image-2.6-openvz-amd64
+linux-headers-2.6-openvz-amd64
+vzquota
+vzctl

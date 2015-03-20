@@ -1,0 +1,12 @@
+compat-db
+compat-gcc-34
+compat-gcc-34-c++
+compat-libstdc++-33
+gcc
+glibc
+libaio
+libaio-devel
+libXp
+make
+openmotif
+setarch

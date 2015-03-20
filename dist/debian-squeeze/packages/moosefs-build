@@ -1,0 +1,6 @@
+zlib1g-dev
+libfuse-dev
+pkg-config
+build-essential
+autotools-dev
+debhelper

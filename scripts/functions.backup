@@ -1,0 +1,19 @@
+backup_directory() {
+	dir=$1
+	bak=$2
+	if [ -d $dir ]; then
+		tar czf $bak $dir 2>/dev/null
+	fi
+}
+
+backup_encrypt_directory() {
+	temp_dir=$1
+	target_dir=$2
+	source_dir=$3
+	target_file=$4
+	if [ -d $source_dir ]; then
+		tar cf - $source_dir 2>/dev/null |gpg --encrypt --no-armor --recipient backup@tomaszklim.pl --output $temp_dir/$target_file.gpg --batch
+		mv -f $temp_dir/$target_file.gpg $target_dir/$target_file.gpg 2>/dev/null
+	fi
+}
+

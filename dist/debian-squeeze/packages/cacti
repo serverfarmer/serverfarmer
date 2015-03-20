@@ -1,0 +1,9 @@
+subversion
+apache2-mpm-prefork
+libapache2-mod-php5
+mysql-client
+mysql-server
+snmp
+rrdtool
+php5-gd
+php5-mysql

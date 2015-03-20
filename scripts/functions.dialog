@@ -1,0 +1,16 @@
+question() {
+	read -p "$1 (y/N)?" choice
+	case "$choice" in 
+		y|Y|t|T ) echo "true" ;;
+		* )       echo "false" ;;
+	esac
+}
+
+input() {
+	read -p "$1 [$2]: " reply
+	if [ "$reply" = "" ]; then
+		echo "$2"
+	else
+		echo "$reply"
+	fi
+}

@@ -1,0 +1,5 @@
+YAML
+ExtUtils::MakeMaker
+Inline::MakeMaker
+Device::USB
+Device::USB::PCSensor::HidTEMPer
