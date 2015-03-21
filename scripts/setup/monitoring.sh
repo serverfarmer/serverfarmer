@@ -23,14 +23,14 @@ else
 
 	if [ ! -s $pass ]; then
 		echo "skipping snmpd configuration (no community configured)"
-	elif [ ! -f $base/snmpd.conf ]; then
+	elif [ ! -f $base/snmpd.tpl ]; then
 		echo "skipping snmpd configuration (no template available for $OSVER)"
 	else
 		bash /opt/farm/scripts/setup/role.sh snmpd
 
 		echo "setting up snmpd configuration"
 		community="`cat $pass`"
-		cat $base/snmpd.conf |sed s/%%community%%/$community/g >/etc/snmp/snmpd.conf
+		cat $base/snmpd.tpl |sed s/%%community%%/$community/g >/etc/snmp/snmpd.conf
 
 		if [ -f $base/snmpd.default ]; then
 			install_link $base/snmpd.default /etc/default/snmpd

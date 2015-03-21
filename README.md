@@ -81,7 +81,7 @@ want to change them:
 - grep for "tomaszklim.pl" and replace it with other domain with **enabled catch-all**
 - common/backup.pub - gpg key used to encrypt all backups
 - common/standby.conf - list of standby devices
-- dist/*/snmpd.conf, scripts/cacti/send.sh - Cacti addresses
+- dist/*/snmpd.tpl, scripts/cacti/send.sh - Cacti addresses
 
 
 # Commercial support
