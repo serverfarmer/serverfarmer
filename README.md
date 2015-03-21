@@ -36,8 +36,8 @@ Farmer was built around Debian/Ubuntu Linux. It currently supports:
 
 - Debian 4.x (Etch)
 - Debian 5.x (Lenny)
-- Debian 6.x (Squeeze)
-- Debian 7.x (Wheezy) - current as of 2015
+- **Debian 6.x (Squeeze)**
+- **Debian 7.x (Wheezy) - current as of 2015**
 - Ubuntu 9.04 (Jaunty Jackalope)
 - Ubuntu 10.04 LTS (Lucid Lynx)
 - Ubuntu 10.10 (Maverick Meerkat)
@@ -79,6 +79,7 @@ Solutions Sp. z o.o.). If you want to fork this repository, you probably will
 want to change them:
 
 - grep for "tomaszklim.pl" and replace it with other domain with **enabled catch-all**
+- scripts/setup/backup.sh - ssh public keys
 - common/backup.pub - gpg key used to encrypt all backups
 - common/standby.conf - list of standby devices
 - dist/*/snmpd.tpl, scripts/cacti/send.sh - Cacti addresses
