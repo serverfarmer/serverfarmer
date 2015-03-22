@@ -82,7 +82,7 @@ want to change them:
 - scripts/setup/backup.sh - ssh public keys
 - common/backup.pub - gpg key used to encrypt all backups
 - common/standby.conf - list of standby devices
-- dist/*/snmpd.tpl, scripts/cacti/send.sh - Cacti addresses
+- dist/*/snmpd.tpl, scripts/cacti/send.sh, scripts/setup/monitoring.sh - Cacti addresses
 
 
 # Commercial support
