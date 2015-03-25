@@ -1,7 +1,10 @@
 #!/bin/bash
 
 echo "updating /opt/farm"
-svn up /opt/farm
+DIR="`pwd`"
+cd /opt/farm
+git pull
+cd "$DIR"
 
 
 if [ -f /etc/farmconfig ]; then
