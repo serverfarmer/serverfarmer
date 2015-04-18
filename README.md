@@ -74,7 +74,7 @@ distribution, just don't add postfix.tpl file. That's all.
 # Owner-specific data
 
 Farmer repository contains no customer passwords, private keys etc. However it
-contains sensitive files related to owner (Tomasz Klim or Klim Baron Business
+contains sensitive files related to the owner (Tomasz Klim or Klim Baron Business
 Solutions Sp. z o.o.). If you want to fork this repository, you probably will
 want to change them:
 
@@ -87,7 +87,7 @@ want to change them:
 
 # Commercial support
 
-You can buy commercial support at http://bezproblemowy.pl
+You can buy commercial support at http://fajne.it
 
 We can help you adjust Farmer to your needs, or we can manage your servers for
 you (including 24/7 telephone support and monitoring).
