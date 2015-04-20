@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/php5
 <?php
 // skrypt wyświetlający konfigurację bieżącego komputera
 // Tomasz Klim, maj 2011

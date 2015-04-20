@@ -7,7 +7,11 @@
 
 
 
-if [ "$OSTYPE" != "debian" ]
+if [ -d /usr/local/cpanel ]
+then
+	echo "skipping mta configuration, system is controlled by cPanel, with Exim"
+
+elif [ "$OSTYPE" != "debian" ]
 then
 	install_rpm postfix
 

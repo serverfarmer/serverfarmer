@@ -53,6 +53,16 @@ detect_redhat_version()
 				;;
 		esac
 
+	elif [ -d /usr/local/cpanel ]; then
+		DATA=`cat /etc/redhat-release`
+		case "$DATA" in
+			"CentOS release 6.6 (Final)")
+				echo "redhat-centos66-cpanel"
+				;;
+			*)
+				;;
+		esac
+
 	else
 		DATA=`cat /etc/redhat-release`
 		case "$DATA" in
@@ -61,6 +71,9 @@ detect_redhat_version()
 				;;
 			"CentOS release 5.8 (Final)")
 				echo "redhat-centos58"
+				;;
+			"CentOS release 6.6 (Final)")
+				echo "redhat-centos66"
 				;;
 			*)
 				;;

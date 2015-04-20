@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/php5
 <?php
 // skrypt do odczytu atrybutów S.M.A.R.T. z podłączonych dysków, wersja 2
 // Tomasz Klim, lipiec 2012

@@ -6,6 +6,12 @@
 
 
 
+if [ -d /usr/local/cpanel ]; then
+	echo "skipping php setup, system is controlled by cPanel"
+	exit 0
+fi
+
+
 bash /opt/farm/scripts/setup/role.sh php-cli
 echo "setting up php configuration"
 
