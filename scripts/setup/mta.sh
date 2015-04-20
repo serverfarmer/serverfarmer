@@ -9,7 +9,7 @@
 
 if [ -d /usr/local/cpanel ]
 then
-	echo "skipping mta configuration, system is controlled by cPanel, with Exim"
+	echo "skipping mta configuration, system is controlled by cPanel, with Exim as MTA"
 
 elif [ "$OSTYPE" != "debian" ]
 then
