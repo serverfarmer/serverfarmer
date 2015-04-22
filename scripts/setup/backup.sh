@@ -20,6 +20,12 @@ else
 		echo "##########################################################"
 
 		gpg --edit-key backup@tomaszklim.pl
+
+		if [ "$OSTYPE" = "redhat" ]; then
+			echo "applying fix for RHEL 6.x crontab bug"
+			if [ -d /.gnupg ]; then mv -f /.gnupg /.gnupg-orig; fi
+			ln -sf /root/.gnupg /.gnupg
+		fi
 	fi
 
 	echo "setting up backup directories"
