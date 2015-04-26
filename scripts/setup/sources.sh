@@ -8,6 +8,10 @@
 
 # TODO: support for rpm
 
+if [ -f $base/listchanges.conf ]; then
+	install_link $base/listchanges.conf /etc/apt/listchanges.conf
+fi
+
 if [ -f $base/sources.list ]; then
 	dst="/etc/apt/sources.list"
 	oldmd5=`md5sum $dst`
