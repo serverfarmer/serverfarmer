@@ -1,0 +1,10 @@
+unzip
+zip
+unix2dos
+dos2unix
+mailx
+man
+ntpdate
+dbus
+dbus-python
+system-config-firewall-tui

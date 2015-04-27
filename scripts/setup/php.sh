@@ -18,6 +18,10 @@ echo "setting up php configuration"
 if [ "$OSTYPE" != "debian" ]; then
 	install_copy $base/php.ini /etc/php.ini
 
+	if [ -f /usr/bin/php ] && [ ! -f /usr/bin/php5 ]; then
+		ln -s /usr/bin/php /usr/bin/php5
+	fi
+
 	mkdir -p /var/log/php
 	chmod 0777 /var/log/php
 else
