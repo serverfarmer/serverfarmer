@@ -75,6 +75,9 @@ detect_redhat_version()
 			"CentOS release 6.6 (Final)")
 				echo "redhat-centos66"
 				;;
+			"CentOS Linux release 7.1.1503 (Core) ")
+				echo "redhat-centos71"
+				;;
 			*)
 				;;
 		esac

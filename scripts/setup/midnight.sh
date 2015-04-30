@@ -9,7 +9,7 @@
 if [ -f $base/mc.ini ]; then
 	echo "setting up midnight commander profiles"
 
-	if [ "$OSVER" = "debian-wheezy" ]; then
+	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "redhat-centos71" ]; then
 		f=/root/.config/mc/ini
 	else
 		f=/root/.mc/ini
@@ -19,7 +19,7 @@ if [ -f $base/mc.ini ]; then
 	chmod 0644 $f
 
 	if [ "`cat /etc/passwd |grep ^tomek:`" != "" ]; then
-		if [ "$OSVER" = "debian-wheezy" ]; then
+		if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "redhat-centos71" ]; then
 			f=/home/tomek/.config/mc/ini
 		else
 			f=/home/tomek/.mc/ini

@@ -19,7 +19,7 @@ then
 	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%smtp%%/$SMTP/g >/etc/postfix/main.cf
 
 	echo "setting up mail aliases"
-	install_customize $common/aliases.tpl /etc/aliases
+	install_customize $common/aliases-$OSTYPE.tpl /etc/aliases
 	newaliases
 
 	/etc/init.d/postfix reload
@@ -49,7 +49,7 @@ then
 	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%smtp%%/$smtprelay/g >/etc/postfix/main.cf
 
 	echo "setting up mail aliases"
-	install_customize $common/aliases.tpl /etc/aliases
+	install_customize $common/aliases-$OSTYPE.tpl /etc/aliases
 	newaliases
 
 	echo "setting up sender address rewriting"

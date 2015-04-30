@@ -28,9 +28,21 @@ if [ ! -f /etc/farmconfig ]; then
 		fi
 
 		hostname $HOST
-		echo $HOST >/etc/hostname
-		echo $HOST >/etc/mailname
 		sed -i -e '/$HOST/d' /etc/hosts
+
+		if [ -f /etc/sysconfig/network ]; then
+			sed -i -e '/HOSTNAME=/d' /etc/sysconfig/network
+			echo "HOSTNAME=$HOST" >> /etc/sysconfig/network
+		fi
+
+		if [ -x /usr/bin/hostnamectl ]; then
+			/usr/bin/hostnamectl set-hostname $HOST
+		fi
+
+		if [ -f /etc/HOSTNAME ]; then echo $HOST >/etc/HOSTNAME; fi
+		if [ -f /etc/hostname ]; then echo $HOST >/etc/hostname; fi
+		if [ -f /etc/mailname ]; then echo $HOST >/etc/mailname; fi
+
 		echo "HOST=$HOST" >/etc/farmconfig
 		echo "OSVER=$OSVER" >>/etc/farmconfig
 		echo "OSTYPE=$OSTYPE" >>/etc/farmconfig
@@ -49,6 +61,9 @@ if [ ! -f /etc/farmconfig ]; then
 			if [ "$OSTYPE" = "debian" ]; then
 				rm -f /etc/ssh/ssh_host_*
 				dpkg-reconfigure openssh-server
+			elif [ -x /usr/sbin/sshd-keygen ]; then
+				rm -f /etc/ssh/ssh_host_*
+				/usr/sbin/sshd-keygen   # RHEL 7.x
 			fi
 		fi
 
