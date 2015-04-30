@@ -35,7 +35,7 @@ else
 		if [ -f $base/snmpd.default ]; then
 			install_link $base/snmpd.default /etc/default/snmpd
 		fi
-		/etc/init.d/snmpd restart
+		service snmpd restart
 
 		if [ "$SYSLOG" = "true" ]; then
 			echo "setting up snmpd debug message ignoring rules for logcheck"

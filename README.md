@@ -44,6 +44,7 @@ Farmer was built around Debian/Ubuntu Linux. It currently supports:
 - Oracle Linux 6.3 (also Red Hat Enterprise Linux 6.3 and CentOS 6.3)
 - CentOS 6.6 (will also work at least from 6.3)
 - CentOS 6.x cPanel edition (at least from 6.3 up to 6.6)
+- **CentOS 7.1**
 
 
 # Adding support for new OS/distro

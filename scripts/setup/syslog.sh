@@ -31,7 +31,7 @@ else
 	if [ -f $base/rsyslog.$MODE ]; then
 		echo "configuring rsyslog as log $MODE"
 		cat $base/rsyslog.$MODE |sed s/%%syslog%%/$SYSLOG/g >/etc/rsyslog.conf
-		/etc/init.d/rsyslog restart |grep -v "ing enhanced syslogd: rsyslogd."
+		service rsyslog restart |grep -v "ing enhanced syslogd: rsyslogd."
 	fi
 fi
 

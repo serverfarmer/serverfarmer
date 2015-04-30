@@ -22,7 +22,7 @@ then
 	install_customize $common/aliases-$OSTYPE.tpl /etc/aliases
 	newaliases
 
-	/etc/init.d/postfix reload
+	service postfix reload
 
 elif [ "$SMTP" = "true" ]
 then
@@ -61,7 +61,7 @@ then
 		install_copy $common/logcheck/gmail.tpl /etc/logcheck/ignore.d.server/local-gmail
 	fi
 
-	/etc/init.d/postfix reload |grep -v "Reloading Postfix configuration" |grep -v "...done"
+	service postfix reload |grep -v "Reloading Postfix configuration" |grep -v "...done"
 else
 	install_deb ssmtp
 
