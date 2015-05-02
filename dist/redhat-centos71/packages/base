@@ -1,7 +1,12 @@
 bzip2
 unzip
 zip
+rsync
+gnupg
+curl
+mc
 dos2unix
 mailx
+man
 ntpdate
 patch
