@@ -32,6 +32,9 @@ detect_debian_version()
 			7.?)
 				echo "debian-wheezy"
 				;;
+			8.0)
+				echo "debian-jessie"
+				;;
 			*)
 				;;
 		esac

@@ -52,10 +52,10 @@ if [ ! -f /etc/farmconfig ]; then
 		echo "WWW=$WWW" >>/etc/farmconfig
 
 		if [ "`getent group imapusers`" = "" ]; then
-			groupadd -g 112 mfs
-			groupadd -g 115 sambashare
 			groupadd -g 120 imapusers
 			groupadd -g 130 newrelic
+			groupadd -g 140 mfs
+			groupadd -g 150 sambashare
 			groupadd -g 1001 motion
 
 			if [ "$OSTYPE" = "debian" ]; then

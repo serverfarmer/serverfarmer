@@ -9,6 +9,10 @@
 if [ -f $base/mc.ini ]; then
 	echo "setting up midnight commander profiles"
 
+	if [ -f $base/mc.skin ]; then
+		cp -f $base/mc.skin /usr/share/mc/skins/wheezy.ini
+	fi
+
 	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "redhat-centos71" ]; then
 		f=/root/.config/mc/ini
 	else
@@ -16,9 +20,8 @@ if [ -f $base/mc.ini ]; then
 	fi
 	cp -f $base/mc.ini $f
 	chown root:root $f
-	chmod 0644 $f
 
-	if [ "`cat /etc/passwd |grep ^tomek:`" != "" ]; then
+	if [ "`getent passwd tomek`" != "" ]; then
 		if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "redhat-centos71" ]; then
 			f=/home/tomek/.config/mc/ini
 		else
@@ -26,7 +29,6 @@ if [ -f $base/mc.ini ]; then
 		fi
 		cp -f $base/mc.ini $f
 		chown tomek:tomek $f
-		chmod 0644 $f
 	fi
 fi
 
