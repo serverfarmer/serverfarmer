@@ -8,3 +8,7 @@ nfs-common
 rpcbind
 libtirpc1
 libnfsidmap2
+systemd-ui
+systemd-sysv
+systemd-shim
+systemd

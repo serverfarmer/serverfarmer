@@ -36,8 +36,9 @@ Farmer was built around Debian/Ubuntu Linux. It currently supports:
 
 - Debian 4.x (Etch)
 - Debian 5.x (Lenny)
-- **Debian 6.x (Squeeze)**
-- **Debian 7.x (Wheezy) - current as of 2015**
+- Debian 6.x (Squeeze)
+- **Debian 7.x (Wheezy)**
+- **Debian 8.x (Jessie) - current as of 2015**
 - Ubuntu 9.04 (Jaunty Jackalope)
 - Ubuntu 10.04 LTS (Lucid Lynx)
 - Ubuntu 10.10 (Maverick Meerkat)
@@ -52,21 +53,21 @@ Farmer was built around Debian/Ubuntu Linux. It currently supports:
 Support for more distributions can ba added very easily. To do it yourself, look at
 latest dist subdirectory:
 
-- dist/debian-wheezy for Debian-based distributions
-- dist/redhat-oracle63 for Red Hat-based distributions
+- dist/debian-jessie for Debian-based distributions
+- dist/redhat-centos71 for Red Hat-based distributions
 
 Each subdirectory contains set of configuration files taken from distribution's
 /etc directory, with our patches applied. Now create and install two small virtual
 machines:
 
-- first with supported distribution, e.g. Debian Wheezy
+- first with supported distribution, e.g. Debian Jessie
 - second with your new distribution
 
 On first VM you can view exact differences between default configuration files
 and ones from repository, by running e.g.:
 
 ```
-diff -u /etc/postfix/main.cf /opt/farm/dist/debian-wheezy/postfix.tpl
+diff -u /etc/postfix/main.cf /opt/farm/dist/debian-jessie/postfix.tpl
 ```
 
 On second VM you can replicate these changes. Note that you don't have to add
