@@ -13,7 +13,7 @@ if [ -f $base/mc.ini ]; then
 		cp -f $base/mc.skin /usr/share/mc/skins/wheezy.ini
 	fi
 
-	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "redhat-centos71" ]; then
+	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "ubuntu-precise" ] || [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "redhat-centos71" ]; then
 		f=/root/.config/mc/ini
 	else
 		f=/root/.mc/ini
@@ -22,7 +22,7 @@ if [ -f $base/mc.ini ]; then
 	chown root:root $f
 
 	if [ "`getent passwd tomek`" != "" ]; then
-		if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "redhat-centos71" ]; then
+		if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "ubuntu-precise" ] || [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "redhat-centos71" ]; then
 			f=/home/tomek/.config/mc/ini
 		else
 			f=/home/tomek/.mc/ini
