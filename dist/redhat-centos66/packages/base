@@ -2,7 +2,7 @@ bzip2
 unzip
 zip
 rsync
-gnupg
+gnupg2
 curl
 mc
 unix2dos

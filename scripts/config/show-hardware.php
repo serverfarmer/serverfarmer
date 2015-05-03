@@ -1,15 +1,39 @@
 #!/usr/bin/php5
 <?php
 // skrypt wyświetlający konfigurację bieżącego komputera
-// Tomasz Klim, maj 2011
+// Tomasz Klim, maj 2011, maj 2015
 
 
 function get_hostname()
 {
 	static $host = false;
 	if ( $host === false ) {
-		$uname = @posix_uname();
-		$host = $uname["nodename"];
+
+		if ( function_exists("posix_uname") ) {
+			$uname = posix_uname();
+			$host = $uname["nodename"];
+
+		} else if ( file_exists("/etc/farmconfig") ) {
+			$lines = file("/etc/farmconfig");
+			foreach ($lines as $line) {
+				$tmp = explode("=", $line);
+				if ($tmp[0] == "HOST") {
+					$host = trim($tmp[1]);
+					break;
+				}
+			}
+			if ($host === false)
+				$host = "localhost";
+
+		} else if ( file_exists("/etc/hostname") ) {
+			$host = file_get_contents("/etc/hostname");
+			$host = trim($host);
+		} else if ( file_exists("/etc/HOSTNAME") ) {
+			$host = file_get_contents("/etc/HOSTNAME");
+			$host = trim($host);
+		} else {
+			$host = "localhost";
+		}
 	}
 	return $host;
 }

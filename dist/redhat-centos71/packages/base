@@ -2,11 +2,11 @@ bzip2
 unzip
 zip
 rsync
-gnupg
+gnupg2
 curl
 mc
 dos2unix
 mailx
-man
+man-db
 ntpdate
 patch
