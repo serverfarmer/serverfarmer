@@ -52,8 +52,8 @@ Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - **CentOS 6.6 - latest from 6.x series**
   - **CentOS 7.1 - latest from 7.x series, current**
 - specialized distributions:
+  - cPanel/WHM 11.x on CentOS 6.x (at least 6.3-6.6)
   - Proxmox VE 3.x - either standalone or installed on Debian Wheezy
-  - CentOS 6.x cPanel edition - will work at least from 6.3 up to 6.6
 
 
 # Adding support for new OS/distro
@@ -91,7 +91,7 @@ Solutions Sp. z o.o.). If you want to fork this repository, you probably will
 want to change them:
 
 - grep for "tomaszklim.pl" and replace it with other domain with **enabled catch-all**
-- scripts/setup/backup.sh - ssh public keys
+- scripts/setup/control.sh - ssh public keys
 - common/backup.pub - gpg key used to encrypt all backups
 - common/standby.conf - list of standby devices
 - dist/*/snmpd.tpl, scripts/cacti/send.sh, scripts/setup/monitoring.sh - Cacti addresses

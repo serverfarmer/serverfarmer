@@ -13,22 +13,18 @@ if [ -f $base/mc.ini ]; then
 		cp -f $base/mc.skin /usr/share/mc/skins/wheezy.ini
 	fi
 
-	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-wheezy-pve" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "ubuntu-precise" ] || [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "redhat-centos71" ] || [ "$OSVER" = "redhat-oracle71" ]; then
-		f=/root/.config/mc/ini
+	if [ "`grep -Fx $OSVER $common/mc.newpaths.conf`" != "" ]; then
+		SUB=".config/mc/ini"
 	else
-		f=/root/.mc/ini
+		SUB=".mc/ini"
 	fi
-	cp -f $base/mc.ini $f
-	chown root:root $f
+
+	cp -f $base/mc.ini /root/$SUB
+	chown root:root /root/$SUB
 
 	if [ "`getent passwd tomek`" != "" ]; then
-		if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-wheezy-pve" ] || [ "$OSVER" = "debian-jessie" ] || [ "$OSVER" = "ubuntu-precise" ] || [ "$OSVER" = "ubuntu-trusty" ] || [ "$OSVER" = "redhat-centos71" ] || [ "$OSVER" = "redhat-oracle71" ]; then
-			f=/home/tomek/.config/mc/ini
-		else
-			f=/home/tomek/.mc/ini
-		fi
-		cp -f $base/mc.ini $f
-		chown tomek:tomek $f
+		cp -f $base/mc.ini /home/tomek/$SUB
+		chown tomek:tomek /home/tomek/$SUB
 	fi
 fi
 
