@@ -52,6 +52,9 @@ detect_redhat_version()
 			"Oracle Linux Server release 6.3")
 				echo "redhat-oracle63"
 				;;
+			"Oracle Linux Server release 6.6")
+				echo "redhat-oracle66"
+				;;
 			*)
 				;;
 		esac
