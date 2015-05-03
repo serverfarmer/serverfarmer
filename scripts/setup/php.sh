@@ -25,11 +25,14 @@ if [ "$OSTYPE" != "debian" ]; then
 	mkdir -p /var/log/php
 	chmod 0777 /var/log/php
 else
-	mkdir -p /etc/php5/apache2
 	mkdir -p /var/log/apache2
 	mkdir -p /var/log/php
 
-	install_copy $base/php-apache.ini /etc/php5/apache2/php.ini
+	if [ -f $base/php-apache.ini ]; then
+		mkdir -p /etc/php5/apache2
+		install_copy $base/php-apache.ini /etc/php5/apache2/php.ini
+	fi
+
 	install_copy $base/php-cli.ini /etc/php5/cli/php.ini
 
 	touch /var/log/php/php-error.log

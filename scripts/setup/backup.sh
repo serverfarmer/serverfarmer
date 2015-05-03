@@ -10,6 +10,12 @@ if [ "$HWTYPE" = "container" ]; then
 	echo "skipping system backup configuration"
 else
 
+	if [ -d /.gnupg ] && [ ! -d /root/.gnupg ]; then
+		echo "applying fix for Proxmox VE 3.x key setup bug"
+		mv -f /.gnupg /root
+		ln -sf /root/.gnupg /.gnupg
+	fi
+
 	if [ "`gpg --list-keys |grep backup@tomaszklim.pl`" = "" ]; then
 		echo "setting up gpg backup encryption key"
 		gpg --import $common/backup.pub

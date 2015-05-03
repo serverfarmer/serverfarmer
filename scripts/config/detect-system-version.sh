@@ -17,6 +17,16 @@ detect_debian_version()
 			echo "ubuntu-$DISTRIB_CODENAME"
 		fi
 
+	elif [ -f /etc/pve/.version ]; then
+		DATA=`cat /etc/debian_version`
+		case "$DATA" in
+			7.?)
+				echo "debian-wheezy-pve"
+				;;
+			*)
+				;;
+		esac
+
 	else
 		DATA=`cat /etc/debian_version`
 		case "$DATA" in
