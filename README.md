@@ -30,6 +30,11 @@ from each Linux distribution, therefore it's easy to track changes.
 4. Tight integration with Cacti monitoring software.
 
 
+# Market positioning
+
+![Market positioning of Server Farmer, Puppet and Chef](https://raw.githubusercontent.com/tomaszklim/farmer/master/common/positioning.png)
+
+
 # Supported operating systems
 
 Farmer was built around Debian/Ubuntu Linux. It currently supports:
