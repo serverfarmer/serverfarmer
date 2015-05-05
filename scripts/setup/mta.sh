@@ -61,7 +61,7 @@ then
 		install_copy $common/logcheck/gmail.tpl /etc/logcheck/ignore.d.server/local-gmail
 	fi
 
-	service postfix reload |grep -v "Reloading Postfix configuration" |grep -v "...done"
+	service postfix restart
 else
 	install_deb ssmtp
 

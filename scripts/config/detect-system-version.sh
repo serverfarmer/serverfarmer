@@ -14,7 +14,12 @@ detect_debian_version()
 	if [ -f /etc/lsb-release ]; then
 		. /etc/lsb-release
 		if [ "$DISTRIB_ID" = "Ubuntu" ] && [ "$DISTRIB_CODENAME" != "" ]; then
-			echo "ubuntu-$DISTRIB_CODENAME"
+			if [ -f /var/lib/zentyal/latestversion ]; then
+				VER=`cat /var/lib/zentyal/latestversion |sed s/\\\.//g`
+				echo "ubuntu-$DISTRIB_CODENAME-zentyal$VER"
+			else
+				echo "ubuntu-$DISTRIB_CODENAME"
+			fi
 		fi
 
 	elif [ -f /etc/pve/.version ]; then
