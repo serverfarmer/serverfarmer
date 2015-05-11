@@ -38,7 +38,7 @@ else
 	touch /var/log/php/php-error.log
 	chown -R www-data:www-data /var/log/php /var/log/apache2
 
-	if [ "$OSVER" = "debian-wheezy" ]; then
+	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-wheezy-openattic" ] || [ "$OSVER" = "debian-wheezy-pve" ]; then
 		chmod g+w /var/log/php/*.log
 	else
 		chmod -R g+w /var/log/php /var/log/apache2
