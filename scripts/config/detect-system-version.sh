@@ -32,6 +32,16 @@ detect_debian_version()
 				;;
 		esac
 
+	elif [ -f /etc/openattic/settings.py ]; then
+		DATA=`cat /etc/debian_version`
+		case "$DATA" in
+			7.?)
+				echo "debian-wheezy-openattic"
+				;;
+			*)
+				;;
+		esac
+
 	else
 		DATA=`cat /etc/debian_version`
 		case "$DATA" in
