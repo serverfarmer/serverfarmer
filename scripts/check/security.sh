@@ -30,6 +30,9 @@ GENERIC=(
 	/etc/mysql
 	/etc/samba
 	/home
+	/media
+	/mnt
+	/opt
 	/srv
 	/srv/chunks
 	/srv/cifs
