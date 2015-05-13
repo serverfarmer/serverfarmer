@@ -15,16 +15,16 @@ shared between customers. And having multiple instances of such software is expe
 
 Also, Puppet is production ready since 2011, and Chef since 2013.
 
-Farmer was used semi-commercially since 2008, and proving its usefulness, was released
-in 2015 as open source.
+Server Farmer was used semi-commercially since 2008, and proving its usefulness, was
+released in 2015 as open source.
 
 
 # Advantages over Puppet, Chef etc.
 
 1. Featherweight.
 2. No customer passwords, private keys etc. in repository. All customer-specific or
-machine-specific configuration done by runtime dialogs, so base Farmer can be easily
-deployed everywhere.
+machine-specific configuration done by runtime dialogs, so base Server Farmer can be
+easily deployed everywhere.
 3. Diff friendly: all configuration templates based on default configuration files
 from each Linux distribution, therefore it's easy to track changes.
 4. Tight integration with Cacti monitoring software.
@@ -32,12 +32,12 @@ from each Linux distribution, therefore it's easy to track changes.
 
 # Market positioning
 
-![Market positioning of Server Farmer, Puppet and Chef](https://raw.githubusercontent.com/tomaszklim/farmer/master/common/positioning.png)
+![Market positioning of Server Farmer, Puppet and Chef](https://raw.githubusercontent.com/tomaszklim/serverfarmer/master/common/positioning.png)
 
 
 # Supported operating systems
 
-Farmer was built around Debian/Ubuntu Linux. It currently supports:
+Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
 
 - Debian-based distributions:
   - Debian 4.x (Etch)
@@ -94,7 +94,7 @@ distribution, just don't add postfix.tpl file. That's all.
 
 # Owner-specific data
 
-Farmer repository contains no customer passwords, private keys etc. However it
+Server Farmer repository contains no customer passwords, private keys etc. However it
 contains sensitive files related to the owner (Tomasz Klim or Klim Baron Business
 Solutions Sp. z o.o.). If you want to fork this repository, you probably will
 want to change them:
@@ -110,5 +110,5 @@ want to change them:
 
 You can buy commercial support at http://fajne.it
 
-We can help you adjust Farmer to your needs, or we can manage your servers for
+We can help you adjust Server Farmer to your needs, or we can manage your servers for
 you (including 24/7 telephone support and monitoring).
