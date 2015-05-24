@@ -96,6 +96,9 @@ detect_redhat_version()
 			"CentOS release 6.4 (Final)")
 				echo "redhat-centos64-elastix"
 				;;
+			"CentOS Linux release 7.0.1406 (Core) " | "CentOS Linux release 7.1.1503 (Core) ")
+				echo "redhat-centos7-elastix"
+				;;
 			*)
 				;;
 		esac

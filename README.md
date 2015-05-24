@@ -61,7 +61,7 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - CentOS 7.1 - latest from 7.x series, current
 - specialized distributions:
   - cPanel / WHM 11.x on CentOS 6.x (at least 6.3-6.6)
-  - Elastix 2.5, Elastix MT 3.0
+  - Elastix 2.5 and 4.0, Elastix MT 3.0
   - openATTIC 1.x - either VM or installed on Debian Wheezy
   - Proxmox VE 3.x - either standalone or installed on Debian Wheezy
   - Zentyal Server 4.1 - both commercial and development editions
