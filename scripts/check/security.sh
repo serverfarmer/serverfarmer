@@ -40,6 +40,7 @@ GENERIC=(
 	/srv/mounts/internal1/archiwum
 	/srv/mounts/internal1/backupy
 	/srv/mounts/internal1/imap
+	/srv/mounts/internal1/isync
 	/srv/mounts/internal1/rsync
 	/srv/mounts/internal1/sites
 	/srv/mounts/internal1/uslugi
