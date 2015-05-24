@@ -8,6 +8,8 @@
 
 if [ -d /usr/local/cpanel ]; then
 	echo "skipping rsyslog setup, system is controlled by cPanel"
+elif [ ! -f /etc/rsyslog.conf ]; then
+	echo "skipping rsyslog setup, system is using different version of syslog daemon"
 else
 
 	if [ "$SYSLOG" != "true" ]; then

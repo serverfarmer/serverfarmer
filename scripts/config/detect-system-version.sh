@@ -100,11 +100,8 @@ detect_redhat_version()
 	else
 		DATA=`cat /etc/redhat-release`
 		case "$DATA" in
-			"CentOS release 5.2 (Final)")
-				echo "redhat-centos52"
-				;;
-			"CentOS release 5.8 (Final)")
-				echo "redhat-centos58"
+			"CentOS release 5.11 (Final)")
+				echo "redhat-centos5"
 				;;
 			"CentOS release 6.6 (Final)")
 				echo "redhat-centos66"

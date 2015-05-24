@@ -56,6 +56,7 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - **Oracle Linux 7.1 - tested with Oracle Database 11g2, 12c**
   - **Red Hat Enterprise Linux 6.6** - latest from 6.x series
   - **Red Hat Enterprise Linux 7.1** - latest from 7.x series, current
+  - CentOS 5.11 - latest from 5.x series
   - CentOS 6.6 - latest from 6.x series
   - CentOS 7.1 - latest from 7.x series, current
 - specialized distributions:
