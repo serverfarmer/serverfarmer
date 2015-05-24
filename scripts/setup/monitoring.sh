@@ -47,7 +47,7 @@ else
 
 	if [ ! -f /root/.ssh/id_cacti ]; then
 		echo "generating ssh key for cacti-external user"
-		if [ "$OSVER" = "redhat-centos5" ] || [ "$OSVER" = "redhat-centos5-elastix" ]; then
+		if [ "$OSVER" = "redhat-centos5" ] || [ "$OSVER" = "redhat-centos5-elastix" ] || [ "$OSVER" = "redhat-centos64-elastix" ]; then
 			ssh-keygen -t rsa -f /root/.ssh/id_cacti -P ""
 		else
 			ssh-keygen -t rsa -f /root/.ssh/id_cacti -P "" -I cacti@$HOST -O no-agent-forwarding -O no-port-forwarding -O no-pty -O no-x11-forwarding

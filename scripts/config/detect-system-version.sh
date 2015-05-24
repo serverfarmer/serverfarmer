@@ -93,6 +93,9 @@ detect_redhat_version()
 			"CentOS release 5.10 (Final)" | "CentOS release 5.11 (Final)")
 				echo "redhat-centos5-elastix"
 				;;
+			"CentOS release 6.4 (Final)")
+				echo "redhat-centos64-elastix"
+				;;
 			*)
 				;;
 		esac
