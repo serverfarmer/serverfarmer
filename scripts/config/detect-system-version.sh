@@ -87,6 +87,16 @@ detect_redhat_version()
 				;;
 		esac
 
+	elif [ -f /etc/elastix.conf ]; then
+		DATA=`cat /etc/redhat-release`
+		case "$DATA" in
+			"CentOS release 5.10 (Final)" | "CentOS release 5.11 (Final)")
+				echo "redhat-centos5-elastix"
+				;;
+			*)
+				;;
+		esac
+
 	elif [ -d /usr/local/cpanel ]; then
 		DATA=`cat /etc/redhat-release`
 		case "$DATA" in

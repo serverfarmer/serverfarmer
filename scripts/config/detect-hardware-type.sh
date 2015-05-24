@@ -22,6 +22,7 @@ is_vserver_container() {
 is_virtualbox_guest() {
 	if [ -f /sys/devices/virtual/dmi/id/product_name ] && [ "`cat /sys/devices/virtual/dmi/id/product_name |grep VirtualBox`" != "" ]; then return 1; fi
 	if [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep innotek`" != "" ]; then return 1; fi
+	if [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i \"VBOX HARDDISK\"`" != "" ]; then return 1; fi
 	return 0
 }
 
