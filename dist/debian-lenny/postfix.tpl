@@ -7,6 +7,7 @@ relayhost = [%%smtp%%]:587
 mynetworks = 127.0.0.1, 192.168.0.0/16
 
 inet_interfaces = all
+inet_protocols = ipv4
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 recipient_delimiter = +

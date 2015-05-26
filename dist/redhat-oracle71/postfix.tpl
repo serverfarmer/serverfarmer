@@ -117,8 +117,8 @@ inet_interfaces = all
 #inet_interfaces = $myhostname, localhost
 #inet_interfaces = localhost
 
-# Enable IPv4, and IPv6 if supported
-inet_protocols = all
+# Enable IPv4 only
+inet_protocols = ipv4
 
 # The proxy_interfaces parameter specifies the network interface
 # addresses that this mail system receives mail on by way of a
