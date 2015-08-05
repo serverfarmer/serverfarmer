@@ -6,6 +6,7 @@ TMP="/backup"
 DEST="/backup/weekly"
 
 backup_encrypt_directory $TMP $DEST /boot boot.tar
+backup_encrypt_directory $TMP $DEST /srv/apps/hosting srv_apps_hosting.tar
 backup_encrypt_directory $TMP $DEST /srv/apps/motion srv_apps_motion.tar
 
 for D in `ls /srv/sites`; do

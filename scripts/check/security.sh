@@ -37,7 +37,6 @@ GENERIC=(
 	/srv/chunks
 	/srv/cifs
 	/srv/mounts
-	/srv/mounts/internal1/archiwum
 	/srv/mounts/internal1/backupy
 	/srv/mounts/internal1/imap
 	/srv/mounts/internal1/isync
@@ -46,6 +45,7 @@ GENERIC=(
 	/srv/mounts/internal1/uslugi
 	/srv/mounts/internal1
 	/srv/mounts/internal2
+	/srv/mounts/internal2/archiwum
 	/srv/mounts/shadow1
 	/srv/mounts/shadow2
 	/var/backups
