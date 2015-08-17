@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 . /opt/farm/scripts/functions.backup
 
 TMP="/backup"

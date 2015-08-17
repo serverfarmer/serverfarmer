@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Konfiguracja tworzenia kopii zapasowych
 
 . /opt/farm/scripts/init
