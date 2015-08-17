@@ -3,6 +3,12 @@
 # your own company, this should be the first file to change afterwards.
 
 
+ssh_management_key() {
+	server=$1
+	domain="${server##*.}"
+	echo "/etc/local/.ssh/id_backup_$domain"
+}
+
 gpg_backup_key() {
 	echo "backup@tomaszklim.pl"
 }
