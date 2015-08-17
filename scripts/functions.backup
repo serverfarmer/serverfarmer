@@ -12,7 +12,7 @@ backup_encrypt_directory() {
 	source_dir=$3
 	target_file=$4
 	if [ -d $source_dir ]; then
-		tar cf - $source_dir 2>/dev/null |gpg --encrypt --no-armor --recipient backup@tomaszklim.pl --output $temp_dir/$target_file.gpg --batch
+		tar cf - $source_dir 2>/dev/null |gpg --encrypt --no-armor --recipient `gpg_backup_key` --output $temp_dir/$target_file.gpg --batch
 		mv -f $temp_dir/$target_file.gpg $target_dir/$target_file.gpg 2>/dev/null
 	fi
 }

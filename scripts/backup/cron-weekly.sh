@@ -1,4 +1,5 @@
 #!/bin/bash
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.backup
 . /opt/farm/scripts/functions.mysql
 

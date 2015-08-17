@@ -14,14 +14,14 @@ backup_mysql() {
 		fname="$prefix-grants.sql.gpg"
 		mysql --batch --skip-column-names $access -e "SELECT DISTINCT CONCAT('SHOW GRANTS FOR \'', user, '\'@\'', host, '\';') AS query FROM mysql.user" | \
 		mysql $access | sed 's/\(GRANT .*\)/\1;/;s/^\(Grants for .*\)/## \1 ##/;/##/{x;p;x;}' | \
-		gpg --encrypt --no-armor --recipient backup@tomaszklim.pl --output $temp/$fname --batch
+		gpg --encrypt --no-armor --recipient `gpg_backup_key` --output $temp/$fname --batch
 		mv -f $temp/$fname $dest/$fname 2>/dev/null
 
 		echo "FLUSH TABLES WITH READ LOCK;" |mysql $access
 		for db in $dbs; do
 			fname="$prefix-$db.sql.gpg"
 			mysqldump $access --quick --extended-insert --complete-insert --lock-tables --lock-all-tables --flush-logs --skip-add-drop-table --databases $db | \
-			gpg --encrypt --no-armor --recipient backup@tomaszklim.pl --output $temp/$fname --batch
+			gpg --encrypt --no-armor --recipient `gpg_backup_key` --output $temp/$fname --batch
 			mv -f $temp/$fname $dest/$fname 2>/dev/null
 		done
 		echo "UNLOCK TABLES;" |mysql $access

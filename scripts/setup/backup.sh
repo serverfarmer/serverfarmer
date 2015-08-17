@@ -2,6 +2,7 @@
 # Konfiguracja tworzenia kopii zapasowych
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
@@ -16,16 +17,18 @@ else
 		ln -sf /root/.gnupg /.gnupg
 	fi
 
-	if [ "`gpg --list-keys |grep backup@tomaszklim.pl`" = "" ]; then
+	keyname=`gpg_backup_key`
+
+	if [ "`gpg --list-keys |grep $keyname`" = "" ]; then
 		echo "setting up gpg backup encryption key"
-		gpg --import $common/backup.pub
+		gpg --import $common/gpg/$keyname.pub
 
 		echo "##########################################################"
 		echo "# Backup public key imported. Now enter 'trust' command  #"
 		echo "# at the below command prompt, and set trust level to 5. #"
 		echo "##########################################################"
 
-		gpg --edit-key backup@tomaszklim.pl
+		gpg --edit-key $keyname
 
 		if [ "$OSTYPE" = "redhat" ]; then
 			echo "applying fix for RHEL 6.x crontab bug"

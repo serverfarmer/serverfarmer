@@ -1,0 +1,8 @@
+# This file holds implementation of owner-specific logic, eg. custom paths
+# or names. If you want to fork the Server Farmer repository and use it for
+# your own company, this should be the first file to change afterwards.
+
+
+gpg_backup_key() {
+	echo "backup@tomaszklim.pl"
+}
