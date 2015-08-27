@@ -52,10 +52,11 @@ if [ ! -f /etc/farmconfig ]; then
 		echo "WWW=$WWW" >>/etc/farmconfig
 
 		if [ "`getent group imapusers`" = "" ]; then
-			groupadd -g 120 imapusers
 			groupadd -g 130 newrelic
 			groupadd -g 140 mfs
 			groupadd -g 150 sambashare
+			groupadd -g 160 imapusers
+			# RHEL registered GIDs: 170 avahi-autoipd, 190 systemd-journal
 			groupadd -g 1001 motion
 
 			if [ "$OSTYPE" = "debian" ]; then
