@@ -12,3 +12,7 @@ ssh_management_key() {
 gpg_backup_key() {
 	echo "backup@tomaszklim.pl"
 }
+
+primary_admin_account() {
+	echo "tomek"
+}

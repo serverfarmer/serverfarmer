@@ -2,6 +2,7 @@
 # Konfiguracja Midnight Commandera
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
@@ -22,9 +23,12 @@ if [ -f $base/mc.ini ]; then
 	cp -f $base/mc.ini /root/$SUB
 	chown root:root /root/$SUB
 
-	if [ "`getent passwd tomek`" != "" ]; then
-		cp -f $base/mc.ini /home/tomek/$SUB
-		chown tomek:tomek /home/tomek/$SUB
+	ADMIN=`primary_admin_account`
+
+	if [ "`getent passwd $ADMIN`" != "" ]; then
+		DIR=`getent passwd $ADMIN |cut -d: -f 6`
+		cp -f $base/mc.ini $DIR/$SUB
+		chown $ADMIN:$ADMIN $DIR/$SUB
 	fi
 fi
 
