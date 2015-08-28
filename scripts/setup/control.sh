@@ -7,7 +7,6 @@
 
 
 echo "preparing ssh key"
-HOST=`hostname`
 FULLKEY=`ssh_management_key_string $HOST`
 
 if [ ! -f /root/.ssh/authorized_keys ] || [ "`cat /root/.ssh/authorized_keys |grep \"$FULLKEY\"`" = "" ]; then
