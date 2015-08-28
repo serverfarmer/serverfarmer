@@ -25,7 +25,7 @@ REPORTLEVEL="server"
 # *NOTE* the script does not set a default value for this variable!
 # Should be set to an offsite "emailaddress@some.domain.tld"
 
-SENDMAILTO="logcheck@tomaszklim.pl"
+SENDMAILTO="logcheck@%%domain%%"
 
 # Send the results as attachment or not.
 # 0=not as attachment; 1=as attachment

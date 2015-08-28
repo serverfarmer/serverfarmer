@@ -26,6 +26,10 @@ gpg_backup_key() {
 	echo "backup@tomaszklim.pl"
 }
 
+owner_domain() {
+	echo "tomaszklim.pl"
+}
+
 primary_admin_account() {
 	echo "tomek"
 }

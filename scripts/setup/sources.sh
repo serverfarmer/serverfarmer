@@ -2,14 +2,16 @@
 # Konfiguracja zaufanych źródeł pakietów z oprogramowaniem
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
 
 # TODO: support for rpm
 
-if [ -f $base/listchanges.conf ]; then
-	install_link $base/listchanges.conf /etc/apt/listchanges.conf
+if [ -f $base/listchanges.tpl ]; then
+	rm -f /etc/apt/listchanges.conf  # remove previous softlink
+	cat $base/listchanges.tpl |sed s/%%domain%%/`owner_domain`/g >/etc/apt/listchanges.conf
 fi
 
 if [ -f $base/sources.list ]; then

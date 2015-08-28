@@ -2,6 +2,7 @@
 # Konfiguracja logowania komunikatów
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
@@ -21,10 +22,10 @@ else
 		echo "setting up cron bogus warning ignoring rules for logcheck"
 		install_copy $common/logcheck/cron.tpl /etc/logcheck/ignore.d.server/local-cron
 
-		if [ -f $base/logcheck.conf ]; then
+		if [ -f $base/logcheck.tpl ]; then
 			f=/etc/logcheck/logcheck.conf
 			echo "setting up logcheck configuration"
-			cp -f $base/logcheck.conf $f
+			cat $base/logcheck.tpl |sed s/%%domain%%/`owner_domain`/g >$f
 			chown root:logcheck $f
 			chmod 0640 $f
 		fi
