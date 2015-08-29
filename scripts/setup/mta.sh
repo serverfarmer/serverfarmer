@@ -2,10 +2,13 @@
 # Konfiguracja MTA i elementów związanych z pocztą
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 . /opt/farm/scripts/functions.dialog
 
 
+
+DOMAIN=`owner_domain`
 
 if [ -d /usr/local/cpanel ]
 then
@@ -20,10 +23,10 @@ then
 	install_rpm postfix
 
 	echo "setting up postfix"
-	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%smtp%%/$SMTP/g >/etc/postfix/main.cf
+	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$SMTP/g >/etc/postfix/main.cf
 
 	echo "setting up mail aliases"
-	install_customize $common/aliases-$OSTYPE.tpl /etc/aliases
+	cat $common/aliases-$OSTYPE.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g >/etc/aliases
 	newaliases
 
 	service postfix reload
@@ -50,10 +53,10 @@ then
 
 	echo "setting up postfix"
 	smtprelay="`cat $map |cut -f 1 -d \" \"`"
-	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%smtp%%/$smtprelay/g >/etc/postfix/main.cf
+	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$smtprelay/g >/etc/postfix/main.cf
 
 	echo "setting up mail aliases"
-	install_customize $common/aliases-$OSTYPE.tpl /etc/aliases
+	cat $common/aliases-$OSTYPE.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g >/etc/aliases
 	newaliases
 
 	echo "setting up sender address rewriting"
@@ -70,6 +73,6 @@ else
 	install_deb ssmtp
 
 	echo "setting up ssmtp"
-	cat $common/ssmtp.tpl |sed -e s/%%host%%/$HOST/g -e s/%%smtp%%/$SMTP/g >/etc/ssmtp/ssmtp.conf
+	cat $common/ssmtp.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$SMTP/g >/etc/ssmtp/ssmtp.conf
 fi
 

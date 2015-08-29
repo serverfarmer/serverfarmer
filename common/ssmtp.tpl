@@ -3,7 +3,7 @@
 #
 # The person who gets all mail for userids < 1000
 # Make this empty to disable rewriting.
-root=postmaster@tomaszklim.pl
+root=postmaster@%%domain%%
 
 # The place where the mail goes. The actual machine name is required no 
 # MX records are consulted. Commonly mailhosts are named mail.domain.com

@@ -94,9 +94,9 @@ support:	postmaster
 decode:		root
 
 # Person who should get root's mail
-root: %%host%%@tomaszklim.pl
+root: %%host%%@%%domain%%
 
 # na ten alias maja byc wysylane wszystkie maile
 # z crona - nalezy go dopisac do /etc/crontab
 # i w crontabach poszczegolnych uzytkownikow
-cron-rcpt: cron-%%host%%@tomaszklim.pl
+cron-rcpt: cron-%%host%%@%%domain%%
