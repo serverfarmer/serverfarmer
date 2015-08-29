@@ -59,8 +59,8 @@ view   systemonly  included   .1.3.6.1.2.1.25.1
                                                  #     and check the 'agentAddress' setting above
 #rocommunity secret  10.0.0.0/16
 
-rocommunity %%community%% 192.168.231.5
-rocommunity %%community%% 192.168.233.5
+rocommunity %%community%% 10.0.0.0/8
+rocommunity %%community%% 192.168.0.0/16
 rocommunity %%community%% 79.173.0.0/18
 
                                                  #  Full read-only access for SNMPv3
