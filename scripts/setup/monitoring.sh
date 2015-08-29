@@ -2,6 +2,7 @@
 # Konfiguracja usług związanych z monitoringiem serwera w Cacti
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
@@ -30,7 +31,7 @@ else
 
 		echo "setting up snmpd configuration"
 		community="`cat $pass`"
-		cat $base/snmpd.tpl |sed s/%%community%%/$community/g >/etc/snmp/snmpd.conf
+		cat $base/snmpd.tpl |sed -e s/%%community%%/$community/g -e s/%%domain%%/`owner_domain`/g >/etc/snmp/snmpd.conf
 
 		if [ -f $base/snmpd.default ]; then
 			install_link $base/snmpd.default /etc/default/snmpd

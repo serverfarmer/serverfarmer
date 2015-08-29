@@ -161,7 +161,7 @@ access  notConfigGroup ""      any       noauth    exact  allview none none
 # variables through the snmpd.conf file:
 
 syslocation Poznan, Poland
-syscontact Tomasz Klim <sysadmin@tomaszklim.pl>
+syscontact Administrator <sysadmin@%%domain%%>
 
 # Example output of snmpwalk:
 #   % snmpwalk -v 1 localhost -c public system

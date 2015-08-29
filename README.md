@@ -101,10 +101,9 @@ contains sensitive files related to the owner (Tomasz Klim or Klim Baron Busines
 Solutions Sp. z o.o.). If you want to fork this repository, you probably will
 want to change them:
 
-- scripts/functions.custom - custom gpg / ssh keys, paths, names etc.
-- grep for "tomaszklim.pl" and replace it with other domain with **enabled catch-all**
-  (excluding scripts/functions.custom file, where you have to put your existing gpg key
-  instead of simply replacing the domain part)
+- scripts/functions.custom - custom gpg / ssh keys, paths, names etc., including
+  "tomaszklim.pl" domain name, which can be replaced with your own domain with
+  **enabled catch-all**
 - common/gpg/*.pub - gpg keys used to encrypt backups
 - common/standby.conf - list of standby devices
 - dist/*/snmpd.tpl, scripts/cacti/send.sh, scripts/setup/monitoring.sh - Cacti addresses

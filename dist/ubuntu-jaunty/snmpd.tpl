@@ -108,7 +108,7 @@ access MyRWGroup ""      any       noauth    exact  all    all    none
 # status of notWritable.
 
 syslocation Poznan, Poland
-syscontact Tomasz Klim <sysadmin@tomaszklim.pl>
+syscontact Administrator <sysadmin@%%domain%%>
 
 # Example output of snmpwalk:
 #   % snmpwalk -v 1 -c public localhost system

@@ -80,7 +80,7 @@ rocommunity %%community%% 79.173.0.0/18
 #  Note that setting these values here, results in the corresponding MIB objects being 'read-only'
 #  See snmpd.conf(5) for more details
 sysLocation    Poznan, Poland
-sysContact     Tomasz Klim <sysadmin@tomaszklim.pl>
+sysContact     Administrator <sysadmin@%%domain%%>
                                                  # Application + End-to-End layers
 sysServices    72
 

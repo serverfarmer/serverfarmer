@@ -1,5 +1,7 @@
 #!/bin/sh
-# skrypt sprawdza pół godziny, które dyski w obudowach zewnętrznych, z tendencją
+. /opt/farm/scripts/functions.custom
+
+# skrypt sprawdza co pół godziny, które dyski w obudowach zewnętrznych, z tendencją
 # do przegrzewania się, nie są aktualnie w trybie standby - jeśli taki wykryje,
 # cron wysyła maila z ostrzeżeniem
 # Tomasz Klim, kwiecień 2014, marzec 2015
@@ -14,7 +16,7 @@ devices=`cat /opt/farm/common/standby.conf |grep -v ^# |grep -v ^$`
 for diskid in $devices; do
 	device="/dev/disk/by-id/$diskid"
 	if [ -h $device ] && [ "`hdparm -C $device 2>&1 |grep standby`" = "" ]; then
-		smartctl -d sat -T permissive -a $device |mail -s "$device is not in standby mode" smart-alerts@tomaszklim.pl
+		smartctl -d sat -T permissive -a $device |mail -s "$device is not in standby mode" smart-alerts@`owner_domain`
 	fi
 done
 
