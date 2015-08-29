@@ -54,7 +54,7 @@ else
 			ssh-keygen -t rsa -f /root/.ssh/id_cacti -P "" -I cacti@$HOST -O no-agent-forwarding -O no-port-forwarding -O no-pty -O no-x11-forwarding
 		fi
 
-		echo "key generated, now paste the following public key into cacti.biuro:/srv/sites/cacti/external/.ssh/authorized_keys file:"
+		echo "key generated, now paste the following public key into `cacti_ssh_target`/.ssh/authorized_keys file:"
 		cat /root/.ssh/id_cacti.pub
 	fi
 fi

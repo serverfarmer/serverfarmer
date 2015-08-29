@@ -106,7 +106,6 @@ want to change them:
   **enabled catch-all**
 - common/gpg/*.pub - gpg keys used to encrypt backups
 - common/standby.conf - list of standby devices
-- dist/*/snmpd.tpl, scripts/cacti/send.sh, scripts/setup/monitoring.sh - Cacti addresses
 - scripts/check/security.sh - directories to protect with custom access rights
 
 

@@ -33,3 +33,7 @@ owner_domain() {
 primary_admin_account() {
 	echo "tomek"
 }
+
+cacti_ssh_target() {
+	echo "cacti.biuro:/srv/sites/cacti/external"
+}
