@@ -59,9 +59,21 @@ then
 	cat $common/aliases-$OSTYPE.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g >/etc/aliases
 	newaliases
 
+	echo "setting up virtual aliasing"
+	touch /etc/postfix/virtual_aliases
+	postmap /etc/postfix/virtual_aliases
+
 	echo "setting up sender address rewriting"
 	touch /etc/postfix/sender_address_rewriting
 	postmap /etc/postfix/sender_address_rewriting
+
+	echo "setting up sender bcc notifications"
+	touch /etc/postfix/sender_bcc_notifications
+	postmap /etc/postfix/sender_bcc_notifications
+
+	echo "setting up recipient bcc notifications"
+	touch /etc/postfix/recipient_bcc_notifications
+	postmap /etc/postfix/recipient_bcc_notifications
 
 	if [ "$SYSLOG" = "true" ]; then
 		echo "setting up gmail ssl error ignoring rules for logcheck"

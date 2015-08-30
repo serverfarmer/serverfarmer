@@ -12,7 +12,10 @@ alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 recipient_delimiter = +
 
-smtp_generic_maps = hash:/etc/postfix/sender_address_rewriting
+smtp_generic_maps  = hash:/etc/postfix/sender_address_rewriting
+sender_bcc_maps    = hash:/etc/postfix/sender_bcc_notifications
+recipient_bcc_maps = hash:/etc/postfix/recipient_bcc_notifications
+virtual_alias_maps = hash:/etc/postfix/virtual_aliases
 
 ############
 
