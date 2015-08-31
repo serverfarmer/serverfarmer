@@ -19,7 +19,7 @@
 # Can be Set to "workstation", "server" or "paranoid" for different
 # levels of filtering. Defaults to server if not set.
 
-REPORTLEVEL="server"
+REPORTLEVEL="%%level%%"
 
 # Controls the address mail goes to:
 # *NOTE* the script does not set a default value for this variable!
