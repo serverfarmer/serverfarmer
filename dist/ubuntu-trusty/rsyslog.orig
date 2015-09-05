@@ -22,6 +22,8 @@ $ModLoad imklog   # provides kernel logging support
 #$ModLoad imtcp
 #$InputTCPServerRun 514
 
+# Enable non-kernel facility klog messages
+$KLogPermitNonKernelFacility on
 
 ###########################
 #### GLOBAL DIRECTIVES ####
