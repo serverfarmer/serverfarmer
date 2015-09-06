@@ -7,6 +7,36 @@
 
 
 
+setup_midnight_commander_for_user() {
+	file=$1
+	path=$2
+	user=$3
+	group=`id -gn $user`
+	home=`getent passwd $user |cut -d: -f 6`
+
+	rc=$home/.bashrc
+	wrapper=/usr/share/mc/bin/mc-wrapper.sh
+
+	if [ -d $home ]; then
+		cp -f $file $home/$path
+		chown $user:$group $home/$path
+
+		if [ -f $rc ]; then
+
+			if [ "`grep 'alias mc' $rc`" = "" ] && [ -f $wrapper ]; then
+				echo >>$rc
+				echo "alias mc='. $wrapper'" >>$rc
+			fi
+
+			if [ "`grep mcedit $rc`" = "" ]; then
+				echo >>$rc
+				echo "export EDITOR=mcedit" >>$rc
+			fi
+		fi
+	fi
+}
+
+
 if [ -f $base/mc.ini ]; then
 	echo "setting up midnight commander profiles"
 
@@ -20,15 +50,14 @@ if [ -f $base/mc.ini ]; then
 		SUB=".mc/ini"
 	fi
 
-	cp -f $base/mc.ini /root/$SUB
-	chown root:root /root/$SUB
+	# root's group is mostly root:root, but sometimes root:wheel, root:adm or other
+	# (this also applies to home directory, eg. /usr/root, /var/root, /var/users/root
+	# etc. instead of just /root), so execute the full setup also for root user
+	setup_midnight_commander_for_user $base/mc.ini $SUB root
 
 	ADMIN=`primary_admin_account`
-
 	if [ "`getent passwd $ADMIN`" != "" ]; then
-		DIR=`getent passwd $ADMIN |cut -d: -f 6`
-		cp -f $base/mc.ini $DIR/$SUB
-		chown $ADMIN:$ADMIN $DIR/$SUB
+		setup_midnight_commander_for_user $base/mc.ini $SUB $ADMIN
 	fi
 fi
 
