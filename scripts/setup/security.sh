@@ -14,11 +14,3 @@ fi
 
 echo "enforcing secure directory permissions"
 /opt/farm/scripts/check/security.sh
-
-
-if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ ! -d /usr/local/cpanel ] && [ "`cat /etc/rc.local |grep /proc |grep remount`" = "" ]; then
-	echo "############################################################################"
-	echo "# add the following line to /etc/rc.local file:                            #"
-	echo "# mount -o remount,rw,nosuid,nodev,noexec,relatime,hidepid=2,gid=130 /proc #"
-	echo "############################################################################"
-fi
