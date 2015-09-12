@@ -1,5 +1,5 @@
 #!/bin/bash
-# Konfiguracja PHP i opcjonalnie Apache 2
+# Konfiguracja PHP
 
 . /opt/farm/scripts/init
 . /opt/farm/scripts/functions.install
@@ -43,12 +43,18 @@ if [ -d /usr/local/cpanel ]; then
 	exit 0
 fi
 
+if [ "$PHP" != "true" ]; then
+	echo "skipping php setup, not configured on this server"
+	exit 0
+fi
+
 bash /opt/farm/scripts/setup/role.sh php-cli
 echo "setting up php configuration"
 
+mkdir -p /var/log/php
+
 if [ "$OSTYPE" != "debian" ]; then
 
-	mkdir -p /var/log/php
 	chmod 0777 /var/log/php
 	process_php_ini /etc/php.ini
 
@@ -57,8 +63,10 @@ if [ "$OSTYPE" != "debian" ]; then
 	fi
 
 else
-	mkdir -p /var/log/apache2
-	mkdir -p /var/log/php
+	touch /var/log/php/php-error.log
+	chown -R www-data:www-data /var/log/php
+	chmod g+w /var/log/php/*.log
+
 	process_php_ini /etc/php5/cli/php.ini
 
 	if [ -f /etc/php5/apache2/php.ini ]; then
@@ -72,24 +80,4 @@ else
 	if [ -f /etc/php5/cgi/php.ini ]; then
 		process_php_ini /etc/php5/cgi/php.ini
 	fi
-
-	touch /var/log/php/php-error.log
-	chown -R www-data:www-data /var/log/php /var/log/apache2
-
-	if [ "$OSVER" = "debian-wheezy" ] || [ "$OSVER" = "debian-wheezy-openattic" ] || [ "$OSVER" = "debian-wheezy-pve" ]; then
-		chmod g+w /var/log/php/*.log
-	else
-		chmod -R g+w /var/log/php /var/log/apache2
-	fi
 fi
-
-
-if [ "$WWW" != "true" ] || [ ! -f $base/apache2.tpl ]; then
-	echo "skipping apache2 configuration"
-else
-	bash /opt/farm/scripts/setup/role.sh php-apache
-
-	echo "preparing apache2 configuration"
-	install_customize $base/apache2.tpl /etc/apache2/apache2.conf
-fi
-

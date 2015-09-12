@@ -17,7 +17,7 @@ if [ ! -f /etc/farmconfig ]; then
 
 		SMTP="`question \"install central mta role on this server\"`"
 		SYSLOG="`question \"install central syslog role on this server\"`"
-		WWW="`question \"install httpd role on this server\"`"
+		PHP="`question \"install php and manage its configuration on this server\"`"
 
 		if [ "$SMTP" != "true" ]; then
 			SMTP="`input \"enter central mta hostname\" smtp.internal`"
@@ -49,7 +49,7 @@ if [ ! -f /etc/farmconfig ]; then
 		echo "HWTYPE=$HWTYPE" >>/etc/farmconfig
 		echo "SMTP=$SMTP" >>/etc/farmconfig
 		echo "SYSLOG=$SYSLOG" >>/etc/farmconfig
-		echo "WWW=$WWW" >>/etc/farmconfig
+		echo "PHP=$PHP" >>/etc/farmconfig
 
 		if [ "`getent group imapusers`" = "" ]; then
 			groupadd -g 130 newrelic
