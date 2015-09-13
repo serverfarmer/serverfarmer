@@ -23,6 +23,7 @@ if [ "$HWTYPE" = "physical" ]; then
 fi
 bash /opt/farm/scripts/setup/php.sh
 bash /opt/farm/scripts/setup/syslog.sh
+bash /opt/farm/scripts/setup/gpg.sh
 bash /opt/farm/scripts/setup/backup.sh
 bash /opt/farm/scripts/setup/midnight.sh
 bash /opt/farm/scripts/setup/snmpd.sh
