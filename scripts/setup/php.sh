@@ -6,7 +6,7 @@
 
 
 
-set_php_value() {
+set_php_option() {
 	file=$1
 	key=$2
 	value=$3
@@ -26,15 +26,15 @@ process_php_ini() {
 		cp $file $file.farmer-orig
 	fi
 
-	set_php_value $file error_log '\/var\/log\/php\/php-error.log'
-	set_php_value $file include_path '\".:\/usr\/share\/php\"'
-	set_php_value $file memory_limit 1536M
-	set_php_value $file log_errors On
-	set_php_value $file magic_quotes_gpc Off
-	set_php_value $file expose_php Off
-	set_php_value $file allow_url_fopen Off
-	set_php_value $file post_max_size 16M
-	set_php_value $file upload_max_filesize 16M
+	set_php_option $file error_log '\/var\/log\/php\/php-error.log'
+	set_php_option $file include_path '\".:\/usr\/share\/php\"'
+	set_php_option $file memory_limit 1536M
+	set_php_option $file log_errors On
+	set_php_option $file magic_quotes_gpc Off
+	set_php_option $file expose_php Off
+	set_php_option $file allow_url_fopen Off
+	set_php_option $file post_max_size 16M
+	set_php_option $file upload_max_filesize 16M
 }
 
 

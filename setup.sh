@@ -27,8 +27,9 @@ bash /opt/farm/scripts/setup/backup.sh
 bash /opt/farm/scripts/setup/midnight.sh
 bash /opt/farm/scripts/setup/snmpd.sh
 bash /opt/farm/scripts/setup/cacti.sh
-bash /opt/farm/scripts/setup/control.sh
-bash /opt/farm/scripts/setup/security.sh
+bash /opt/farm/scripts/setup/keys.sh
+bash /opt/farm/scripts/setup/sshd.sh
+bash /opt/farm/scripts/check/security.sh
 
 echo -n "finished at "
 date
