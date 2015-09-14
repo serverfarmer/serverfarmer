@@ -13,16 +13,18 @@ if [ "$HWTYPE" = "container" ]; then
 fi
 
 
-echo "setting up backup directories"
-mkdir -p   /backup/daily /backup/weekly /backup/custom
-chmod 0700 /backup/daily /backup/weekly /backup/custom
-
 if [ "$OSTYPE" = "debian" ]; then
-	chown root:root /backup
-	chown backup:backup /backup/daily /backup/weekly /backup/custom
+	owner="backup:backup"
 else
-	chown root:root /backup /backup/daily /backup/weekly /backup/custom
+	owner="root:root"
 fi
+
+path=`local_backup_directory`
+
+echo "setting up backup directories"
+mkdir -p     $path/daily $path/weekly $path/custom
+chmod 0700   $path/daily $path/weekly $path/custom
+chown $owner $path/daily $path/weekly $path/custom
 
 echo "setting up backup scripts"
 install_link /opt/farm/scripts/backup/cron-daily.sh /etc/cron.daily/backup

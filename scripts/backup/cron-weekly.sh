@@ -3,8 +3,8 @@
 . /opt/farm/scripts/functions.backup
 . /opt/farm/scripts/functions.mysql
 
-TMP="/backup"
-DEST="/backup/weekly"
+TMP="`local_backup_directory`"
+DEST="$TMP/weekly"
 
 backup_encrypt_directory $TMP $DEST /boot boot.tar
 backup_encrypt_directory $TMP $DEST /srv/apps/hosting srv_apps_hosting.tar

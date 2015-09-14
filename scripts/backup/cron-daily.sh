@@ -2,8 +2,8 @@
 . /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.backup
 
-TMP="/backup"
-DEST="/backup/daily"
+TMP="`local_backup_directory`"
+DEST="$TMP/daily"
 
 backup_encrypt_directory $TMP $DEST /etc etc.tar
 backup_encrypt_directory $TMP $DEST /var/log var_log.tar
