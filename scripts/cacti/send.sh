@@ -6,4 +6,4 @@ if [ "$1" = "" ]; then
 	exit 1
 fi
 
-scp -B -q -i /root/.ssh/id_cacti $1 cacti-external@`cacti_ssh_target`/data
+scp -B -q -i /root/.ssh/id_cacti -o StrictHostKeyChecking=no $1 cacti-external@`cacti_ssh_target`/data
