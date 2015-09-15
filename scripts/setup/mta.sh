@@ -1,5 +1,6 @@
 #!/bin/bash
-# Konfiguracja MTA i elementów związanych z pocztą
+# Mail Transfer Agent configuration
+# TODO: consider support for full MTA on redhat
 
 . /opt/farm/scripts/init
 . /opt/farm/scripts/functions.custom
@@ -31,8 +32,13 @@ then
 
 	service postfix reload
 
-elif [ "$SMTP" = "true" ]
+elif [ "$SMTP" != "true" ]
 then
+	install_deb ssmtp
+
+	echo "setting up ssmtp"
+	cat $common/ssmtp.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$SMTP/g >/etc/ssmtp/ssmtp.conf
+else
 	install_deb postfix
 	install_deb libsasl2-modules
 
@@ -81,10 +87,5 @@ then
 	fi
 
 	service postfix restart
-else
-	install_deb ssmtp
-
-	echo "setting up ssmtp"
-	cat $common/ssmtp.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$SMTP/g >/etc/ssmtp/ssmtp.conf
 fi
 
