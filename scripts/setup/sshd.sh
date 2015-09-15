@@ -13,7 +13,7 @@ set_sshd_option() {
 
 	if ! grep -q ^$key $file; then
 		echo >>$file
-		echo "$key =" >>$file
+		echo "$key $value" >>$file
 	else
 		sed -i -e "s/^\($key\)[ ].*/\\1 $value/" $file
 	fi
