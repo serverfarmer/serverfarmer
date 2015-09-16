@@ -34,7 +34,7 @@ else
 			echo $LEVEL
 
 			echo "setting up logcheck configuration"
-			cat $base/logcheck.tpl |sed -e s/%%domain%%/`owner_domain`/g -e s/%%level%%/$LEVEL/g >$f
+			cat $base/logcheck.tpl |sed -e s/%%domain%%/`external_domain`/g -e s/%%level%%/$LEVEL/g >$f
 			chown root:logcheck $f
 			chmod 0640 $f
 		fi

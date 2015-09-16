@@ -1,6 +1,7 @@
 #!/bin/bash
 # Inicjalizacja skryptów konfiguracyjnych
 
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.dialog
 
 
@@ -9,6 +10,7 @@ if [ ! -f /etc/farmconfig ]; then
 	OSTYPE=`/opt/farm/scripts/config/detect-system-version.sh -type`
 	HWTYPE=`/opt/farm/scripts/config/detect-hardware-type.sh`
 	OSVER="`input \"enter operating system version\" $OSDET`"
+	INTERNAL=`internal_domain`
 
 	if [ -d /opt/farm/dist/$OSVER ]; then
 
@@ -20,11 +22,11 @@ if [ ! -f /etc/farmconfig ]; then
 		PHP="`question \"install php and manage its configuration on this server\"`"
 
 		if [ "$SMTP" != "true" ]; then
-			SMTP="`input \"enter central mta hostname\" smtp.internal`"
+			SMTP="`input \"enter central mta hostname\" smtp.$INTERNAL`"
 		fi
 
 		if [ "$SYSLOG" != "true" ]; then
-			SYSLOG="`input \"enter central syslog hostname\" syslog.internal`"
+			SYSLOG="`input \"enter central syslog hostname\" syslog.$INTERNAL`"
 		fi
 
 		hostname $HOST

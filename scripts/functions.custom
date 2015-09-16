@@ -30,8 +30,12 @@ local_backup_directory() {
 	echo "/backup"
 }
 
-owner_domain() {
+external_domain() {
 	echo "tomaszklim.pl"
+}
+
+internal_domain() {
+	echo "internal"
 }
 
 primary_admin_account() {

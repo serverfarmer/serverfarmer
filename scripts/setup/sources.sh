@@ -11,7 +11,7 @@
 
 if [ -f $base/listchanges.tpl ]; then
 	rm -f /etc/apt/listchanges.conf  # remove previous softlink
-	cat $base/listchanges.tpl |sed s/%%domain%%/`owner_domain`/g >/etc/apt/listchanges.conf
+	cat $base/listchanges.tpl |sed s/%%domain%%/`external_domain`/g >/etc/apt/listchanges.conf
 fi
 
 if [ -f $base/sources.list ]; then

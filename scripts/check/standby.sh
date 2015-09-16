@@ -16,7 +16,7 @@ devices=`cat /opt/farm/common/standby.conf |grep -v ^# |grep -v ^$`
 for diskid in $devices; do
 	device="/dev/disk/by-id/$diskid"
 	if [ -h $device ] && [ "`hdparm -C $device 2>&1 |grep standby`" = "" ]; then
-		smartctl -d sat -T permissive -a $device |mail -s "$device is not in standby mode" smart-alerts@`owner_domain`
+		smartctl -d sat -T permissive -a $device |mail -s "$device is not in standby mode" smart-alerts@`external_domain`
 	fi
 done
 

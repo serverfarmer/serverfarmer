@@ -28,7 +28,7 @@ else
 			# The below template has been inserted by Cacti setup.
 			# Please adjust it according to server type and role.
 			#
-			# MAILTO=cron@`owner_domain`
+			# MAILTO=cron@`external_domain`
 			#
 			# */5  * * * * root /opt/farm/scripts/cacti/mta-helper.sh
 			# */5  * * * * root /opt/farm/scripts/cacti/smart-helper.sh

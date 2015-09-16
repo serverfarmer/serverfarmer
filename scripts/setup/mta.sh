@@ -9,7 +9,7 @@
 
 
 
-DOMAIN=`owner_domain`
+DOMAIN=`external_domain`
 
 if [ -d /usr/local/cpanel ]
 then
