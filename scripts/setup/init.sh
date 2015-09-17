@@ -59,7 +59,6 @@ if [ ! -f /etc/farmconfig ]; then
 			groupadd -g 150 sambashare
 			groupadd -g 160 imapusers
 			# RHEL registered GIDs: 170 avahi-autoipd, 190 systemd-journal
-			groupadd -g 1001 motion
 
 			if [ "$OSTYPE" = "debian" ]; then
 				rm -f /etc/ssh/ssh_host_*
