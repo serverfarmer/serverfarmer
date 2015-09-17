@@ -1,0 +1,9 @@
+bridge-utils
+qemu
+qemu-kvm
+libcap2-bin
+libvirt-bin
+ubuntu-vm-builder
+uml-utilities
+virtinst
+virt-viewer
