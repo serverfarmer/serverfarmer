@@ -59,7 +59,7 @@ view   systemonly  included   .1.3.6.1.2.1.25.1
 
 rocommunity %%community%% 10.0.0.0/8
 rocommunity %%community%% 192.168.0.0/16
-rocommunity %%community%% 79.173.0.0/18
+rocommunity %%community%% %%management%%
 
                                                  #  Full read-only access for SNMPv3
  rouser   authOnlyUser

@@ -28,7 +28,7 @@ else
 
 	echo "setting up snmpd configuration"
 	community="`cat $pass`"
-	cat $base/snmpd.tpl |sed -e "s/%%community%%/$community/g" -e "s/%%domain%%/`external_domain`/g" >/etc/snmp/snmpd.conf
+	cat $base/snmpd.tpl |sed -e "s/%%community%%/$community/g" -e "s/%%domain%%/`external_domain`/g" -e "s/%%management%%/`management_public_ip_range`/g" >/etc/snmp/snmpd.conf
 
 	if [ -f $base/snmpd.default ]; then
 		install_link $base/snmpd.default /etc/default/snmpd

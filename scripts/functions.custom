@@ -38,6 +38,10 @@ internal_domain() {
 	echo "internal"
 }
 
+management_public_ip_range() {
+	echo "79.173.0.0\/18"
+}
+
 primary_admin_account() {
 	echo "tomek"
 }
