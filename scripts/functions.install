@@ -57,3 +57,9 @@ install_cpan() {
 	fi
 }
 
+save_original_config() {
+	file=$1
+	if [ ! -f $file.farmer-orig ]; then
+		cp $file $file.farmer-orig
+	fi
+}

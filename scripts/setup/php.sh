@@ -21,10 +21,7 @@ set_php_option() {
 
 process_php_ini() {
 	file=$1
-
-	if [ ! -f $file.farmer-orig ]; then
-		cp $file $file.farmer-orig
-	fi
+	save_original_config $file
 
 	set_php_option $file error_log '\/var\/log\/php\/php-error.log'
 	set_php_option $file include_path '\".:\/usr\/share\/php\"'

@@ -22,6 +22,7 @@ then
 elif [ "$OSTYPE" != "debian" ]
 then
 	install_rpm postfix
+	save_original_config /etc/postfix/main.cf
 
 	echo "setting up postfix"
 	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$SMTP/g >/etc/postfix/main.cf
@@ -41,6 +42,7 @@ then
 else
 	install_deb postfix
 	install_deb libsasl2-modules
+	save_original_config /etc/postfix/main.cf
 
 	map="/etc/postfix/sasl/passwd"
 	if [ ! -f $map.db ]; then

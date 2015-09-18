@@ -42,6 +42,7 @@ else
 
 	if [ -f $base/rsyslog.$MODE ]; then
 		echo "configuring rsyslog as log $MODE"
+		save_original_config /etc/rsyslog.conf
 		cat $base/rsyslog.$MODE |sed s/%%syslog%%/$SYSLOG/g >/etc/rsyslog.conf
 		service rsyslog restart
 	fi

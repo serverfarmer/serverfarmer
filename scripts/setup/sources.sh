@@ -16,6 +16,8 @@ fi
 
 if [ -f $base/sources.list ]; then
 	dst="/etc/apt/sources.list"
+	save_original_config $dst
+
 	oldmd5=`md5sum $dst`
 	install_link $base/sources.list $dst
 	newmd5=`md5sum $dst`

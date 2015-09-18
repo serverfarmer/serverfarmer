@@ -22,10 +22,7 @@ set_sshd_option() {
 
 echo "setting up secure sshd configuration"
 file="/etc/ssh/sshd_config"
-
-if [ ! -f $file.farmer-orig ]; then
-	cp $file $file.farmer-orig
-fi
+save_original_config $file
 
 set_sshd_option $file Protocol 2
 set_sshd_option $file UsePrivilegeSeparation yes

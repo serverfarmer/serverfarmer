@@ -27,8 +27,11 @@ else
 	bash /opt/farm/scripts/setup/role.sh snmpd
 
 	echo "setting up snmpd configuration"
+	file="/etc/snmp/snmpd.conf"
+	save_original_config $file
+
 	community="`cat $pass`"
-	cat $base/snmpd.tpl |sed -e "s/%%community%%/$community/g" -e "s/%%domain%%/`external_domain`/g" -e "s/%%management%%/`management_public_ip_range`/g" >/etc/snmp/snmpd.conf
+	cat $base/snmpd.tpl |sed -e "s/%%community%%/$community/g" -e "s/%%domain%%/`external_domain`/g" -e "s/%%management%%/`management_public_ip_range`/g" >$file
 
 	if [ -f $base/snmpd.default ]; then
 		install_link $base/snmpd.default /etc/default/snmpd
