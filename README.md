@@ -45,6 +45,7 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - Debian 6.x (Squeeze)
   - **Debian 7.x (Wheezy)**
   - **Debian 8.x (Jessie) - current as of 2015**
+  - Ubuntu 8.04 LTS (Hardy Heron)
   - Ubuntu 9.04 (Jaunty Jackalope)
   - Ubuntu 10.04 LTS (Lucid Lynx)
   - Ubuntu 10.10 (Maverick Meerkat)
