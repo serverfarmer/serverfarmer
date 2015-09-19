@@ -50,6 +50,7 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - Ubuntu 10.04 LTS (Lucid Lynx)
   - Ubuntu 10.10 (Maverick Meerkat)
   - Ubuntu 12.04 LTS (Precise Pangolin)
+  - Ubuntu 13.10 (Saucy Salamander)
   - **Ubuntu 14.04 LTS (Trusty Tahr)**
 - Red Hat-based distributions:
   - Oracle Linux 6.3 - tested with Oracle Database 10g2, 11g, 11g2
