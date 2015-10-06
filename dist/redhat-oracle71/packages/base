@@ -6,7 +6,6 @@ gnupg2
 curl
 mc
 dos2unix
-mailx
 man-db
 ntpdate
 patch

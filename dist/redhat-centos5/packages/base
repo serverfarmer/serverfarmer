@@ -7,6 +7,5 @@ curl
 mc
 unix2dos
 dos2unix
-mailx
 man
 patch

@@ -22,6 +22,7 @@ then
 elif [ "$OSTYPE" != "debian" ]
 then
 	install_rpm postfix
+	install_rpm mailx
 	save_original_config /etc/postfix/main.cf
 
 	echo "setting up postfix"
@@ -36,12 +37,14 @@ then
 elif [ "$SMTP" != "true" ]
 then
 	install_deb ssmtp
+	install_deb bsd-mailx
 
 	echo "setting up ssmtp"
 	cat $common/ssmtp.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$SMTP/g >/etc/ssmtp/ssmtp.conf
 else
 	install_deb postfix
 	install_deb libsasl2-modules
+	install_deb bsd-mailx
 	save_original_config /etc/postfix/main.cf
 
 	map="/etc/postfix/sasl/passwd"
