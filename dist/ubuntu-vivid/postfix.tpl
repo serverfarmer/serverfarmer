@@ -1,7 +1,7 @@
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
-myhostname = %%domain%%
-myorigin = $myhostname
+myhostname = %%host%%
+myorigin = %%domain%%
 mydestination = %%host%%, localhost.$mydomain, localhost
 relayhost = [%%smtp%%]:587
 mynetworks = 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8

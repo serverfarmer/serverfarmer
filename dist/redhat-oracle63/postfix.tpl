@@ -97,7 +97,7 @@ myhostname = %%host%%
 # myorigin also specifies the default domain name that is appended
 # to recipient addresses that have no @domain part.
 #
-myorigin = $myhostname
+myorigin = %%domain%%
 #myorigin = $mydomain
 
 # RECEIVING MAIL
