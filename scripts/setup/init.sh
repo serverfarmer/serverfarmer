@@ -29,7 +29,9 @@ if [ ! -f /etc/farmconfig ]; then
 		fi
 
 		hostname $HOST
-		sed -i -e '/$HOST/d' /etc/hosts
+
+		short=`echo "$HOST" |cut -d'.' -f1`
+		sed -i -e "/$short/d" /etc/hosts
 
 		if [ -f /etc/sysconfig/network ]; then
 			sed -i -e '/HOSTNAME=/d' /etc/sysconfig/network
