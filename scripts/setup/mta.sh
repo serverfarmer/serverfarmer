@@ -70,6 +70,10 @@ else
 	cat $common/aliases-$OSTYPE.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g >/etc/aliases
 	newaliases
 
+	echo "setting up transport maps"
+	touch /etc/postfix/transport
+	postmap /etc/postfix/transport
+
 	echo "setting up virtual aliasing"
 	touch /etc/postfix/virtual_aliases
 	postmap /etc/postfix/virtual_aliases

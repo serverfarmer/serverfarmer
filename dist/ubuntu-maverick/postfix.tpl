@@ -16,6 +16,7 @@ smtp_generic_maps  = hash:/etc/postfix/sender_address_rewriting
 sender_bcc_maps    = hash:/etc/postfix/sender_bcc_notifications
 recipient_bcc_maps = hash:/etc/postfix/recipient_bcc_notifications
 virtual_alias_maps = hash:/etc/postfix/virtual_aliases
+transport_maps     = hash:/etc/postfix/transport
 
 ############
 
