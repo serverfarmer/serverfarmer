@@ -15,8 +15,18 @@ if [ ! -f /root/.ssh/authorized_keys ] || [ "`grep \"$FULLKEY\" /root/.ssh/autho
 	echo "$FULLKEY" >>/root/.ssh/authorized_keys
 fi
 
-if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ ! -f /var/backups/.ssh/authorized_keys ]; then
-	echo "setting up backup ssh key"
-	mkdir -p /var/backups/.ssh
-	echo "$FULLKEY" >/var/backups/.ssh/authorized_keys
+if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ]; then
+	home=/var/backups
+	shell=`getent passwd backup |cut -d: -f 7`
+
+	if [ ! -f $home/.ssh/authorized_keys ]; then
+		echo "setting up backup ssh key"
+		mkdir -p $home/.ssh
+		echo "$FULLKEY" >$home/.ssh/authorized_keys
+	fi
+
+	if [ "$shell" = "/usr/sbin/nologin" ]; then
+		echo "enabling rsync access for backup user"
+		usermod -s /bin/sh backup
+	fi
 fi
