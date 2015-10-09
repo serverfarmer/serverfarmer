@@ -1,9 +1,8 @@
 #!/bin/bash
 
-echo "updating /opt/farm"
 DIR="`pwd`"
-cd /opt/farm
-git pull
+if [ -d /opt/farm/.git ]; then echo "updating /opt/farm"; cd /opt/farm; git pull; fi
+if [ -d /opt/misc/.git ]; then echo "updating /opt/misc"; cd /opt/misc; git pull; fi
 cd "$DIR"
 
 
