@@ -17,3 +17,14 @@ backup_encrypt_directory() {
 	fi
 }
 
+backup_encrypt_directory_daily() {
+	if [ ! -f $3/.nobackup ] && [ ! -f $3/.weekly ]; then
+		backup_encrypt_directory $1 $2 $3 $4
+	fi
+}
+
+backup_encrypt_directory_weekly() {
+	if [ ! -f $3/.nobackup ] && [ -f $3/.weekly ]; then
+		backup_encrypt_directory $1 $2 $3 $4
+	fi
+}
