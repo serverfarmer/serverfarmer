@@ -6,19 +6,15 @@
 TMP="`local_backup_directory`"
 DEST="$TMP/weekly"
 
-backup_encrypt_directory $TMP $DEST /boot boot.tar
-
-for D in `ls /srv/apps 2>/dev/null`; do
-	backup_encrypt_directory_weekly $TMP $DEST /srv/apps/$D srv_apps_$D.tar
-done
-
-for D in `ls /srv/sites 2>/dev/null`; do
-	backup_encrypt_directory_weekly $TMP $DEST /srv/sites/$D srv_sites_$D.tar
+for D in `/opt/farm/scripts/backup/directories.sh`; do
+	if [ ! -f $D/.nobackup ] && [ -f $D/.weekly ]; then
+		backup_directory $TMP $DEST $D
+	fi
 done
 
 for D in `ls /home`; do
-	if [ "`ls /home/$D/`" != "" ]; then
-		backup_encrypt_directory $TMP $DEST /home/$D home_$D.tar
+	if [ "`ls /home/$D`" != "" ]; then
+		backup_directory $TMP $DEST /home/$D
 	fi
 done
 
