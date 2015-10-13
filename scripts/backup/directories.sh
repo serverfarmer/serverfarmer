@@ -1,8 +1,16 @@
 #!/bin/sh
 
-for D in /etc /root /boot /var/lib/mfs /var/lib/samba /var/log /var/www; do
+for D in /etc /root /boot /var/lib/mfs /var/lib/samba /var/log; do
 	echo $D
 done
+
+if [ ! -f /var/www/.subdirectories ]; then
+	echo /var/www
+else
+	for D in `ls /var/www 2>/dev/null`; do
+		echo /var/www/$D
+	done
+fi
 
 for D in `ls /data 2>/dev/null`; do
 	echo /data/$D
