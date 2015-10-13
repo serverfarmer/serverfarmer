@@ -20,15 +20,24 @@ GENERIC=(
 	/boot
 	/etc
 	/etc/apache2
+	/etc/apache2/sites-available
+	/etc/apache2/sites-enabled
 	/etc/apt
+	/etc/apt/sources.list.d
 	/etc/courier
 	/etc/iet
 	/etc/iscsi
+	/etc/lighttpd
 	/etc/local
+	/etc/logrotate.d
 	/etc/mfs
 	/etc/motion
 	/etc/mysql
+	/etc/nginx
+	/etc/nginx/sites-available
+	/etc/nginx/sites-enabled
 	/etc/samba
+	/etc/sysctl.d
 	/home
 	/media
 	/mnt
