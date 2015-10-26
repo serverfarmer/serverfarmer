@@ -15,6 +15,14 @@ assert_local_directory() {
 	fi
 }
 
+assert_local_mountpoint() {
+	local mount=$1
+	if [ "`df |grep $mount`" = "" ]; then
+		echo "target mountpoint $mount doesn't exist"
+		exit 1
+	fi
+}
+
 assert_remote_directory() {
 	local key=$1
 	local host=$2
