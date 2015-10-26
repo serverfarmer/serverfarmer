@@ -57,7 +57,7 @@ detect_debian_version()
 			7.?)
 				echo "debian-wheezy"
 				;;
-			8.0)
+			8.?)
 				echo "debian-jessie"
 				;;
 			*)
