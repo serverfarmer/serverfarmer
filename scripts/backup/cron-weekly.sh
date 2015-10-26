@@ -8,7 +8,7 @@ TMP="`local_backup_directory`"
 DEST="$TMP/weekly"
 
 for D in `/opt/farm/scripts/backup/directories.sh`; do
-	if [ ! -f $D/.nobackup ] && [ -f $D/.weekly ]; then
+	if [ "$D" != "$TMP" ] && [ ! -f $D/.nobackup ] && [ -f $D/.weekly ]; then
 		backup_directory $TMP $DEST $D
 	fi
 done
