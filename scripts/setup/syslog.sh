@@ -19,8 +19,8 @@ else
 		MODE="receiver"
 		bash /opt/farm/scripts/setup/role.sh syslog-utils
 
-		echo "setting up cron bogus warning ignoring rules for logcheck"
-		install_copy $common/logcheck/cron.tpl /etc/logcheck/ignore.d.server/local-cron
+		echo "setting up custom ignoring rules for logcheck"
+		install_copy $common/logcheck.tpl /etc/logcheck/ignore.d.server/local-farmer
 
 		if [ -f $base/logcheck.tpl ]; then
 			f=/etc/logcheck/logcheck.conf

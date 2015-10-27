@@ -38,9 +38,4 @@ else
 	fi
 
 	service snmpd restart
-
-	if [ "$SYSLOG" = "true" ]; then
-		echo "setting up snmpd debug message ignoring rules for logcheck"
-		install_copy $common/logcheck/snmpd.tpl /etc/logcheck/ignore.d.server/local-snmpd
-	fi
 fi

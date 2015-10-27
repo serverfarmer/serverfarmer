@@ -90,11 +90,6 @@ else
 	touch /etc/postfix/recipient_bcc_notifications
 	postmap /etc/postfix/recipient_bcc_notifications
 
-	if [ "$SYSLOG" = "true" ]; then
-		echo "setting up gmail ssl error ignoring rules for logcheck"
-		install_copy $common/logcheck/gmail.tpl /etc/logcheck/ignore.d.server/local-gmail
-	fi
-
 	service postfix restart
 fi
 
