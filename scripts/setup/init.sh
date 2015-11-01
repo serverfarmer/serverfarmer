@@ -53,6 +53,10 @@ if [ ! -f /etc/farmconfig ]; then
 		echo "SMTP=$SMTP" >>/etc/farmconfig
 		echo "SYSLOG=$SYSLOG" >>/etc/farmconfig
 
+		mkdir -p   /etc/local/.config /etc/local/.ssh
+		chmod 0700 /etc/local/.config /etc/local/.ssh
+		chmod 0711 /etc/local
+
 		if [ "`getent group imapusers`" = "" ]; then
 			groupadd -g 130 newrelic
 			groupadd -g 140 mfs
