@@ -14,7 +14,7 @@ for D in `/opt/farm/scripts/backup/directories.sh`; do
 done
 
 for D in `ls /home`; do
-	if [ "`ls /home/$D`" != "" ] && [ ! -f $D/.nobackup ]; then
+	if [ "`ls /home/$D`" != "" ] && [ ! -f /home/$D/.nobackup ]; then
 		backup_directory $TMP $DEST /home/$D
 	fi
 done
