@@ -8,4 +8,4 @@ export MIBS=
 SNMPDRUN=yes
 
 # snmpd options (use syslog, close stdin/out/err).
-SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g newrelic -I -smux,mteTrigger,mteTriggerConf -p /run/snmpd.pid'
+SNMPDOPTS='-LS6d -Lf /dev/null -u snmp -g newrelic -I -smux,mteTrigger,mteTriggerConf -p /run/snmpd.pid'
