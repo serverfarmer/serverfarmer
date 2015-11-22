@@ -43,20 +43,22 @@ GENERIC=(
 	/mnt
 	/opt
 	/srv
+	/srv/apps
 	/srv/chunks
 	/srv/cifs
+	/srv/imap
+	/srv/isync
+	/srv/rsync
+	/srv/sites
 	/srv/mounts
-	/srv/mounts/internal1/backupy
-	/srv/mounts/internal1/imap
-	/srv/mounts/internal1/isync
-	/srv/mounts/internal1/rsync
-	/srv/mounts/internal1/sites
-	/srv/mounts/internal1/uslugi
 	/srv/mounts/internal1
 	/srv/mounts/internal2
-	/srv/mounts/internal2/archiwum
+	/srv/mounts/internal3
+	/srv/mounts/internal4
 	/srv/mounts/shadow1
 	/srv/mounts/shadow2
+	/srv/mounts/shadow3
+	/srv/mounts/shadow4
 	/var/backups
 	/var/cache
 	/var/lib
@@ -67,13 +69,15 @@ GENERIC=(
 SAMBA=(
 	/srv/mounts/internal1
 	/srv/mounts/internal2
+	/srv/mounts/internal3
+	/srv/mounts/internal4
 	/srv/mounts/moosefs
 )
 
 
 for D in ${GENERIC[@]}; do
 	if [ -d $D ]; then
-		perm=`stat -c %a:%U:%G $D`
+		perm=`stat -L -c %a:%U:%G $D`
 		if [ "$perm" != "711:root:root" ]; then
 			echo "directory $D had rights:owner 0$perm, fixed"
 			chown root:root $D

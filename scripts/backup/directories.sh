@@ -20,7 +20,7 @@ for D in `ls /opt 2>/dev/null |egrep -v "^(farm|firewall|misc|warfare)$"`; do
 	echo /opt/$D
 done
 
-for D in `ls /srv 2>/dev/null |egrep -v "^(apps|chunks|cifs|imap|isync|mounts|rsync|sites)$"`; do
+for D in `ls /srv 2>/dev/null |egrep -v "^(apps|chunks|cifs|imap|isync|mounts|rsync|sites)$" |grep -v private`; do
 	echo /srv/$D
 done
 
