@@ -125,6 +125,9 @@ detect_redhat_version()
 			"CentOS Linux release 7.1.1503 (Core) ")
 				echo "redhat-centos71"
 				;;
+			"Red Hat Enterprise Linux Server release 5.5 (Tikanga)")
+				echo "redhat-rhel5"
+				;;
 			"Red Hat Enterprise Linux Server release 6.6 (Santiago)")
 				echo "redhat-rhel66"
 				;;
