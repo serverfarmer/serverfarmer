@@ -49,3 +49,11 @@ primary_admin_account() {
 cacti_ssh_target() {
 	echo "cacti.biuro:/srv/sites/cacti/external"
 }
+
+add_backup_extension() {
+	echo "$1.gpg"
+}
+
+stream_handler() {
+	echo "gpg --encrypt --no-armor --recipient `gpg_backup_key` --batch"
+}

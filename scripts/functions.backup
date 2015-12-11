@@ -1,6 +1,6 @@
 target_file_name() {
 	source_dir=$1
-	echo ${source_dir:1}.tar.gpg |tr '/' '_'
+	echo ${source_dir:1}.tar |tr '/' '_'
 }
 
 backup_directory() {
@@ -12,8 +12,9 @@ backup_directory() {
 	else
 		target_file=`target_file_name $source_dir`
 	fi
+	target_full=`add_backup_extension $target_file`
 	if [ -d $source_dir ] && [ ! -h $source_dir ] && [ "`ls -A $source_dir`" != "" ]; then
-		tar cf - $source_dir 2>/dev/null |gpg --encrypt --no-armor --recipient `gpg_backup_key` --output $temp_dir/$target_file --batch
-		mv -f $temp_dir/$target_file $target_dir/$target_file 2>/dev/null
+		tar cf - $source_dir 2>/dev/null |`stream_handler` >$temp_dir/$target_full
+		mv -f $temp_dir/$target_full $target_dir/$target_full 2>/dev/null
 	fi
 }

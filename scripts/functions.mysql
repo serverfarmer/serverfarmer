@@ -11,17 +11,16 @@ backup_mysql() {
 		access="-h $host -P $port -u $user -p$pass"
 		dbs="`echo \"show databases;\" |mysql $access |grep -v ^Database |grep -v information_schema |grep -v performance_schema |grep -v ^mysql\$`"
 
-		fname="$prefix-grants.sql.gpg"
+		fname=`add_backup_extension $prefix-grants.sql`
 		mysql --batch --skip-column-names $access -e "SELECT DISTINCT CONCAT('SHOW GRANTS FOR \'', user, '\'@\'', host, '\';') AS query FROM mysql.user" | \
-		mysql $access | sed 's/\(GRANT .*\)/\1;/;s/^\(Grants for .*\)/## \1 ##/;/##/{x;p;x;}' | \
-		gpg --encrypt --no-armor --recipient `gpg_backup_key` --output $temp/$fname --batch
+		mysql $access | sed 's/\(GRANT .*\)/\1;/;s/^\(Grants for .*\)/## \1 ##/;/##/{x;p;x;}' |`stream_handler` >$temp/$fname
 		mv -f $temp/$fname $dest/$fname 2>/dev/null
 
 		echo "FLUSH TABLES WITH READ LOCK;" |mysql $access
 		for db in $dbs; do
-			fname="$prefix-$db.sql.gpg"
+			fname=`add_backup_extension $prefix-$db.sql`
 			mysqldump $access --quick --extended-insert --complete-insert --lock-tables --lock-all-tables --flush-logs --skip-add-drop-table --databases $db | \
-			gpg --encrypt --no-armor --recipient `gpg_backup_key` --output $temp/$fname --batch
+			`stream_handler` >$temp/$fname
 			mv -f $temp/$fname $dest/$fname 2>/dev/null
 		done
 		echo "UNLOCK TABLES;" |mysql $access
