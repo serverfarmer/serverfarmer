@@ -13,10 +13,9 @@ Server Farmer is the right tool for you.
 
 Me (the original author) and my company manage many servers with high-risk confidential
 data (mostly medical) and simply can't manage them via Puppet/Chef, at least via single
-Puppet/Chef instance shared between customers.
-
-And having multiple instances of such software is way too expensive. Server Farmer solves
-this problem, as it requires only one central server, shared between all your customers.
+Puppet/Chef instance shared between customers. And having multiple instances of such
+software is way too expensive. Server Farmer solves this problem by requiring only one
+central server, shared between all your customers.
 
 Also, Puppet is production ready since 2011, and Chef since 2013. Server Farmer was open
 sourced in 2015, however it successfully managed production servers since 2008.
