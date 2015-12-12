@@ -50,6 +50,10 @@ cacti_ssh_target() {
 	echo "cacti.biuro:/srv/sites/cacti/external"
 }
 
+extension_repository() {
+	echo "https://github.com/serverfarmer"
+}
+
 add_backup_extension() {
 	echo "$1.gpg"
 }

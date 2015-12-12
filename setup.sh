@@ -1,8 +1,15 @@
 #!/bin/bash
 
+update="/opt/farm /opt/misc `ls -d /opt/sf-* 2>/dev/null`"
+
 DIR="`pwd`"
-if [ -d /opt/farm/.git ]; then echo "updating /opt/farm"; cd /opt/farm; git pull; fi
-if [ -d /opt/misc/.git ]; then echo "updating /opt/misc"; cd /opt/misc; git pull; fi
+for PD in $update; do
+	if [ -d $PD/.git ]; then
+		echo "updating $PD"
+		cd $PD
+		git pull
+	fi
+done
 cd "$DIR"
 
 

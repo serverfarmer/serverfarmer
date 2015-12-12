@@ -3,6 +3,7 @@
 # realizacji przez serwer podanej w parametrze roli
 
 . /opt/farm/scripts/init
+. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install
 
 
@@ -40,3 +41,11 @@ if [ -f $base/packages/$role.cpan ]; then
 	done
 fi
 
+if [ ${role:0:3} = "sf-" ]; then
+	if [ ! -d /opt/$role ]; then
+		git clone "`extension_repository`/$role" /opt/$role
+		if [ -x /opt/$role/setup.sh ]; then bash /opt/$role/setup.sh; fi
+	elif [ ! -d /opt/$role/.git ]; then
+		echo "directory /opt/$role busy, skipping extension $role installation"
+	fi
+fi
