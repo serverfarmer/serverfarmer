@@ -6,17 +6,20 @@ Scared of complex and possibly buggy software, that might become an attack vecto
 Manage many different servers for many different customers, where storing passwords etc.
 in single repository for all customers is not an option?
 
-Great. Me too.
+Server Farmer is the right tool for you.
 
 
-Me and my company manage many servers with high-risk confidential data (mostly medical)
-and simply can't manage them via Puppet/Chef, at least via single Puppet/Chef instance
-shared between customers. And having multiple instances of such software is expensive.
+# Why Server Farmer?
 
-Also, Puppet is production ready since 2011, and Chef since 2013.
+Me (the original author) and my company manage many servers with high-risk confidential
+data (mostly medical) and simply can't manage them via Puppet/Chef, at least via single
+Puppet/Chef instance shared between customers.
 
-Server Farmer was used semi-commercially since 2008, and proving its usefulness, was
-released in 2015 as open source.
+And having multiple instances of such software is way too expensive. Server Farmer solves
+this problem, as it requires only one central server, shared between all your customers.
+
+Also, Puppet is production ready since 2011, and Chef since 2013. Server Farmer was open
+sourced in 2015, however it successfully managed production servers since 2008.
 
 
 # Advantages over Puppet, Chef etc.
@@ -28,6 +31,7 @@ easily deployed everywhere.
 3. Diff friendly: all configuration templates based on default configuration files
 from each Linux distribution, therefore it's easy to track changes.
 4. Tight integration with Cacti monitoring software.
+5. Great plugins to simplify and automate many admin tasks.
 
 
 # Market positioning
