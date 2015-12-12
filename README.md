@@ -35,7 +35,7 @@ from each Linux distribution, therefore it's easy to track changes.
 
 # Market positioning
 
-![Market positioning of Server Farmer, Puppet and Chef](https://raw.githubusercontent.com/tomaszklim/serverfarmer/master/common/positioning.png)
+![Market positioning of Server Farmer, Puppet and Chef](https://raw.githubusercontent.com/serverfarmer/serverfarmer/master/common/positioning.png)
 
 
 # Supported operating systems
