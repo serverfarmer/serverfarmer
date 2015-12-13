@@ -44,8 +44,15 @@ fi
 if [ ${role:0:3} = "sf-" ]; then
 	if [ ! -d /opt/$role ]; then
 		git clone "`extension_repository`/$role" /opt/$role
-		if [ -x /opt/$role/setup.sh ]; then bash /opt/$role/setup.sh; fi
 	elif [ ! -d /opt/$role/.git ]; then
 		echo "directory /opt/$role busy, skipping extension $role installation"
+	else
+		DIR="`pwd`"
+		cd /opt/$role
+		git pull
+		cd "$DIR"
+	fi
+	if [ -x /opt/$role/setup.sh ]; then
+		bash /opt/$role/setup.sh
 	fi
 fi
