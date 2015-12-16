@@ -32,7 +32,7 @@ for D in `ls /srv/sites 2>/dev/null`; do
 	echo /srv/sites/$D
 done
 
-for D in docker ldap lxc mfs openswan rabbitmq redis samba tomcat6 tomcat7 vz; do
+for D in cassandra docker ldap lxc mfs mongodb openswan rabbitmq redis samba spamassassin tomcat6 tomcat7 vz; do
 	echo /var/lib/$D
 done
 
