@@ -46,6 +46,10 @@ primary_admin_account() {
 	echo "tomek"
 }
 
+notify_phone() {
+	echo "603252633"
+}
+
 cacti_ssh_target() {
 	echo "cacti.biuro:/srv/sites/cacti/external"
 }
