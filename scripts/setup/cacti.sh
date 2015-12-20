@@ -35,7 +35,6 @@ else
 			# */5  * * * * root /opt/farm/scripts/cacti/thermal-helper.sh
 			# 1    * * * * root /opt/farm/scripts/cacti/disklabel-helper.sh
 			# 22   1 * * * root /opt/farm/scripts/check/security.sh
-			# */30 * * * * root /opt/farm/scripts/check/standby.sh
 			# 3    6 * * * root /opt/farm/scripts/check/clock.sh
 		_EOF_
 	fi

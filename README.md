@@ -112,7 +112,6 @@ want to change them:
   "tomaszklim.pl" domain name, which can be replaced with your own domain with
   **enabled catch-all**
 - common/gpg/*.pub - gpg keys used to encrypt backups
-- common/standby.conf - list of standby devices
 - scripts/check/security.sh - directories to protect with custom access rights
 
 
