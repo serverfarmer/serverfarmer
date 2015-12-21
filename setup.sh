@@ -32,10 +32,13 @@ bash /opt/farm/scripts/setup/gpg.sh
 bash /opt/farm/scripts/setup/backup.sh
 bash /opt/farm/scripts/setup/midnight.sh
 bash /opt/farm/scripts/setup/snmpd.sh
-bash /opt/farm/scripts/setup/cacti.sh
+bash /opt/farm/scripts/setup/misc.sh
 bash /opt/farm/scripts/setup/keys.sh
 bash /opt/farm/scripts/setup/sshd.sh
 bash /opt/farm/scripts/check/security.sh
+if [ "$HWTYPE" = "physical" ]; then
+	bash /opt/farm/scripts/setup/role.sh sf-monitoring-cacti
+fi
 
 echo -n "finished at "
 date
