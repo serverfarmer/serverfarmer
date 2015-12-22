@@ -49,22 +49,24 @@ else
 
 	map="/etc/postfix/sasl/passwd"
 	if [ ! -f $map.db ]; then
-		smtprelay="`input \"enter external smtp relay hostname\" smtp.gmail.com`"
-		echo -n "[$smtprelay] enter login: "
-		read userlogin
-		echo -n "[$smtprelay] enter password for $userlogin: "
-		stty -echo
-		read userpass
-		stty echo
-		echo ""  # force a carriage return to be output
-		echo "$smtprelay  $userlogin:$userpass" >$map
+		if [ "$SMTP_RELAY" = "" ]; then
+			SMTP_RELAY="`input \"enter external smtp relay hostname\" smtp.gmail.com`"
+			echo -n "[$SMTP_RELAY] enter login: "
+			read SMTP_USERNAME
+			echo -n "[$SMTP_RELAY] enter password for $SMTP_USERNAME: "
+			stty -echo
+			read SMTP_PASSWORD
+			stty echo
+			echo ""  # force a carriage return to be output
+		fi
+		echo "$SMTP_RELAY  $SMTP_USERNAME:$SMTP_PASSWORD" >$map
 		chmod 0600 $map
 		postmap $map
 	fi
 
 	echo "setting up postfix"
-	smtprelay="`cat $map |cut -f 1 -d \" \"`"
-	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$smtprelay/g >/etc/postfix/main.cf
+	relay="`cat $map |cut -f 1 -d \" \"`"
+	cat $base/postfix.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g -e s/%%smtp%%/$relay/g >/etc/postfix/main.cf
 
 	echo "setting up mail aliases"
 	cat $common/aliases-$OSTYPE.tpl |sed -e s/%%host%%/$HOST/g -e s/%%domain%%/$DOMAIN/g >/etc/aliases
