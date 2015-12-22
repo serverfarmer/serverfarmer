@@ -35,11 +35,6 @@ bash /opt/farm/scripts/setup/keys.sh
 bash /opt/farm/scripts/setup/role.sh sf-secure-fs
 bash /opt/farm/scripts/setup/role.sh sf-secure-sshd
 bash /opt/farm/scripts/setup/role.sh sf-mc-black
-bash /opt/farm/scripts/setup/role.sh sf-monitoring-snmpd
-if [ "$HWTYPE" = "physical" ]; then
-	bash /opt/farm/scripts/setup/role.sh sf-monitoring-cacti
-fi
 
 echo -n "finished at "
 date
-
