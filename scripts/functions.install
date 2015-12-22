@@ -22,21 +22,33 @@ install_deb() {
 	echo "checking for debian package $pkg"
 	if [ "`dpkg -l $pkg 2>/dev/null |grep ^ii`" = "" ]; then
 		echo "installing package $pkg"
-		apt-get install $pkg
+		if [ "$SF_UNATTENDED" != "" ]; then
+			apt-get install -y $pkg
+		else
+			apt-get install $pkg
+		fi
 	fi
 }
 
 install_rpm() {
 	pkg=$1
 	echo "checking for rpm package $pkg"
-	rpm -q $pkg &>/dev/null || yum install $pkg
+	if [ "$SF_UNATTENDED" != "" ]; then
+		rpm -qy $pkg &>/dev/null || yum install $pkg
+	else
+		rpm -q $pkg &>/dev/null || yum install $pkg
+	fi
 }
 
 uninstall_deb() {
 	pkg=$1
 	if [ "`dpkg -l $pkg 2>/dev/null |egrep \"^(ii|rc)\"`" != "" ]; then
 		echo "uninstalling package $pkg"
-		apt-get purge $pkg
+		if [ "$SF_UNATTENDED" != "" ]; then
+			apt-get purge -y $pkg
+		else
+			apt-get purge $pkg
+		fi
 	fi
 }
 
@@ -44,7 +56,11 @@ uninstall_rpm() {
 	pkg=$1
 	if [ "`rpm -q $pkg &>/dev/null && echo installed`" != "" ]; then
 		echo "uninstalling package $pkg"
-		rpm -e $pkg
+		if [ "$SF_UNATTENDED" != "" ]; then
+			rpm -ye $pkg
+		else
+			rpm -e $pkg
+		fi
 	fi
 }
 
