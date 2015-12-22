@@ -16,7 +16,6 @@ if [ "$HWTYPE" != "container" ]; then
 			#
 			# MAILTO=cron@`external_domain`
 			#
-			22 1 * * * root /opt/farm/scripts/check/security.sh
 			3  6 * * * root /opt/farm/scripts/check/clock.sh
 		_EOF_
 	fi
