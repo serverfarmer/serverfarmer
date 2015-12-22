@@ -34,7 +34,7 @@ install_rpm() {
 	pkg=$1
 	echo "checking for rpm package $pkg"
 	if [ "$SF_UNATTENDED" != "" ]; then
-		rpm -qy $pkg &>/dev/null || yum install $pkg
+		rpm -q $pkg &>/dev/null || yum install -y $pkg
 	else
 		rpm -q $pkg &>/dev/null || yum install $pkg
 	fi
@@ -56,11 +56,7 @@ uninstall_rpm() {
 	pkg=$1
 	if [ "`rpm -q $pkg &>/dev/null && echo installed`" != "" ]; then
 		echo "uninstalling package $pkg"
-		if [ "$SF_UNATTENDED" != "" ]; then
-			rpm -ye $pkg
-		else
-			rpm -e $pkg
-		fi
+		rpm -e $pkg
 	fi
 }
 
