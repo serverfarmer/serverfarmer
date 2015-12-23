@@ -43,7 +43,7 @@ if [ ! -f /etc/farmconfig ]; then
 
 		/opt/farm/scripts/setup/groups.sh
 
-		if [ "$REGENERATE_HOST_KEYS" = "" ]; then
+		if [ "$REGENERATE_HOST_KEYS" != "" ]; then
 			if [ "$OSTYPE" = "debian" ]; then
 				rm -f /etc/ssh/ssh_host_*
 				dpkg-reconfigure openssh-server
