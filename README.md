@@ -104,14 +104,12 @@ distribution, just don't add postfix.tpl file. That's all.
 # Owner-specific data
 
 Server Farmer repository contains no customer passwords, private keys etc. However it
-contains sensitive files related to the owner (Tomasz Klim or Klim Baron Business
-Solutions Sp. z o.o.). If you want to fork this repository, you probably will
-want to change them:
+contains sensitive data related to the owner (Tomasz Klim or Klim Baron Business
+Solutions Sp. z o.o.).
 
-- scripts/functions.custom - custom gpg / ssh keys, paths, names etc., including
-  "tomaszklim.pl" domain name, which can be replaced with your own domain with
-  **enabled catch-all**
-- common/gpg/*.pub - gpg keys used to encrypt backups
+If you want to fork this repository, you probably will want to change them. All such
+data are stored in scripts/functions.custom file. First of all, change "tomaszklim.pl"
+domain to your own one (**enabled catch-all** is required).
 
 
 # Commercial support
