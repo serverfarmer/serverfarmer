@@ -60,6 +60,10 @@ extension_repository() {
 	echo "https://github.com/serverfarmer"
 }
 
+default_extensions() {
+	echo "sf-secure-fs sf-secure-sshd sf-mc-black sf-monitoring-snmpd sf-monitoring-cacti sf-gpg"
+}
+
 add_backup_extension() {
 	echo "$1.gpg"
 }
