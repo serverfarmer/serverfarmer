@@ -28,23 +28,7 @@ if [ ! -f /etc/farmconfig ]; then
 			SYSLOG="`input \"enter central syslog hostname\" syslog.$INTERNAL`"
 		fi
 
-		hostname $HOST
-
-		short=`echo "$HOST" |cut -d'.' -f1`
-		sed -i -e "/$short/d" /etc/hosts
-
-		if [ -f /etc/sysconfig/network ]; then
-			sed -i -e '/HOSTNAME=/d' /etc/sysconfig/network
-			echo "HOSTNAME=$HOST" >> /etc/sysconfig/network
-		fi
-
-		if [ -x /usr/bin/hostnamectl ]; then
-			/usr/bin/hostnamectl set-hostname $HOST
-		fi
-
-		if [ -f /etc/HOSTNAME ]; then echo $HOST >/etc/HOSTNAME; fi
-		if [ -f /etc/hostname ]; then echo $HOST >/etc/hostname; fi
-		if [ -f /etc/mailname ]; then echo $HOST >/etc/mailname; fi
+		/opt/farm/scripts/config/set-hostname.sh $HOST
 
 		echo "HOST=$HOST" >/etc/farmconfig
 		echo "OSVER=$OSVER" >>/etc/farmconfig
@@ -57,19 +41,17 @@ if [ ! -f /etc/farmconfig ]; then
 		chmod 0700 /etc/local/.config /etc/local/.ssh
 		chmod 0711 /etc/local
 
-		if [ "`getent group imapusers`" = "" ]; then
-			groupadd -g 130 newrelic
-			groupadd -g 140 mfs
-			groupadd -g 150 sambashare
-			groupadd -g 160 imapusers
-			# RHEL registered GIDs: 170 avahi-autoipd, 190 systemd-journal
+		/opt/farm/scripts/setup/groups.sh
 
+		if [ "$REGENERATE_HOST_KEYS" = "" ]; then
 			if [ "$OSTYPE" = "debian" ]; then
 				rm -f /etc/ssh/ssh_host_*
 				dpkg-reconfigure openssh-server
 			elif [ -x /usr/sbin/sshd-keygen ]; then
 				rm -f /etc/ssh/ssh_host_*
 				/usr/sbin/sshd-keygen   # RHEL 7.x
+			else
+				echo "unable to regenerate host ssh keys, skipping this step"
 			fi
 		fi
 
