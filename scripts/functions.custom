@@ -5,13 +5,21 @@
 
 ssh_management_key_storage_filename() {
 	server=$1
-	domain="${server##*.}"
+	if [[ $server == *"amazonaws.com" ]]; then
+		domain="ec2"
+	else
+		domain="${server##*.}"
+	fi
 	echo "/etc/local/.ssh/id_backup_$domain"
 }
 
 ssh_management_key_string() {
 	server=$1
-	domain="${server##*.}"
+	if [[ $server == *"amazonaws.com" ]]; then
+		domain="ec2"
+	else
+		domain="${server##*.}"
+	fi
 	if [ "$domain" = "dc1" ]; then
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCqyY086f5HgRIlElfxEXcH2fl3Srq0W7zFeYoiCVvV3MePu7kQfP4Lbnz7HQtE+QSXq82ucEx3a9w4v4YwnkY8KQS6ntWNUbiKSy3ABJxlIUVc8iU18bo9Xiu4+cVeHZIWCv2iZgrWtqOvEnmPuWhaS1vTyr4KwR+f2V+bSmPJs3joyStUE9gt2Dca2y3gxpXcCLC4XMmslL1DSX8U8CvpZ+yM/CNmHCh1hSlrOB8VRHMQ+ZZ7Hktvif7UkroNpDHa4/A9PLLHhFlnQ1H/ra+Zzlmc0ItHZoi5GgLTq3FpurAQO4clVfhmxn5BLOV4UqY6ohSHORdsMk0VqhYNxsON"
 	elif [ "$domain" = "biuro" ]; then
