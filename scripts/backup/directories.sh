@@ -16,7 +16,7 @@ for D in `ls /data 2>/dev/null`; do
 	echo /data/$D
 done
 
-for D in `ls /opt 2>/dev/null |egrep -v "^(farm|firewall|misc|warfare)$"`; do
+for D in `ls /opt 2>/dev/null |egrep -v "^(farm|firewall|misc|warfare)$" |grep -v ^sf-`; do
 	echo /opt/$D
 done
 

@@ -69,7 +69,15 @@ extension_repository() {
 }
 
 default_extensions() {
-	echo "sf-secure-fs sf-secure-sshd sf-gpg sf-mc-black sf-monitoring-snmpd sf-monitoring-cacti"
+	echo "
+sf-secure-fs
+sf-secure-sshd
+sf-ntp
+sf-gpg
+sf-mc-black
+sf-monitoring-snmpd
+sf-monitoring-cacti
+"
 }
 
 add_backup_extension() {

@@ -158,6 +158,7 @@ If installed extension contains setup.sh script, it will be executed right after
 |sf-gpg | backup encryption ability for Server Farmer|
 |sf-helloworld | demonstation, how to write your own extensions|
 |sf-mc-black | black color theme for Midnight Commander|
+|sf-ntp | maintain local time on current machine using ntpdate|
 |sf-sms-smsapi | SMS sender script, using smsapi.pl service|
 
 
