@@ -129,6 +129,7 @@ If installed extension contains setup.sh script, it will be executed right after
 |sf-secure-sshd | unified and secured sshd configuration, that allows logging in as root using ssh key, and disables dangerous options|
 |sf-farm-manager | solution for executing the same command on all (or chosen set) servers in a farm|
 |sf-backup-collector | central backup functionality for small and medium server farms|
+|sf-db-tools | scripts to manage MySQL and Postgres database servers|
 
 ### Standard software installers extensions:
 
