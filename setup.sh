@@ -29,7 +29,6 @@ if [ "$HWTYPE" = "physical" ]; then
 	bash /opt/farm/scripts/setup/role.sh hardware
 fi
 bash /opt/farm/scripts/setup/syslog.sh
-bash /opt/farm/scripts/setup/backup.sh
 bash /opt/farm/scripts/setup/misc.sh
 bash /opt/farm/scripts/setup/keys.sh
 

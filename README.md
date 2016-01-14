@@ -156,6 +156,7 @@ If installed extension contains setup.sh script, it will be executed right after
 
 |name | description|
 |:----|:-----------|
+|sf-backup | essential backup functionality for local machines|
 |sf-gpg | backup encryption ability for Server Farmer|
 |sf-helloworld | demonstation, how to write your own extensions|
 |sf-mc-black | black color theme for Midnight Commander|
