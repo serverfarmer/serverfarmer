@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/serverfarmer/serverfarmer.png?branch=master)](https://travis-ci.org/serverfarmer/serverfarmer)
+
 Feeling overwhelmed by complexity of Puppet, Chef, Ansible or other server configuration
 tools?
 
