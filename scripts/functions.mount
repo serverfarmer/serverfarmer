@@ -54,7 +54,7 @@ standby() {
 
 	if [ "$server" != "" ]; then
 
-		sshkey=`ssh_management_key_storage_filename $server`
+		sshkey=`ssh_dedicated_key_storage_filename $server root`
 		if ssh -i $sshkey root@$server "ls $device 2>/dev/null" >/dev/null; then
 			if [ "$secs" != "" ] && [ "$secs" != "0" ]; then sleep $secs; fi
 			ssh -i $sshkey root@$server sync
