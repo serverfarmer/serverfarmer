@@ -17,27 +17,7 @@ else
 		MODE="forwarder"
 	else
 		MODE="receiver"
-		bash /opt/farm/scripts/setup/role.sh syslog-utils
-
-		echo "setting up custom ignoring rules for logcheck"
-		install_copy $common/logcheck.tpl /etc/logcheck/ignore.d.server/local-farmer
-
-		if [ -f $base/logcheck.tpl ]; then
-			f=/etc/logcheck/logcheck.conf
-
-			echo -n "detecting report level: "
-			if [ -d /etc/NetworkManager ]; then
-				LEVEL="workstation"
-			else
-				LEVEL="server"
-			fi
-			echo $LEVEL
-
-			echo "setting up logcheck configuration"
-			cat $base/logcheck.tpl |sed -e s/%%domain%%/`external_domain`/g -e s/%%level%%/$LEVEL/g >$f
-			chown root:logcheck $f
-			chmod 0640 $f
-		fi
+		bash /opt/farm/scripts/setup/role.sh sf-log-monitor
 	fi
 
 	if [ -f $base/rsyslog.$MODE ]; then
