@@ -121,6 +121,7 @@ If installed extension contains setup.sh script, it will be executed right after
 |sf-monitoring-snmpd | unified snmpd configuration to allow monitoring current server through SNMP protocol|
 |sf-monitoring-cacti | additional Cacti-specific reporting about hard drives, server temperatures, MTA queue site etc.|
 |sf-ip-monitor | notifies sysadmin about sudden external IP changes|
+|sf-log-monitor | notifis about unexpected/suspicious entries in syslog logs|
 |sf-standby-monitor | prevents overheating of (mostly external) heat-sensitive hard drives|
 
 ### Infrastructure management extensions:
@@ -129,7 +130,8 @@ If installed extension contains setup.sh script, it will be executed right after
 |:----|:-----------|
 |sf-secure-fs | enforce secure directory layout (ordinary users no longer see contents of system configuration directories)|
 |sf-secure-sshd | unified and secured sshd configuration, that allows logging in as root using ssh key, and disables dangerous options|
-|sf-farm-manager | solution for executing the same command on all (or chosen set) servers in a farm|
+|sf-farm-manager | provides set of simple tools to manage your server farm|
+|sf-farm-inspector | provides tools to analyze the health level of your server farm|
 |sf-backup-collector | central backup functionality for small and medium server farms|
 |sf-db-tools | scripts to manage MySQL and Postgres database servers|
 
