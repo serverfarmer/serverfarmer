@@ -121,13 +121,15 @@ If installed extension contains setup.sh script, it will be executed right after
 |sf-monitoring-snmpd | unified snmpd configuration to allow monitoring current server through SNMP protocol|
 |sf-monitoring-cacti | additional Cacti-specific reporting about hard drives, server temperatures, MTA queue site etc.|
 |sf-ip-monitor | notifies sysadmin about sudden external IP changes|
-|sf-log-monitor | notifis about unexpected/suspicious entries in syslog logs|
+|sf-log-monitor | notifies about unexpected/suspicious entries in syslog logs|
 |sf-standby-monitor | prevents overheating of (mostly external) heat-sensitive hard drives|
 
 ### Infrastructure management extensions:
 
 |name | description|
 |:----|:-----------|
+|sf-log-receiver | rsyslog configuration profile - central log storage|
+|sf-log-forwarder | rsyslog configuration profile - forwards logs from current host to central log storage|
 |sf-secure-fs | enforce secure directory layout (ordinary users no longer see contents of system configuration directories)|
 |sf-secure-sshd | unified and secured sshd configuration, that allows logging in as root using ssh key, and disables dangerous options|
 |sf-farm-manager | provides set of simple tools to manage your server farm|
