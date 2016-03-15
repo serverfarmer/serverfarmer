@@ -14,11 +14,4 @@ else
 	bash /opt/farm/scripts/setup/role.sh sf-log-monitor
 fi
 
-
-if [ -d /etc/logrotate.d ] && [ -d $base/logrotate ]; then
-	echo "setting up logrotate configuration"
-	for f in `ls $base/logrotate`; do
-		install_link $base/logrotate/$f /etc/logrotate.d/$f
-	done
-fi
-
+bash /opt/farm/scripts/setup/role.sh sf-log-rotate

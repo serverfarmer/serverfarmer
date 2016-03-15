@@ -1,9 +1,0 @@
-/var/log/dpkg.log {
-	monthly
-	rotate 24
-	compress
-	dateext
-	missingok
-	notifempty
-	create 644 root adm
-}
