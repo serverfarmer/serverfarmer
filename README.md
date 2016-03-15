@@ -130,6 +130,7 @@ If installed extension contains setup.sh script, it will be executed right after
 |:----|:-----------|
 |sf-log-receiver | rsyslog configuration profile - central log storage|
 |sf-log-forwarder | rsyslog configuration profile - forwards logs from current host to central log storage|
+|sf-log-rotate | logrotate configuration profiles|
 |sf-secure-fs | enforce secure directory layout (ordinary users no longer see contents of system configuration directories)|
 |sf-secure-sshd | unified and secured sshd configuration, that allows logging in as root using ssh key, and disables dangerous options|
 |sf-farm-manager | provides set of simple tools to manage your server farm|
