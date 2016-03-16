@@ -1,7 +1,4 @@
 #!/bin/bash
-# Instalacja pakietów z oprogramowaniem wymaganych do
-# realizacji przez serwer podanej w parametrze roli
-
 . /opt/farm/scripts/init
 . /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install

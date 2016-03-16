@@ -1,6 +1,4 @@
 #!/bin/bash
-# Inicjalizacja skryptów konfiguracyjnych
-
 . /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.dialog
 
@@ -28,8 +26,6 @@ if [ ! -f /etc/farmconfig ]; then
 			SYSLOG="`input \"enter central syslog hostname\" syslog.$INTERNAL`"
 		fi
 
-		/opt/farm/scripts/config/set-hostname.sh $HOST
-
 		echo "HOST=$HOST" >/etc/farmconfig
 		echo "OSVER=$OSVER" >>/etc/farmconfig
 		echo "OSTYPE=$OSTYPE" >>/etc/farmconfig
@@ -41,6 +37,7 @@ if [ ! -f /etc/farmconfig ]; then
 		chmod 0700 /etc/local/.config /etc/local/.ssh
 		chmod 0711 /etc/local
 
+		/opt/farm/scripts/setup/hostname.sh $HOST
 		/opt/farm/scripts/setup/groups.sh
 
 		if [ "$REGENERATE_HOST_KEYS" != "" ]; then

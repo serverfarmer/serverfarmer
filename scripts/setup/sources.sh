@@ -1,6 +1,4 @@
 #!/bin/bash
-# Konfiguracja zaufanych źródeł pakietów z oprogramowaniem
-
 . /opt/farm/scripts/init
 . /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.install

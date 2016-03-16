@@ -23,18 +23,43 @@ fi
 
 
 bash /opt/farm/scripts/setup/sources.sh
-bash /opt/farm/scripts/setup/mta.sh
+
+if [ -d /usr/local/cpanel ]; then
+	echo "skipping mta configuration, system is controlled by cPanel, with Exim as MTA"
+elif [ -f /etc/elastix.conf ]; then
+	echo "skipping mta configuration, system is controlled by Elastix"
+elif [ "$SMTP" != "true" ]; then
+	bash /opt/farm/scripts/setup/role.sh sf-mta-forwarder
+else
+	bash /opt/farm/scripts/setup/role.sh sf-mta-relay
+fi
+
 bash /opt/farm/scripts/setup/role.sh base
+
 if [ "$HWTYPE" = "physical" ]; then
 	bash /opt/farm/scripts/setup/role.sh hardware
 fi
-bash /opt/farm/scripts/setup/syslog.sh
-bash /opt/farm/scripts/setup/misc.sh
+
+if [ "$SYSLOG" != "true" ]; then
+	bash /opt/farm/scripts/setup/role.sh sf-log-forwarder
+else
+	bash /opt/farm/scripts/setup/role.sh sf-log-receiver
+	bash /opt/farm/scripts/setup/role.sh sf-log-monitor
+fi
+
+bash /opt/farm/scripts/setup/role.sh sf-log-rotate
 bash /opt/farm/scripts/setup/keys.sh
 
 for E in `default_extensions`; do
 	bash /opt/farm/scripts/setup/role.sh $E
 done
+
+if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
+	echo "############################################################################"
+	echo "# add the following line to /etc/rc.local file:                            #"
+	echo "# mount -o remount,rw,nosuid,nodev,noexec,relatime,hidepid=2,gid=130 /proc #"
+	echo "############################################################################"
+fi
 
 echo -n "finished at "
 date

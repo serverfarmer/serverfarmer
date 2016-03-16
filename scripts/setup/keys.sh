@@ -1,6 +1,4 @@
 #!/bin/bash
-# Konfiguracja kluczy ssh do zdalnego zarzadzania serwerem
-
 . /opt/farm/scripts/init
 . /opt/farm/scripts/functions.custom
 
