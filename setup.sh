@@ -1,7 +1,7 @@
 #!/bin/bash
 . /opt/farm/scripts/functions.custom
 
-update="/opt/farm /opt/misc `ls -d /opt/sf-* 2>/dev/null`"
+update="/opt/farm /opt/firewall /opt/misc `ls -d /opt/sf-* 2>/dev/null`"
 
 DIR="`pwd`"
 for PD in $update; do
@@ -9,6 +9,8 @@ for PD in $update; do
 		echo "updating $PD"
 		cd $PD
 		git pull
+	elif [ -d $PD/.svn ]; then
+		svn up $PD
 	fi
 done
 cd "$DIR"
