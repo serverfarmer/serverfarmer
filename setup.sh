@@ -19,41 +19,41 @@ cd "$DIR"
 if [ -f /etc/farmconfig ]; then
 	. /etc/farmconfig
 else
-	bash /opt/farm/scripts/setup/init.sh
+	/opt/farm/scripts/setup/init.sh
 	exit
 fi
 
 
-bash /opt/farm/scripts/setup/sources.sh
+/opt/farm/scripts/setup/sources.sh
 
 if [ -d /usr/local/cpanel ]; then
 	echo "skipping mta configuration, system is controlled by cPanel, with Exim as MTA"
 elif [ -f /etc/elastix.conf ]; then
 	echo "skipping mta configuration, system is controlled by Elastix"
 elif [ "$SMTP" != "true" ]; then
-	bash /opt/farm/scripts/setup/role.sh sf-mta-forwarder
+	/opt/farm/scripts/setup/role.sh sf-mta-forwarder
 else
-	bash /opt/farm/scripts/setup/role.sh sf-mta-relay
+	/opt/farm/scripts/setup/role.sh sf-mta-relay
 fi
 
-bash /opt/farm/scripts/setup/role.sh base
+/opt/farm/scripts/setup/role.sh base
 
 if [ "$HWTYPE" = "physical" ]; then
-	bash /opt/farm/scripts/setup/role.sh hardware
+	/opt/farm/scripts/setup/role.sh hardware
 fi
 
 if [ "$SYSLOG" != "true" ]; then
-	bash /opt/farm/scripts/setup/role.sh sf-log-forwarder
+	/opt/farm/scripts/setup/role.sh sf-log-forwarder
 else
-	bash /opt/farm/scripts/setup/role.sh sf-log-receiver
-	bash /opt/farm/scripts/setup/role.sh sf-log-monitor
+	/opt/farm/scripts/setup/role.sh sf-log-receiver
+	/opt/farm/scripts/setup/role.sh sf-log-monitor
 fi
 
-bash /opt/farm/scripts/setup/role.sh sf-log-rotate
-bash /opt/farm/scripts/setup/keys.sh
+/opt/farm/scripts/setup/role.sh sf-log-rotate
+/opt/farm/scripts/setup/keys.sh
 
 for E in `default_extensions`; do
-	bash /opt/farm/scripts/setup/role.sh $E
+	/opt/farm/scripts/setup/role.sh $E
 done
 
 if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then

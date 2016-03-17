@@ -45,6 +45,6 @@ if [ ${role:0:3} = "sf-" ]; then
 		echo "directory /opt/$role busy, skipping extension $role installation"
 	fi
 	if [ -x /opt/$role/setup.sh ]; then
-		bash /opt/$role/setup.sh
+		/opt/$role/setup.sh
 	fi
 fi
