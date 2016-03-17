@@ -39,12 +39,13 @@ if [ -f $base/packages/$role.cpan ]; then
 fi
 
 if [ ${role:0:3} = "sf-" ]; then
-	if [ ! -d /opt/$role ]; then
-		git clone "`extension_repository`/$role" /opt/$role
-	elif [ ! -d /opt/$role/.git ]; then
-		echo "directory /opt/$role busy, skipping extension $role installation"
+	ext=${role:3}
+	if [ ! -d /opt/farm/ext/$ext ]; then
+		git clone "`extension_repository`/$role" /opt/farm/ext/$ext
+	elif [ ! -d /opt/farm/ext/$ext/.git ] && [ ! -d /opt/farm/ext/$ext/.svn ]; then
+		echo "directory /opt/farm/ext/$ext busy, skipping extension $role installation"
 	fi
-	if [ -x /opt/$role/setup.sh ]; then
-		/opt/$role/setup.sh
+	if [ -x /opt/farm/ext/$ext/setup.sh ]; then
+		/opt/farm/ext/$ext/setup.sh
 	fi
 fi
