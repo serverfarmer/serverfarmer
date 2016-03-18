@@ -1,8 +1,7 @@
 #!/bin/bash
 . /opt/farm/scripts/functions.custom
 
-update="/opt/farm /opt/firewall `ls -d /opt/sf-* 2>/dev/null` `ls -d /opt/farm/ext/* 2>/dev/null`"
-move="/opt/firewall `ls -d /opt/sf-* 2>/dev/null`"
+update="/opt/farm `ls -d /opt/farm/ext/* 2>/dev/null`"
 
 DIR="`pwd`"
 for PD in $update; do
@@ -14,24 +13,7 @@ for PD in $update; do
 		svn up $PD
 	fi
 done
-
-cd /opt
-for PD in $move; do
-	base=`basename $PD`
-	if [ ${base:0:3} = "sf-" ]; then
-		ext=${base:3}
-	else
-		ext=$base
-	fi
-	if [ -d $PD ] && [ ! -d /opt/farm/ext/$ext ]; then
-		if [ -d $PD/.git ] || [ -d $PD/.svn ]; then
-			echo "moving $base extension to new directory /opt/farm/ext/$ext"
-			mv $PD /opt/farm/ext/$ext
-		fi
-	fi
-done
 cd "$DIR"
-sed -i -e "s/\/opt\/sf-/\/opt\/farm\/ext\//" /etc/crontab
 
 
 if [ -f /etc/farmconfig ]; then
