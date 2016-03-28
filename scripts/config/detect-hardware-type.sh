@@ -43,6 +43,7 @@ is_virtualpc_guest() {
 is_kvmqemu_guest() {
 	if [ "`cat /proc/cpuinfo |grep \"QEMU Virtual CPU\"`" != "" ]; then return 1; fi
 	if [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep QEMU`" != "" ]; then return 1; fi
+	if [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then return 1; fi
 	return 0
 }
 
