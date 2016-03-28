@@ -49,7 +49,7 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - Debian 5.x (Lenny)
   - Debian 6.x (Squeeze)
   - Debian 7.x (Wheezy)
-  - **Debian 8.x (Jessie) - current as of 2015**
+  - **Debian 8.x (Jessie)** - current
   - Ubuntu 8.04 LTS (Hardy Heron)
   - Ubuntu 9.04 (Jaunty Jackalope)
   - Ubuntu 10.04 LTS (Lucid Lynx)
@@ -209,6 +209,6 @@ data are stored inside one file: scripts/functions.custom.
 
 # Support
 
-If you have any technical or non-technical questions about Server Farmer, please write
-to support@serverfarmer.org. We don't have enough time to reply to all emails, but we
-will try either to respond, or directly to fix any reported issues.
+If you have any technical or non-technical questions about Server Farmer, feel free to
+write to support@serverfarmer.org. We don't have enough time to reply to all emails,
+but we will try either to respond, or directly to fix any reported issues.
