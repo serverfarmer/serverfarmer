@@ -71,17 +71,11 @@ detect_redhat_version()
 	if [ -f /etc/oracle-release ]; then
 		DATA=`cat /etc/oracle-release`
 		case "$DATA" in
-			"Oracle Linux Server release 6.2")
-				echo "redhat-oracle62"
-				;;
-			"Oracle Linux Server release 6.3")
-				echo "redhat-oracle63"
-				;;
-			"Oracle Linux Server release 6.6")
-				echo "redhat-oracle66"
+			"Oracle Linux Server release 6.2" | "Oracle Linux Server release 6.3" | "Oracle Linux Server release 6.6")
+				echo "redhat-oracle6"
 				;;
 			"Oracle Linux Server release 7.1")
-				echo "redhat-oracle71"
+				echo "redhat-oracle7"
 				;;
 			*)
 				;;
@@ -94,7 +88,7 @@ detect_redhat_version()
 				echo "redhat-centos5-elastix"
 				;;
 			"CentOS release 6.4 (Final)")
-				echo "redhat-centos64-elastix"
+				echo "redhat-centos6-elastix"
 				;;
 			"CentOS Linux release 7.0.1406 (Core) " | "CentOS Linux release 7.1.1503 (Core) ")
 				echo "redhat-centos7-elastix"
@@ -107,7 +101,7 @@ detect_redhat_version()
 		DATA=`cat /etc/redhat-release`
 		case "$DATA" in
 			"CentOS release 6.6 (Final)")
-				echo "redhat-centos66-cpanel"
+				echo "redhat-centos6-cpanel"
 				;;
 			*)
 				;;
@@ -120,19 +114,19 @@ detect_redhat_version()
 				echo "redhat-centos5"
 				;;
 			"CentOS release 6.6 (Final)")
-				echo "redhat-centos66"
+				echo "redhat-centos6"
 				;;
 			"CentOS Linux release 7.1.1503 (Core) ")
-				echo "redhat-centos71"
+				echo "redhat-centos7"
 				;;
 			"Red Hat Enterprise Linux Server release 5.5 (Tikanga)")
 				echo "redhat-rhel5"
 				;;
 			"Red Hat Enterprise Linux Server release 6.6 (Santiago)")
-				echo "redhat-rhel66"
+				echo "redhat-rhel6"
 				;;
 			"Red Hat Enterprise Linux Server release 7.1 (Maipo)")
-				echo "redhat-rhel71"
+				echo "redhat-rhel7"
 				;;
 			*)
 				;;
