@@ -48,7 +48,7 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - Debian 4.x (Etch)
   - Debian 5.x (Lenny)
   - Debian 6.x (Squeeze)
-  - **Debian 7.x (Wheezy)**
+  - Debian 7.x (Wheezy)
   - **Debian 8.x (Jessie) - current as of 2015**
   - Ubuntu 8.04 LTS (Hardy Heron)
   - Ubuntu 9.04 (Jaunty Jackalope)
@@ -59,17 +59,16 @@ Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
   - **Ubuntu 14.04 LTS (Trusty Tahr)**
   - Ubuntu 15.04 (Vivid Vervet)
 - Red Hat-based distributions:
-  - Oracle Linux 6.3 - tested with Oracle Database 10g2, 11g, 11g2
-  - **Oracle Linux 6.6 - tested with Oracle Database 10g2, 11g, 11g2, 12c**
-  - **Oracle Linux 7.1 - tested with Oracle Database 11g2, 12c**
+  - Oracle Linux 6.x - tested with Oracle Database 10g2, 11g, 11g2, 12c
+  - Oracle Linux 7.x - tested with Oracle Database 11g2, 12c
   - Red Hat Enterprise Linux 5.x
-  - **Red Hat Enterprise Linux 6.6** - latest from 6.x series
-  - **Red Hat Enterprise Linux 7.1** - latest from 7.x series, current
-  - CentOS 5.11 - latest from 5.x series
-  - CentOS 6.6 - latest from 6.x series
-  - CentOS 7.1 - latest from 7.x series, current
+  - Red Hat Enterprise Linux 6.x
+  - **Red Hat Enterprise Linux 7.x** - current
+  - CentOS 5.x
+  - CentOS 6.x
+  - CentOS 7.x - current
 - specialized distributions:
-  - cPanel / WHM 11.x on CentOS 6.x (at least 6.3-6.6)
+  - cPanel / WHM 11.x on CentOS 6.x
   - Elastix 2.5 and 4.0, Elastix MT 3.0
   - openATTIC 1.x - either VM or installed on Debian Wheezy
   - Proxmox VE 3.x - either standalone or installed on Debian Wheezy
@@ -179,7 +178,7 @@ Support for more distributions can ba added very easily. To do it yourself, look
 latest dist subdirectory:
 
 - dist/debian-jessie for Debian-based distributions
-- dist/redhat-centos71 for Red Hat-based distributions
+- dist/redhat-centos7 for Red Hat-based distributions
 
 Each subdirectory contains set of configuration files taken from distribution's
 /etc directory, with our patches applied. Now create and install two small virtual
@@ -192,28 +191,24 @@ On first VM you can view exact differences between default configuration files
 and ones from repository, by running e.g.:
 
 ```
-diff -u /etc/postfix/main.cf /opt/farm/dist/debian-jessie/postfix.tpl
+diff -u /etc/apt/sources.list /opt/farm/dist/debian-jessie/sources.list
 ```
 
 On second VM you can replicate these changes. Note that you don't have to add
-all files for all services. If you don't want to configura Postfix on your
-distribution, just don't add postfix.tpl file. That's all.
+all files for all services.
 
 
 # Owner-specific data
 
 Server Farmer repository contains no customer passwords, private keys etc. However it
-contains sensitive data related to the owner (Tomasz Klim or Klim Baron Business
-Solutions Sp. z o.o.).
+contains sensitive data related to the owner.
 
 If you want to fork this repository, you probably will want to change them. All such
-data are stored in scripts/functions.custom file. First of all, change "tomaszklim.pl"
-domain to your own one (**enabled catch-all** is required).
+data are stored inside one file: scripts/functions.custom.
 
 
-# Commercial support
+# Support
 
-You can buy commercial support at http://fajne.it
-
-We can help you adjust Server Farmer to your needs, or we can manage your servers for
-you (including 24/7 telephone support and monitoring).
+If you have any technical or non-technical questions about Server Farmer, please write
+to support@serverfarmer.org. We don't have enough time to reply to all emails, but we
+will try either to respond, or directly to fix any reported issues.
