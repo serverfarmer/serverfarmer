@@ -35,11 +35,6 @@ from each Linux distribution, therefore it's easy to track changes.
 5. Powerful extensions to simplify and automate many admin tasks.
 
 
-# Market positioning
-
-![Market positioning of Server Farmer, Puppet and Chef](https://raw.githubusercontent.com/serverfarmer/serverfarmer/master/common/positioning.png)
-
-
 # Supported operating systems
 
 Server Farmer was built around Debian/Ubuntu Linux. It currently supports:
@@ -156,6 +151,8 @@ If installed extension contains setup.sh script, it will be executed right after
 |sf-apache22-server | unified Apache httpd 2.2 configuration|
 |sf-tomcat8-server | unified Apache Tomcat 8.0.x configuration|
 |sf-imap-server | complete IMAP server for small and middle companies, combined with fetchmail|
+|sf-imap-storage | central storage and backup solution for managed IMAP servers|
+|sf-moosefs-server | a bunch of useful management scripts for MooseFS|
 |sf-rsync-server | complete office backup solution for small and middle companies|
 |sf-samba-server | managed Samba solution for small and medium companies|
 |sf-motion | visual surveillance solution using open source "motion" software, and set of cheap USB cameras|
