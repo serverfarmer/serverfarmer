@@ -11,7 +11,7 @@ infrastructure for over 100 customers, consisted of over 400 physical/virtual
 servers, and OpenVZ containers, located in multiple data centers, in almost
 10 major cities in Poland, and at least 1 city in Germany.
 
-# Documentation
+## Documentation
 
 You can find a lot more information at http://serverfarmer.org/ project page:
 
@@ -29,7 +29,7 @@ which you can't find an answer on the project home page, feel free to write
 to support@serverfarmer.org. We will try either to respond you directly, or
 publish an answer on the page, or directly fix any reported issues.
 
-# Advantages of Server Farmer over manual server management
+## Advantages of Server Farmer over manual server management
 
 No matter if you manage just a single server, or hundreds of them, installing
 Server Farmer gives you many advantages over default OS configuration:
@@ -41,7 +41,7 @@ Server Farmer gives you many advantages over default OS configuration:
 - central logging configuration (all logs are stored and processed in one place, enhancing security of your infrastructure)
 - more secure configurations of several system components (depending on OS version)
 
-# Advantages of Server Farmer over competitive tools
+## Advantages of Server Farmer over competitive tools
 
 There are many similar solutions: Puppet, Chef, Ansible, cfengine are the most
 popular ones. What they have in common is that all of them:
@@ -61,7 +61,49 @@ Server Farmer is the ideal tool to manage customers, who have 1-3 servers each
 applications and their configuration is similar to each other and close to
 OS defaults where possible.
 
-# Compatible operating systems
+## How to install Server Farmer on your first server
+
+([see the full manual](http://serverfarmer.org/getting-started.html))
+
+1. Fork this repository.
+2. Clone it to your server, exactly to /opt/farm directory:
+```
+git clone https://github.com/your-github-login/serverfarmer /opt/farm
+```
+3. Customize it (and commit your changes into repository, if you want to reuse them on more servers):
+```
+cd /opt/farm
+vi scripts/functions.custom
+git add scripts/functions.custom
+git ci
+git push
+```
+4. Begin setup and just follow the simple on-screen instructions:
+```
+/opt/farm/setup.sh
+```
+
+## How to deploy Server Farmer into Amazon cloud
+
+([see the full manual](http://serverfarmer.org/cloud-integration.html))
+
+1. Install awscli and configure your account details.
+2. Install Cloud Farmer and configure it:
+```
+git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
+vi /opt/cloud/credentials/variables.sh
+vi /opt/cloud/credentials/ec2.sh
+```
+3. Create new EC2 instance:
+```
+/opt/cloud/providers/ec2/ec2-create-simple.sh aws-test-key1 m4.xlarge
+```
+4. Deploy Server Farmer on it:
+```
+/opt/cloud/deploy.sh ec2-hostname.compute.amazonaws.com /path/to/initial/ssh.key
+```
+
+## Compatible operating systems
 
 The below list contains only distribution versions with 100% compatibility. If
 your OS is not on this list, but is any Debian/RHEL derivative, Server Farmer
@@ -108,54 +150,37 @@ will most probably support it at least partially.
   - Elastix 4.0 (based on CentOS 7.x)
   - Elastix MT 3.0 (based on CentOS 6.x)
 
-# How to install Server Farmer on your first server
+## How to contribute
 
-([see the full manual](http://serverfarmer.org/getting-started.html))
+We are welcome to contributions of any kind: bug fixes, added code comments,
+support for new operating system versions, GPG keys in sf-gpg extension etc.
 
-1. Fork this repository.
-2. Clone it to your server, exactly to /opt/farm directory:
+If you want to contribute:
+- fork this repository and clone it to your machine
+- create a feature branch and do the change inside it
+- push your feature branch to github and create a pull request
 
-```
-git clone https://github.com/your-github-login/serverfarmer /opt/farm
-```
+## License
 
-3. Customize it (and commit your changes into repository, if you want to reuse them on more servers):
+|:---------------------|:-----------------------------------------|
+| **Author:**          | Tomasz Klim (<opensource@tomaszklim.pl>)
+| **Copyright:**       | Copyright 2008-2016 Tomasz Klim
+| **License:**         | MIT
 
-```
-cd /opt/farm
-vi scripts/functions.custom
-git add scripts/functions.custom
-git ci
-git push
-```
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-4. Begin setup and just follow the simple on-screen instructions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-```
-/opt/farm/setup.sh
-```
-
-# How to deploy Server Farmer into Amazon cloud
-
-([see the full manual](http://serverfarmer.org/cloud-integration.html))
-
-1. Install awscli and configure your account details.
-2. Install Cloud Farmer and configure it:
-
-```
-git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
-vi /opt/cloud/credentials/variables.sh
-vi /opt/cloud/credentials/ec2.sh
-```
-
-3. Create new EC2 instance:
-
-```
-/opt/cloud/providers/ec2/ec2-create-simple.sh aws-test-key1 m4.xlarge
-```
-
-4. Deploy Server Farmer on it:
-
-```
-/opt/cloud/deploy.sh ec2-hostname.compute.amazonaws.com /path/to/initial/ssh.key
-```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
