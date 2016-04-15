@@ -65,12 +65,15 @@ OS defaults where possible.
 
 ([see the full manual](http://serverfarmer.org/getting-started.html))
 
-1. Fork this repository.
-2. Clone it to your server, exactly to /opt/farm directory:
+- fork this repository
+- clone it to your server, exactly to the /opt/farm directory:
+
 ```
 git clone https://github.com/your-github-login/serverfarmer /opt/farm
 ```
-3. Customize it (and commit your changes into repository, if you want to reuse them on more servers):
+
+- customize it (and commit your changes into repository, if you want to reuse them on more servers):
+
 ```
 cd /opt/farm
 vi scripts/functions.custom
@@ -78,7 +81,9 @@ git add scripts/functions.custom
 git ci
 git push
 ```
-4. Begin setup and just follow the simple on-screen instructions:
+
+- begin setup and just follow the simple on-screen instructions:
+
 ```
 /opt/farm/setup.sh
 ```
@@ -87,18 +92,23 @@ git push
 
 ([see the full manual](http://serverfarmer.org/cloud-integration.html))
 
-1. Install awscli and configure your account details.
-2. Install Cloud Farmer and configure it:
+- install awscli and configure your account details
+- install Cloud Farmer and configure it:
+
 ```
 git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 vi /opt/cloud/credentials/variables.sh
 vi /opt/cloud/credentials/ec2.sh
 ```
-3. Create new EC2 instance:
+
+- create a new EC2 instance:
+
 ```
 /opt/cloud/providers/ec2/ec2-create-simple.sh aws-test-key1 m4.xlarge
 ```
-4. Deploy Server Farmer on it:
+
+- deploy Server Farmer on it:
+
 ```
 /opt/cloud/deploy.sh ec2-hostname.compute.amazonaws.com /path/to/initial/ssh.key
 ```
