@@ -162,10 +162,11 @@ If you want to contribute:
 
 ## License
 
+|                      |                                          |
 |:---------------------|:-----------------------------------------|
-| **Author:**          | Tomasz Klim (<opensource@tomaszklim.pl>)
-| **Copyright:**       | Copyright 2008-2016 Tomasz Klim
-| **License:**         | MIT
+| **Author:**          | Tomasz Klim (<opensource@tomaszklim.pl>) |
+| **Copyright:**       | Copyright 2008-2016 Tomasz Klim          |
+| **License:**         | MIT                                      |
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
