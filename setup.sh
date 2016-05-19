@@ -57,9 +57,10 @@ for E in `default_extensions`; do
 done
 
 if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
+	gid="`getent group newrelic |cut -d: -f3`"
 	echo "############################################################################"
 	echo "# add the following line to /etc/rc.local file:                            #"
-	echo "# mount -o remount,rw,nosuid,nodev,noexec,relatime,hidepid=2,gid=130 /proc #"
+	echo "# mount -o remount,rw,nosuid,nodev,noexec,relatime,hidepid=2,gid=$gid /proc #"
 	echo "############################################################################"
 fi
 
