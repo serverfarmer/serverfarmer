@@ -1,20 +1,7 @@
 #!/bin/bash
 . /opt/farm/scripts/functions.custom
 
-update="/opt/farm `ls -d /opt/farm/ext/* 2>/dev/null`"
-
-DIR="`pwd`"
-for PD in $update; do
-	if [ -d $PD/.git ]; then
-		echo "updating $PD"
-		cd $PD
-		git pull
-	elif [ -d $PD/.svn ]; then
-		svn up $PD
-	fi
-done
-cd "$DIR"
-
+/opt/farm/update.sh
 
 if [ -f /etc/farmconfig ]; then
 	. /etc/farmconfig
