@@ -46,7 +46,7 @@ assert_remote_mountpoint() {
 }
 
 assert_internet_connection() {
-	host=`hostname`
+	local host=`hostname`
 	if [ "`curl --connect-timeout 2 -sS https://serwer1598662.home.pl/connection.php?host=$host`" != "connection_ok" ]; then
 		echo "internet connection failure"
 		exit 1
