@@ -135,6 +135,7 @@ will most probably support it at least partially.
   - Ubuntu 13.10 (Saucy Salamander)
   - Ubuntu 14.04 LTS (Trusty Tahr) - server/desktop/cloud
   - Ubuntu 15.04 (Vivid Vervet)
+  - Ubuntu 16.04 LTS (Xenial Xerus)
 
 - Debian/Ubuntu clones:
   - Linux Mint 17.x (based on Ubuntu 14.04 LTS)
