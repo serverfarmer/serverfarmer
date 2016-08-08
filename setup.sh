@@ -43,7 +43,7 @@ for E in `default_extensions`; do
 	/opt/farm/scripts/setup/role.sh $E
 done
 
-if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
+if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
 	gid="`getent group newrelic |cut -d: -f3`"
 	echo "############################################################################"
 	echo "# add the following line to /etc/rc.local file:                            #"
