@@ -6,7 +6,7 @@
 if [ ! -f /etc/farmconfig ]; then
 	OSDET=`/opt/farm/scripts/config/detect-system-version.sh`
 	OSTYPE=`/opt/farm/scripts/config/detect-system-version.sh -type`
-	HWTYPE=`/opt/farm/scripts/config/detect-hardware-type.sh`
+	HWTYPE=`/opt/farm/scripts/config/detect-hardware-type.sh |head -n 1`
 	OSVER="`input \"enter operating system version\" $OSDET`"
 	INTERNAL=`internal_domain`
 
