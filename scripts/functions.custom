@@ -82,6 +82,7 @@ default_extensions() {
 	echo "
 sf-secure-fs
 sf-secure-sshd
+sf-ip-allocs
 sf-backup
 sf-ntp
 sf-gpg
