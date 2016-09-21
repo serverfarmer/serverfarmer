@@ -99,3 +99,7 @@ add_backup_extension() {
 stream_handler() {
 	echo "gpg --encrypt --no-armor --recipient `gpg_backup_key` --batch"
 }
+
+backup_history_index() {
+	echo "%Y%m%d"
+}
