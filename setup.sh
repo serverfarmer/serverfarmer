@@ -27,6 +27,7 @@ fi
 
 if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/scripts/setup/role.sh hardware
+	/opt/farm/scripts/setup/role.sh sf-ntp
 fi
 
 if [ "$SYSLOG" != "true" ]; then
