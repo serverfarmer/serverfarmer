@@ -11,12 +11,15 @@ else
 fi
 
 
-/opt/farm/scripts/setup/sources.sh
+/opt/farm/scripts/setup/repos.sh
+/opt/farm/scripts/setup/keys.sh
 
 if [ -d /usr/local/cpanel ]; then
 	echo "skipping mta configuration, system is controlled by cPanel, with Exim as MTA"
 elif [ -f /etc/elastix.conf ]; then
 	echo "skipping mta configuration, system is controlled by Elastix"
+elif [ ! -d $base ]; then
+	echo "skipping mta configuration, unknown system version"
 elif [ "$SMTP" != "true" ]; then
 	/opt/farm/scripts/setup/role.sh sf-mta-forwarder
 else
@@ -30,7 +33,9 @@ if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/scripts/setup/role.sh sf-ntp
 fi
 
-if [ "$SYSLOG" != "true" ]; then
+if [ ! -d $base ]; then
+	echo "skipping syslog configuration, unknown system version"
+elif [ "$SYSLOG" != "true" ]; then
 	/opt/farm/scripts/setup/role.sh sf-log-forwarder
 else
 	/opt/farm/scripts/setup/role.sh sf-log-receiver
@@ -38,7 +43,6 @@ else
 fi
 
 /opt/farm/scripts/setup/role.sh sf-log-rotate
-/opt/farm/scripts/setup/keys.sh
 
 for E in `default_extensions`; do
 	/opt/farm/scripts/setup/role.sh $E

@@ -5,8 +5,6 @@
 
 
 
-# TODO: support for rpm
-
 if [ -f $base/listchanges.tpl ]; then
 	rm -f /etc/apt/listchanges.conf  # remove previous softlink
 	cat $base/listchanges.tpl |sed s/%%domain%%/`external_domain`/g >/etc/apt/listchanges.conf
