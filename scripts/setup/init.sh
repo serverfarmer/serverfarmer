@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 . /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.dialog
 
@@ -36,6 +36,12 @@ if [ ! -f /etc/farmconfig ]; then
 		mkdir -p   /etc/local/.config /etc/local/.ssh
 		chmod 0700 /etc/local/.config /etc/local/.ssh
 		chmod 0711 /etc/local
+
+		if [ -x /usr/pkg/bin/pkgin ] && [ ! -x /bin/bash ]; then
+			pkgin update
+			pkgin -y install bash
+			ln -s /usr/pkg/bin/bash /bin/bash
+		fi
 
 		/opt/farm/scripts/setup/hostname.sh $HOST
 		/opt/farm/scripts/setup/groups.sh

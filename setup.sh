@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 . /opt/farm/scripts/functions.custom
 
 /opt/farm/update.sh
