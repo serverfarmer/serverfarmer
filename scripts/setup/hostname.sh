@@ -22,6 +22,11 @@ if [ -f /etc/sysconfig/network ]; then
 	echo "HOSTNAME=$HOST" >> /etc/sysconfig/network
 fi
 
+if [ -f /etc/rc.conf ]; then
+	sed -i -e '/hostname=/d' /etc/rc.conf
+	echo "hostname=$HOST" >> /etc/rc.conf
+fi
+
 if [ -x /usr/bin/hostnamectl ]; then
 	/usr/bin/hostnamectl set-hostname $HOST
 fi

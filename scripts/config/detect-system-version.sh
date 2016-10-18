@@ -6,6 +6,10 @@ detect_os_type()
 		echo "debian"
 	elif [ -f /etc/redhat-release ]; then
 		echo "redhat"
+	elif [ -x /netbsd ]; then
+		echo "netbsd"
+	else
+		echo "generic"
 	fi
 }
 
@@ -134,6 +138,17 @@ detect_redhat_version()
 	fi
 }
 
+detect_netbsd_version()
+{
+	DATA=`uname -v`
+	case "$DATA" in
+		"NetBSD 6.1.5 (GENERIC)")
+			echo "netbsd-6"
+			;;
+		*)
+			;;
+	esac
+}
 
 
 TYPE="`detect_os_type`"
@@ -147,6 +162,9 @@ else
 			;;
 		redhat)
 			echo "`detect_redhat_version`"
+			;;
+		netbsd)
+			echo "`detect_netbsd_version`"
 			;;
 		*)
 			exit 1

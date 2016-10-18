@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "`cat /proc/1/environ |grep lxc`" != "" ]; then
+if [ -f /proc/1/environ ] && [ "`cat /proc/1/environ |grep lxc`" != "" ]; then
 	echo "lxc"
 elif [ -f /run/systemd/container ] && [ "`cat /run/systemd/container |grep lxc`" != "" ]; then
 	echo "lxc"
@@ -18,10 +18,14 @@ elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep innote
 	echo "guest"      # virtualbox
 elif [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i \"VBOX HARDDISK\"`" != "" ]; then
 	echo "guest"      # virtualbox
+elif [ "`dmesg |grep VirtualBox`" != "" ]; then
+	echo "guest"      # virtualbox
 
 elif [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i vmware`" != "" ]; then
 	echo "guest"      # vmware
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |egrep \"(VMware|VMW)\"`" != "" ]; then
+	echo "guest"      # vmware
+elif [ "`dmesg |grep VMware`" != "" ]; then
 	echo "guest"      # vmware
 
 elif [ -x /usr/bin/lspci ] && [ "`/usr/bin/lspci |grep Hyper-V`" != "" ]; then
@@ -34,6 +38,8 @@ elif [ "`cat /proc/cpuinfo |grep \"QEMU Virtual CPU\"`" != "" ]; then
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep QEMU`" != "" ]; then
 	echo "guest"      # kvm/qemu
 elif [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then
+	echo "guest"      # kvm/qemu
+elif [ "`dmesg |grep QEMU`" != "" ]; then
 	echo "guest"      # kvm/qemu
 
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep Xen`" != "" ]; then

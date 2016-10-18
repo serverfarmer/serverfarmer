@@ -16,8 +16,10 @@ if [ -f $base/packages/$role ]; then
 	for p in `cat $base/packages/$role`; do
 		if [ "$OSTYPE" = "debian" ]; then
 			install_deb $p
-		else
+		elif [ "$OSTYPE" = "redhat" ]; then
 			install_rpm $p
+		elif [ "$OSTYPE" = "netbsd" ]; then
+			install_pkgin $p
 		fi
 	done
 fi
@@ -26,8 +28,10 @@ if [ -f $base/packages/$role.purge ]; then
 	for p in `cat $base/packages/$role.purge`; do
 		if [ "$OSTYPE" = "debian" ]; then
 			uninstall_deb $p
-		else
+		elif [ "$OSTYPE" = "redhat" ]; then
 			uninstall_rpm $p
+		elif [ "$OSTYPE" = "netbsd" ]; then
+			uninstall_pkgin $p
 		fi
 	done
 fi

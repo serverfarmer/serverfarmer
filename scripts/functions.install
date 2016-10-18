@@ -40,6 +40,19 @@ install_rpm() {
 	fi
 }
 
+install_pkgin() {
+	pkg=$1
+	echo "checking for netbsd package $pkg"
+	if [ "`pkgin list |grep ^$pkg-`" = "" ]; then
+		echo "installing package $pkg"
+		if [ "$SF_UNATTENDED" != "" ]; then
+			pkgin -y install $pkg
+		else
+			pkgin install $pkg
+		fi
+	fi
+}
+
 uninstall_deb() {
 	pkg=$1
 	if [ "`dpkg -l $pkg 2>/dev/null |egrep \"^(ii|rc)\"`" != "" ]; then
@@ -57,6 +70,18 @@ uninstall_rpm() {
 	if [ "`rpm -q $pkg &>/dev/null && echo installed`" != "" ]; then
 		echo "uninstalling package $pkg"
 		rpm -e $pkg
+	fi
+}
+
+uninstall_pkgin() {
+	pkg=$1
+	if [ "`pkgin list |grep ^$pkg-`" != "" ]; then
+		echo "uninstalling package $pkg"
+		if [ "$SF_UNATTENDED" != "" ]; then
+			pkgin -y remove $pkg
+		else
+			pkgin remove $pkg
+		fi
 	fi
 }
 

@@ -161,6 +161,9 @@ will most probably support it at least partially.
   - Elastix 4.0 (based on CentOS 7.x)
   - Elastix MT 3.0 (based on CentOS 6.x)
 
+- non-Linux systems:
+  - NetBSD 6.1 - preliminary support
+
 ## How to contribute
 
 We are welcome to contributions of any kind: bug fixes, added code comments,
