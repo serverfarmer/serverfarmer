@@ -7,3 +7,4 @@ curl
 wget
 mc
 unix2dos
+logrotate
