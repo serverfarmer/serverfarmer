@@ -23,9 +23,9 @@ if [ -f /etc/sysconfig/network ]; then
 fi
 
 if [ -f /etc/rc.conf ]; then
-	cat /etc/rc.conf |grep -v ^hostname > /etc/rc.conf.new
-	echo "hostname=$HOST" >> /etc/rc.conf.new
-	mv -f /etc/rc.conf.new /etc/rc.conf
+	sed -e '/hostname=/d' /etc/rc.conf >/etc/rc.conf.$$
+	echo "hostname=$HOST" >>/etc/rc.conf.$$
+	cat /etc/rc.conf.$$ >/etc/rc.conf
 fi
 
 if [ -x /usr/bin/hostnamectl ]; then
