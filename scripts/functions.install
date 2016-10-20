@@ -40,6 +40,19 @@ install_rpm() {
 	fi
 }
 
+install_pkg() {
+	pkg=$1
+	echo "checking for freebsd package $pkg"
+	if [ "`pkg info |grep ^$pkg-`" = "" ]; then
+		echo "installing package $pkg"
+		if [ "$SF_UNATTENDED" != "" ]; then
+			pkg install -y $pkg
+		else
+			pkg install $pkg
+		fi
+	fi
+}
+
 install_pkgin() {
 	pkg=$1
 	echo "checking for netbsd package $pkg"
@@ -70,6 +83,18 @@ uninstall_rpm() {
 	if [ "`rpm -q $pkg &>/dev/null && echo installed`" != "" ]; then
 		echo "uninstalling package $pkg"
 		rpm -e $pkg
+	fi
+}
+
+uninstall_pkg() {
+	pkg=$1
+	if [ "`pkg info |grep ^$pkg-`" != "" ]; then
+		echo "uninstalling package $pkg"
+		if [ "$SF_UNATTENDED" != "" ]; then
+			pkg delete -y $pkg
+		else
+			pkg delete $pkg
+		fi
 	fi
 }
 

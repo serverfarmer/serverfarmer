@@ -37,10 +37,17 @@ if [ ! -f /etc/farmconfig ]; then
 		chmod 0700 /etc/local/.config /etc/local/.ssh
 		chmod 0711 /etc/local
 
-		if [ -x /usr/pkg/bin/pkgin ] && [ ! -x /bin/bash ]; then
-			pkgin update
-			pkgin -y install bash
-			ln -s /usr/pkg/bin/bash /bin/bash
+		if [ ! -x /bin/bash ]; then
+			echo "attempting to install /bin/bash"
+			if [ -x /usr/pkg/bin/pkgin ]; then
+				pkgin update
+				pkgin -y install bash
+				ln -s /usr/pkg/bin/bash /bin/bash
+			elif [ -x /usr/sbin/pkg ]; then
+				pkg update
+				pkg install -y bash
+				ln -s /usr/local/bin/bash /bin/bash
+			fi
 		fi
 
 		/opt/farm/scripts/setup/hostname.sh $HOST

@@ -20,6 +20,8 @@ if [ -f $base/packages/$role ]; then
 			install_rpm $p
 		elif [ "$OSTYPE" = "netbsd" ]; then
 			install_pkgin $p
+		elif [ "$OSTYPE" = "freebsd" ]; then
+			install_pkg $p
 		fi
 	done
 fi
@@ -32,6 +34,8 @@ if [ -f $base/packages/$role.purge ]; then
 			uninstall_rpm $p
 		elif [ "$OSTYPE" = "netbsd" ]; then
 			uninstall_pkgin $p
+		elif [ "$OSTYPE" = "freebsd" ]; then
+			uninstall_pkg $p
 		fi
 	done
 fi
