@@ -12,6 +12,8 @@ detect_os_type()
 		echo "freebsd"
 	elif [ -x /netbsd ]; then
 		echo "netbsd"
+	elif [ -f /bsd ] && [ -f /bsd.rd ]; then
+		echo "openbsd"
 	else
 		echo "generic"
 	fi
@@ -164,6 +166,12 @@ detect_netbsd_version()
 	esac
 }
 
+detect_openbsd_version()
+{
+	VER=`uname -r |sed s/\\\.//g`
+	echo "openbsd-$VER"
+}
+
 detect_freebsd_version()
 {
 	DATA=`uname -r`
@@ -197,6 +205,9 @@ else
 			;;
 		netbsd)
 			echo "`detect_netbsd_version`"
+			;;
+		openbsd)
+			echo "`detect_openbsd_version`"
 			;;
 		freebsd)
 			echo "`detect_freebsd_version`"
