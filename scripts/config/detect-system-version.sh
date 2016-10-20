@@ -6,6 +6,8 @@ detect_os_type()
 		echo "debian"
 	elif [ -f /etc/redhat-release ]; then
 		echo "redhat"
+	elif [ -f /etc/SuSE-release ]; then
+		echo "suse"
 	elif [ -f /etc/freebsd-update.conf ]; then
 		echo "freebsd"
 	elif [ -x /netbsd ]; then
@@ -140,6 +142,16 @@ detect_redhat_version()
 	fi
 }
 
+detect_suse_version()
+{
+	if [ -f /etc/os-release ]; then
+		. /etc/os-release
+		echo "suse-`echo $VERSION_ID |cut -d. -f 1`"
+	else
+		echo "suse-legacy"
+	fi
+}
+
 detect_netbsd_version()
 {
 	DATA=`uname -r`
@@ -179,6 +191,9 @@ else
 			;;
 		redhat)
 			echo "`detect_redhat_version`"
+			;;
+		suse)
+			echo "`detect_suse_version`"
 			;;
 		netbsd)
 			echo "`detect_netbsd_version`"
