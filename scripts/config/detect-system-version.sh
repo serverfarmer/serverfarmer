@@ -156,6 +156,9 @@ detect_freebsd_version()
 {
 	DATA=`uname -r`
 	case "$DATA" in
+		"9.3-RELEASE")
+			echo "freebsd-9"
+			;;
 		"10.1-RELEASE")
 			echo "freebsd-10"
 			;;
