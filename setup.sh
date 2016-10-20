@@ -18,7 +18,7 @@ if [ -d /usr/local/cpanel ]; then
 	echo "skipping mta configuration, system is controlled by cPanel, with Exim as MTA"
 elif [ -f /etc/elastix.conf ]; then
 	echo "skipping mta configuration, system is controlled by Elastix"
-elif [ "$OSTYPE" = "netbsd" ]; then
+elif [ ! -d /opt/farm/dist/$OSVER ]; then
 	echo "skipping mta configuration, unsupported system version"
 elif [ "$SMTP" != "true" ]; then
 	/opt/farm/scripts/setup/role.sh sf-mta-forwarder
@@ -33,7 +33,7 @@ if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/scripts/setup/role.sh sf-ntp
 fi
 
-if [ "$OSTYPE" = "netbsd" ]; then
+if [ ! -d /opt/farm/dist/$OSVER ]; then
 	echo "skipping syslog configuration, unsupported system version"
 elif [ "$SYSLOG" != "true" ]; then
 	/opt/farm/scripts/setup/role.sh sf-log-forwarder
