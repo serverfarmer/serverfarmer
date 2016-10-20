@@ -6,6 +6,8 @@ detect_os_type()
 		echo "debian"
 	elif [ -f /etc/redhat-release ]; then
 		echo "redhat"
+	elif [ -f /etc/freebsd-update.conf ]; then
+		echo "freebsd"
 	elif [ -x /netbsd ]; then
 		echo "netbsd"
 	else
@@ -140,10 +142,22 @@ detect_redhat_version()
 
 detect_netbsd_version()
 {
-	DATA=`uname -v`
+	DATA=`uname -r`
 	case "$DATA" in
-		"NetBSD 6.1.5 (GENERIC)")
+		"6.1.5")
 			echo "netbsd-6"
+			;;
+		*)
+			;;
+	esac
+}
+
+detect_freebsd_version()
+{
+	DATA=`uname -r`
+	case "$DATA" in
+		"10.1-RELEASE")
+			echo "freebsd-10"
 			;;
 		*)
 			;;
@@ -165,6 +179,9 @@ else
 			;;
 		netbsd)
 			echo "`detect_netbsd_version`"
+			;;
+		freebsd)
+			echo "`detect_freebsd_version`"
 			;;
 		*)
 			exit 1

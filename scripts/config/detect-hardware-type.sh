@@ -9,7 +9,7 @@ elif [ -f /run/systemd/container ] && [ "`cat /run/systemd/container |grep syste
 	echo "container"  # nspawn
 elif [ -d /proc/vz ] && [ ! -f /proc/vz/version ]; then
 	echo "container"  # openvz
-elif [ "`cat /proc/self/status |grep -i vxid`" != "" ]; then
+elif [ -f /proc/self/status ] && [ "`cat /proc/self/status |grep -i vxid`" != "" ]; then
 	echo "container"  # linux-vserver
 
 elif [ -f /sys/devices/virtual/dmi/id/product_name ] && [ "`cat /sys/devices/virtual/dmi/id/product_name |grep VirtualBox`" != "" ]; then
@@ -18,14 +18,10 @@ elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep innote
 	echo "guest"      # virtualbox
 elif [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i \"VBOX HARDDISK\"`" != "" ]; then
 	echo "guest"      # virtualbox
-elif [ "`dmesg |grep VirtualBox`" != "" ]; then
-	echo "guest"      # virtualbox
 
 elif [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i vmware`" != "" ]; then
 	echo "guest"      # vmware
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |egrep \"(VMware|VMW)\"`" != "" ]; then
-	echo "guest"      # vmware
-elif [ "`dmesg |grep VMware`" != "" ]; then
 	echo "guest"      # vmware
 
 elif [ -x /usr/bin/lspci ] && [ "`/usr/bin/lspci |grep Hyper-V`" != "" ]; then
@@ -33,13 +29,11 @@ elif [ -x /usr/bin/lspci ] && [ "`/usr/bin/lspci |grep Hyper-V`" != "" ]; then
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep \"Microsoft Corporation\"`" != "" ]; then
 	echo "guest"      # ms virtualpc
 
-elif [ "`cat /proc/cpuinfo |grep \"QEMU Virtual CPU\"`" != "" ]; then
+elif [ -f /proc/cpuinfo ] && [ "`cat /proc/cpuinfo |grep \"QEMU Virtual CPU\"`" != "" ]; then
 	echo "guest"      # kvm/qemu
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep QEMU`" != "" ]; then
 	echo "guest"      # kvm/qemu
-elif [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then
-	echo "guest"      # kvm/qemu
-elif [ "`dmesg |grep QEMU`" != "" ]; then
+elif [ -d /dev/disk/by-id ] && [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then
 	echo "guest"      # kvm/qemu
 
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep Xen`" != "" ]; then
@@ -51,8 +45,17 @@ elif [ -f /sys/hypervisor/type ] && [ "`cat /sys/hypervisor/type |grep -i xen`" 
 
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep Bochs`" != "" ]; then
 	echo "guest"      # bochs
-elif [ "`cat /proc/cpuinfo |grep \"User Mode Linux\"`" != "" ]; then
+elif [ -f /proc/cpuinfo ] && [ "`cat /proc/cpuinfo |grep \"User Mode Linux\"`" != "" ]; then
 	echo "guest"      # uml
+
+elif [ "`dmesg |grep VirtualBox`" != "" ]; then
+	echo "guest"      # virtualbox
+elif [ "`dmesg |grep VBOX`" != "" ]; then
+	echo "guest"      # virtualbox
+elif [ "`dmesg |grep VMware`" != "" ]; then
+	echo "guest"      # vmware
+elif [ "`dmesg |grep QEMU`" != "" ]; then
+	echo "guest"      # kvm/qemu
 else
 	echo "physical"
 fi
