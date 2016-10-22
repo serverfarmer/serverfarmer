@@ -33,10 +33,26 @@ install_deb() {
 install_rpm() {
 	pkg=$1
 	echo "checking for rpm package $pkg"
-	if [ "$SF_UNATTENDED" != "" ]; then
-		rpm -q $pkg &>/dev/null || yum install -y $pkg
-	else
-		rpm -q $pkg &>/dev/null || yum install $pkg
+	if ! rpm --quiet -q $pkg; then
+		echo "installing package $pkg"
+		if [ "$SF_UNATTENDED" != "" ]; then
+			yum install -y $pkg
+		else
+			yum install $pkg
+		fi
+	fi
+}
+
+install_suse() {
+	pkg=$1
+	echo "checking for suse package $pkg"
+	if ! rpm --quiet -q $pkg; then
+		echo "installing package $pkg"
+		if [ "$SF_UNATTENDED" != "" ]; then
+			aptitude install -y $pkg
+		else
+			aptitude install $pkg
+		fi
 	fi
 }
 
@@ -80,7 +96,7 @@ uninstall_deb() {
 
 uninstall_rpm() {
 	pkg=$1
-	if [ "`rpm -q $pkg &>/dev/null && echo installed`" != "" ]; then
+	if rpm --quiet -q $pkg; then
 		echo "uninstalling package $pkg"
 		rpm -e $pkg
 	fi

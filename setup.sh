@@ -33,7 +33,7 @@ if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/scripts/setup/role.sh sf-ntp
 fi
 
-if [ ! -d /opt/farm/dist/$OSVER ]; then
+if [ ! -d /opt/farm/dist/$OSVER ] || [ "$OSTYPE" = "suse" ]; then
 	echo "skipping syslog configuration, unsupported system version"
 elif [ "$SYSLOG" != "true" ]; then
 	/opt/farm/scripts/setup/role.sh sf-log-forwarder
