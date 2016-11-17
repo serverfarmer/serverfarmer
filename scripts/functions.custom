@@ -23,8 +23,10 @@ ssh_management_key_storage_filename() {
 		domain="ec2"
 	elif [[ $server == *".gw.`external_domain`" ]]; then
 		domain="${server%%.*}"
-	else
+	elif ! [[ $server =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
 		domain="${server##*.}"
+	else
+		domain="default"
 	fi
 	echo "/etc/local/.ssh/id_backup_$domain"
 }
