@@ -1,10 +1,20 @@
 #!/bin/bash
 
-if ! [[ $1 =~ ^[a-z0-9.-]+[.][a-z0-9]+$ ]]; then
+if ! [[ $1 =~ ^[a-z0-9.-]+[.][a-z0-9]+([:][0-9]+)?$ ]]; then
 	echo "format"
-elif [[ $1 =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
+	exit 0
+fi
+
+label=$1
+if [ -z "${label##*:*}" ]; then
+	host="${label%:*}"
+else
+	host=$label
+fi
+
+if [[ $host =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
 	echo "ip"
-elif [ "`getent hosts $1`" != "" ]; then
+elif [ "`getent hosts $host`" != "" ]; then
 	echo "hostname"
 else
 	echo "unknown"
