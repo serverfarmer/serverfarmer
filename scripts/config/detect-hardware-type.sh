@@ -27,7 +27,7 @@ elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |egrep \"(VM
 elif [ -x /usr/bin/lspci ] && [ "`/usr/bin/lspci |grep Hyper-V`" != "" ]; then
 	echo "guest"      # ms hyper-v
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep \"Microsoft Corporation\"`" != "" ]; then
-	echo "guest"      # ms virtualpc
+	echo "guest"      # ms virtualpc or hyper-v
 
 elif [ -f /proc/cpuinfo ] && [ "`cat /proc/cpuinfo |grep \"QEMU Virtual CPU\"`" != "" ]; then
 	echo "guest"      # kvm/qemu
@@ -54,6 +54,8 @@ elif [ "`dmesg |grep VBOX`" != "" ]; then
 	echo "guest"      # virtualbox
 elif [ "`dmesg |grep VMware`" != "" ]; then
 	echo "guest"      # vmware
+elif [ "`dmesg |grep Hyper-V`" != "" ]; then
+	echo "guest"      # ms hyper-v
 elif [ "`dmesg |grep QEMU`" != "" ]; then
 	echo "guest"      # kvm/qemu
 else
