@@ -88,29 +88,43 @@ git push
 /opt/farm/setup.sh
 ```
 
-## How to deploy Server Farmer into Amazon cloud
+## How to deploy Server Farmer into cloud
 
 ([see the full manual](http://serverfarmer.org/cloud-integration.html))
 
-- install awscli and configure your account details
-- install Cloud Farmer and configure it:
+- install Cloud Farmer and configure it by editing files in /opt/cloud/credentials directory
+- install command line tools for your chosen cloud provider required by Cloud Farmer and connect them to your account
 
 ```
 git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
-vi /opt/cloud/credentials/variables.sh
-vi /opt/cloud/credentials/ec2.sh
 ```
 
-- create a new EC2 instance:
+- creating new cloud instance
 
 ```
-/opt/cloud/providers/ec2/ec2-create-simple.sh aws-test-key1 m4.xlarge
+/opt/cloud/create.sh ec2 test_key1 m4.xlarge
 ```
 
-- deploy Server Farmer on it:
+```
+/opt/cloud/create.sh azure testkey2 Standard_A2
+```
 
 ```
-/opt/cloud/deploy.sh ec2-hostname.compute.amazonaws.com /path/to/initial/ssh.key
+/opt/cloud/create.sh rackspace test_key3 compute1-60
+```
+
+- deploy Server Farmer on created instance
+
+```
+/opt/cloud/deploy.sh ec2-54-123-45-67.compute-1.amazonaws.com /etc/local/.ssh/id_ec2_test_key1
+```
+
+```
+/opt/cloud/deploy.sh testkey2-5c82.eastus.cloudapp.azure.com /etc/local/.ssh/id_azure_testkey2
+```
+
+```
+/opt/cloud/deploy.sh 162.209.99.47 /etc/local/.ssh/id_rack_test_key3
 ```
 
 ## Compatible operating systems
