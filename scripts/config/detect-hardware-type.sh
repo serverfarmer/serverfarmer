@@ -31,6 +31,8 @@ elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep \"Micr
 
 elif [ -f /proc/cpuinfo ] && [ "`cat /proc/cpuinfo |grep \"QEMU Virtual CPU\"`" != "" ]; then
 	echo "guest"      # kvm/qemu
+elif [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i QEMU`" != "" ]; then
+	echo "guest"      # kvm/qemu
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep QEMU`" != "" ]; then
 	echo "guest"      # kvm/qemu
 elif [ -d /dev/disk/by-id ] && [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then
