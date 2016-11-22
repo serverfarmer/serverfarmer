@@ -90,9 +90,21 @@ git push
 
 ## How to deploy Server Farmer into cloud
 
+Server Farmer supports the following public cloud providers:
+
+- Amazon EC2
+- Beyond e24cloud.com
+- Microsoft Azure
+- Rackspace Cloud
+- any cloud service based on OpenStack (including public, private and hybrid clouds)
+
 ([see the full manual](http://serverfarmer.org/cloud-integration.html))
 
-- install Cloud Farmer and configure it by editing files in /opt/cloud/credentials directory
+Initial setup:
+
+- choose a server for the farm manager role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS)
+- install Server Farmer on it, and configure at least farm manager role (preferably also backup collector role)
+- install Cloud Farmer on it and configure it by editing files in /opt/cloud/credentials directory
 - install command line tools for your chosen cloud provider required by Cloud Farmer and connect them to your account
 
 ```
@@ -113,6 +125,10 @@ git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 /opt/cloud/create.sh rackspace test_key3 compute1-60
 ```
 
+```
+/opt/cloud/create.sh e24cloud testkey4 m1.small
+```
+
 - deploy Server Farmer on created instance
 
 ```
@@ -125,6 +141,10 @@ git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 
 ```
 /opt/cloud/deploy.sh 162.209.99.47 /etc/local/.ssh/id_rack_test_key3
+```
+
+```
+/opt/cloud/deploy.sh ip-178-216-203-155.e24cloud.com /etc/local/.ssh/id_rack_testkey4
 ```
 
 ## Compatible operating systems
