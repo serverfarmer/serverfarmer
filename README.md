@@ -130,6 +130,10 @@ git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 /opt/cloud/create.sh e24cloud testkey4 m1.small
 ```
 
+```
+/opt/cloud/create.sh gce testkey5 n1-highcpu-2
+```
+
 - deploy Server Farmer on created instance
 
 ```
@@ -146,6 +150,10 @@ git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 
 ```
 /opt/cloud/deploy.sh ip-178-216-203-155.e24cloud.com /etc/local/.ssh/id_rack_testkey4
+```
+
+```
+/opt/cloud/deploy.sh 204.111.199.104.bc.googleusercontent.com /etc/local/.ssh/id_gce_testkey5
 ```
 
 ## Compatible operating systems
