@@ -21,8 +21,12 @@ ssh_management_key_storage_filename() {
 	server=$1
 	if [[ $server == *"amazonaws.com" ]]; then
 		domain="ec2"
+	elif [[ $server == *"bc.googleusercontent.com" ]]; then
+		domain="gce"
 	elif [[ $server == *"cloudapp.azure.com" ]]; then
 		domain="azure"
+	elif [[ $server == *"e24cloud.com" ]]; then
+		domain="e24"
 	elif [[ $server == *".gw.`external_domain`" ]]; then
 		domain="${server%%.*}"
 	elif ! [[ $server =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
@@ -37,8 +41,12 @@ ssh_management_key_string() {
 	server=$1
 	if [[ $server == *"amazonaws.com" ]]; then
 		domain="ec2"
+	elif [[ $server == *"bc.googleusercontent.com" ]]; then
+		domain="gce"
 	elif [[ $server == *"cloudapp.azure.com" ]]; then
 		domain="azure"
+	elif [[ $server == *"e24cloud.com" ]]; then
+		domain="e24"
 	else
 		domain="${server##*.}"
 	fi
@@ -50,6 +58,10 @@ ssh_management_key_string() {
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCqyY086f5HgRIlElfxEXcH2fl3Srq0W7zFeYoiCVvV3MePu7kQfP4Lbnz7HQtE+QSXq82ucEx3a9w4v4YwnkY8KQS6ntWNUbiKSy3ABJxlIUVc8iU18bo9Xiu4+cVeHZIWCv2iZgrWtqOvEnmPuWhaS1vTyr4KwR+f2V+bSmPJs3joyStUE9gt2Dca2y3gxpXcCLC4XMmslL1DSX8U8CvpZ+yM/CNmHCh1hSlrOB8VRHMQ+ZZ7Hktvif7UkroNpDHa4/A9PLLHhFlnQ1H/ra+Zzlmc0ItHZoi5GgLTq3FpurAQO4clVfhmxn5BLOV4UqY6ohSHORdsMk0VqhYNxsON"
 	elif [ "$domain" = "ec2" ]; then
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmjdJHmInARp70SS284TfOOqZeN344qKu2FipkYnCrFfDL4oMzpi2k1UB1tomOxNenPIz5NHb2WDm5M0REiSDcE+ke8pewEvuxl+v+QXISzkigPCcms7gNgesc52rhLMWdjSqS89vsnQbW76dsWFSRJDyny6om1up26C+hAduNISlJ73R3oXa1flNUKAMThwjN3SbxiMwwWAPGbYFHrw6AGtw9928Nxd5T5YmHKec/KOZx0ypI/aZzfAHHy6aq3aR9vvYpy3RODW1b+AWIhYNhhm0/m1cm1vuZ8dLTGNUSaIy2Vc9I1nT4fl4hYSx7mNEttu9s23QmAqrg/GcUTOV"
+	elif [ "$domain" = "gce" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQC8bswuNBOH8LRIqmQcJwgR0txkzX0+0EwRx2UI4CFvkEaBAFy9SqUm00FFVJ5io3LOvfLVH23ogS1llJXTNnuMDzKIgiKJfZglGYAiK+c6zRhsTvqg34GQ5PSeHBl3xT9rTXjWBuYQaqJNjU5B+6XpXGkqJI5/MCZ27a8QPvybB6rXG2XAQ8qDgZIuCKX819DBkwbwlOKu66G9HOzn/3AxdOGz31UFHEK5ZaZlIFlT/Ya2fJaLNF+2pug5pNC8COtr7KsETPNy3D4b+FHhesZ+lITNxMbDD9LWj98GBZzXFzLaF827ZirnhGDKZGrtlqobOiu+oLW6kw/5Bkul/KTz"
+	elif [ "$domain" = "e24" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDG5SWOXgs1P5/dyBIh4tpUL04YAXG6JFq+yIRZuStK7iZKfPOIT+qfxC4q+uoZFk7vvcC4rhJ8Y/e1YfnBRptpDNPEW+nbNVVFwkkkDWz8Qq9wf+Q+QK8RZa95DDNZSmZ/PXfnnJeDU0DUfTqr0IFWcsoswsFYrvFdrlVbuw2GufPbFeRzTRoD3qB2Hyrwxh6oeYi9g4sWW5YV0avQWjZDoLVx0zjP8OZe7UXXBreHKlQKZAXK7UMkHjtp9fOJqk4kHPjBLCXRd3MWhtlYImlUtDrpZd/KDB4wcFcV9APf6VAjq9sKguxqtiByxpme4LzahQtDWmoL7W+2+qhkOdXp"
 	elif [ "$domain" = "azure" ]; then
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDAS1C9+4+gY+lesu/MF74aHBe7uog8HRVTJD87b/h4/rVCh8tQWTHY2Lt75oVhkVHcw1j4gbYuRod5JHKaUvpaGbWNrt8LGTaP70w7JAWctGSjNgydJow9Q7bB1ABya1sTRoLXM1pzkhIVWTDvFdF3id9fBdtKCoMKiRpKkeHsXupA0XPEv8cR9aijbNtl4PCywVeNSw7TKel5PC0f1Xkft06mU2xLMGTRuw5oxW0ucbyAeIgkgBVwoneBBzgGkJLvRIQwwAPWVjKszLR57TLn/XiNXDTZJTBXrWBwT+4AKYq6u3JXwlBbuTw8kz2LW2cHL9rtHoS0Pk4uMd7hr3h5"
 	else

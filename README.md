@@ -94,6 +94,7 @@ Server Farmer supports the following public cloud providers:
 
 - Amazon EC2
 - Beyond e24cloud.com
+- Google Compute Engine
 - Microsoft Azure
 - Rackspace Cloud
 - any cloud service based on OpenStack (including public, private and hybrid clouds)

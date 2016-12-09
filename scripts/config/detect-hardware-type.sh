@@ -35,6 +35,8 @@ elif [ -f /proc/scsi/scsi ] && [ "`cat /proc/scsi/scsi |grep -i QEMU`" != "" ]; 
 	echo "guest"      # kvm/qemu
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep QEMU`" != "" ]; then
 	echo "guest"      # kvm/qemu
+elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep Google`" != "" ]; then
+	echo "guest"      # kvm/qemu
 elif [ -d /dev/disk/by-id ] && [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then
 	echo "guest"      # kvm/qemu
 
