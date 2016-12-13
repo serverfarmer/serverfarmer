@@ -6,10 +6,12 @@ into a single managed platform.
 
 As of 2016, Server Farmer has over 8 years of history of managing, production
 servers (which is longer than in competing Chef framework), including over
-1 year of being successful open source project. It was used to manage the
+1.5 year of being successful open source project. It was used to manage the
 infrastructure for over 100 customers, consisted of over 400 physical/virtual
-servers, and OpenVZ containers, located in multiple data centers, in almost
-10 major cities in Poland, and at least 1 city in Germany.
+servers and containers, located in multiple data centers, in almost 10 major
+cities in Poland, at least 2 cities in Germany, and over 60 cloud instances
+hosted by Amazon Web Services, Microsoft Azure and Rackspace Cloud, physically
+located across the whole world.
 
 ## Documentation
 
@@ -20,9 +22,10 @@ You can find a lot more information at http://serverfarmer.org/ project page:
 3. [Monitoring features](http://serverfarmer.org/monitoring.html)
 4. [Project history](http://serverfarmer.org/history.html)
 5. [Getting started](http://serverfarmer.org/getting-started.html)
-6. [Cloud integration](http://serverfarmer.org/cloud-integration.html)
-7. [Configuration settings](http://serverfarmer.org/configuration.html)
-8. [List of extensions](http://serverfarmer.org/extensions.html)
+6. [Cloud platforms](http://serverfarmer.org/cloud-platforms.html)
+7. [Cloud integration](http://serverfarmer.org/cloud-integration.html)
+8. [Configuration settings](http://serverfarmer.org/configuration.html)
+9. [List of extensions](http://serverfarmer.org/extensions.html)
 
 If you have any technical or non-technical questions about Server Farmer, for
 which you can't find an answer on the project home page, feel free to write
@@ -66,23 +69,19 @@ OS defaults where possible.
 ([see the full manual](http://serverfarmer.org/getting-started.html))
 
 - fork this repository
+- edit file scripts/functions.custom, either using GIT or in the browser:
+
+```
+https://github.com/your-github-login/serverfarmer/edit/master/scripts/functions.custom
+```
+
 - clone it to your server, exactly to the /opt/farm directory:
 
 ```
 git clone https://github.com/your-github-login/serverfarmer /opt/farm
 ```
 
-- customize it (and commit your changes into repository, if you want to reuse them on more servers):
-
-```
-cd /opt/farm
-vi scripts/functions.custom
-git add scripts/functions.custom
-git ci
-git push
-```
-
-- begin setup and just follow the simple on-screen instructions:
+- run `setup.sh` script and just follow the simple on-screen instructions:
 
 ```
 /opt/farm/setup.sh
@@ -178,7 +177,7 @@ will most probably support it at least partially.
   - Ubuntu 13.10 (Saucy Salamander)
   - Ubuntu 14.04 LTS (Trusty Tahr) - server/desktop/cloud
   - Ubuntu 15.04 (Vivid Vervet)
-  - Ubuntu 16.04 LTS (Xenial Xerus)
+  - Ubuntu 16.04 LTS (Xenial Xerus) - server/cloud
 
 - Debian/Ubuntu clones:
   - Linux Mint 17.x (based on Ubuntu 14.04 LTS)
