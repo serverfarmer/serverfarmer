@@ -44,8 +44,14 @@ fi
 
 /opt/farm/scripts/setup/role.sh sf-log-rotate
 
-for E in `default_extensions`; do
+for E in `cat /opt/farm/dist/default.extensions`; do
 	/opt/farm/scripts/setup/role.sh $E
+done
+
+for E in `cat /opt/farm/dist/private.extensions`; do
+	if [ -x /opt/farm/ext/$E/setup.sh ]; then
+		/opt/farm/ext/$E/setup.sh
+	fi
 done
 
 if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then

@@ -5,6 +5,4 @@ else
 	exit 1
 fi
 
-settings=/opt/farm/settings
-common=/opt/farm/common
 base=/opt/farm/dist/$OSVER
