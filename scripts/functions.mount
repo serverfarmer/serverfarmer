@@ -1,9 +1,10 @@
 mount_luks_drive() {
 	path=$1
-	device="/dev/disk/by-id/$2"
+	id=$2
+	device="/dev/disk/by-id/$id"
 	options=$3
 
-	variable=${device##*_}
+	variable=${id##*_}
 	variable=${variable/part/}
 	map="disk-$variable"
 
