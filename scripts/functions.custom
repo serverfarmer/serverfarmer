@@ -27,6 +27,8 @@ ssh_management_key_storage_filename() {
 		domain="azure"
 	elif [[ $server == *"e24cloud.com" ]]; then
 		domain="e24"
+	elif [[ $server == *"lxc-"* ]]; then
+		domain="lxc"
 	elif [[ $server == *".gw.`external_domain`" ]]; then
 		domain="${server%%.*}"
 	elif ! [[ $server =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
@@ -47,6 +49,8 @@ ssh_management_key_string() {
 		domain="azure"
 	elif [[ $server == *"e24cloud.com" ]]; then
 		domain="e24"
+	elif [[ $server == *"lxc-"* ]]; then
+		domain="lxc"
 	else
 		domain="${server##*.}"
 	fi
@@ -64,6 +68,8 @@ ssh_management_key_string() {
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDG5SWOXgs1P5/dyBIh4tpUL04YAXG6JFq+yIRZuStK7iZKfPOIT+qfxC4q+uoZFk7vvcC4rhJ8Y/e1YfnBRptpDNPEW+nbNVVFwkkkDWz8Qq9wf+Q+QK8RZa95DDNZSmZ/PXfnnJeDU0DUfTqr0IFWcsoswsFYrvFdrlVbuw2GufPbFeRzTRoD3qB2Hyrwxh6oeYi9g4sWW5YV0avQWjZDoLVx0zjP8OZe7UXXBreHKlQKZAXK7UMkHjtp9fOJqk4kHPjBLCXRd3MWhtlYImlUtDrpZd/KDB4wcFcV9APf6VAjq9sKguxqtiByxpme4LzahQtDWmoL7W+2+qhkOdXp"
 	elif [ "$domain" = "azure" ]; then
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDAS1C9+4+gY+lesu/MF74aHBe7uog8HRVTJD87b/h4/rVCh8tQWTHY2Lt75oVhkVHcw1j4gbYuRod5JHKaUvpaGbWNrt8LGTaP70w7JAWctGSjNgydJow9Q7bB1ABya1sTRoLXM1pzkhIVWTDvFdF3id9fBdtKCoMKiRpKkeHsXupA0XPEv8cR9aijbNtl4PCywVeNSw7TKel5PC0f1Xkft06mU2xLMGTRuw5oxW0ucbyAeIgkgBVwoneBBzgGkJLvRIQwwAPWVjKszLR57TLn/XiNXDTZJTBXrWBwT+4AKYq6u3JXwlBbuTw8kz2LW2cHL9rtHoS0Pk4uMd7hr3h5"
+	elif [ "$domain" = "lxc" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCsqjbvSV92VLuBBoUDtDJk2mhDwc9quM6gtlFg7HluK5QynQNcl1MNkVGQDzarBZmpsuKIpwa6ixP6GokJbTJuVEWBDaSDcfB0FV1cT3tYxzb3cJASp7Mo/X3JPFI9w4mOXMV2DXPt7ZyPOT9NpPpsvlRNQ/fm79Kbj2K2DhEAHY8JA0r37bwyfvRkDr/h5i7vR9YKiiACERnND/jInB8/EAa3TUgrI93UE8O2858+L6mzDtQmgO0eCCJq1Ja1/1Bn+opwPE9aVsq4WjOqSV2ii5YD5KyOJEzLb6tn6Y4Y6yoZzHHRtICzEyKXgawnRZwGFYDt34FXZReYasxHvJLl"
 	else
 		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQC1yAlWUC26oJ2TbAfqdk+GFBcLNCU3G1f2iG1pmGFLlFCxdozQ+sz2YGddhZlPPaZTFC6Mba8K7HIHOkl3dxaUV1Toejep8iMr+qUpveDvt+HZPoo/LxgfSdZ7eNpXxRqAsK+eZIPc+oHyeoUtt/Wm2jWrUSoue8sYln2d95Egid75cEMwt/ZVYHTw0AdgWw+/MQjAPsvu2XSS5DTva/MinlJHUWPP7xMd3jNumF34zSfnDqrIvtBxKXn9sq8nTlQHHVGuilBMuPl1+5iwZW/DbQboJiHJ7tH3WgTWWcdjMkWasJ6F7FCDScyRkFKutsjiAUm0m3D14qsjhx3txCn5"
 	fi

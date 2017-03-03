@@ -3,7 +3,7 @@
 if [ "$1" = "localhost" ]; then
 	echo "hostname"
 	exit 0
-elif ! [[ $1 =~ ^[a-z0-9.-]+[.][a-z0-9]+([:][0-9]+)?$ ]]; then
+elif ! [[ $1 =~ ^[a-z0-9.-]+([:][0-9]+)?$ ]]; then
 	echo "format"
 	exit 0
 fi
