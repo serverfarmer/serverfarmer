@@ -85,7 +85,7 @@ local_backup_directory() {
 }
 
 management_public_ip_range() {
-	echo "79.173.0.0\/18"
+	echo "88.99.100.17"
 }
 
 primary_admin_account() {
@@ -97,7 +97,11 @@ notify_phone() {
 }
 
 cacti_ssh_target() {
-	echo "cacti.biuro:/srv/sites/cacti/external"
+	echo "cacti.tomaszklim.pl:/external"
+}
+
+cacti_ssh_port() {
+	echo "22000"
 }
 
 extension_repository() {
