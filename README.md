@@ -4,12 +4,12 @@ Server Farmer is a lightweight framework designed for companies, that manage
 many servers and services belonging to many different customers, but connected
 into a single managed platform.
 
-As of 2016, Server Farmer has over 8 years of history of managing, production
+As of 2017, Server Farmer has over 9 years of history of managing, production
 servers (which is longer than in competing Chef framework), including over
-1.5 year of being successful open source project. It was used to manage the
-infrastructure for over 100 customers, consisted of over 400 physical/virtual
+2 years of being successful open source project. It was used to manage the
+infrastructure for over 150 customers, consisted of over 600 physical/virtual
 servers and containers, located in multiple data centers, in almost 10 major
-cities in Poland, at least 2 cities in Germany, and over 60 cloud instances
+cities in Poland, at least 2 cities in Germany, and over 100 cloud instances
 hosted by Amazon Web Services, Microsoft Azure and Rackspace Cloud, physically
 located across the whole world.
 
@@ -224,7 +224,7 @@ If you want to contribute:
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | Tomasz Klim (<opensource@tomaszklim.pl>) |
-| **Copyright:**       | Copyright 2008-2016 Tomasz Klim          |
+| **Copyright:**       | Copyright 2008-2017 Tomasz Klim          |
 | **License:**         | MIT                                      |
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
