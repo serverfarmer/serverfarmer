@@ -1,0 +1,6 @@
+ca-certificates
+make
+imagemagick
+python-software-properties
+software-properties-common
+apt-transport-https
