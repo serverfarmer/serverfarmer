@@ -104,6 +104,14 @@ cacti_ssh_port() {
 	echo "22000"
 }
 
+heartbeat_url() {
+	echo "https://serwer1598662.home.pl/heartbeat.php"
+}
+
+connectivity_check_url() {
+	echo "https://serwer1598662.home.pl/connection.php"
+}
+
 extension_repository() {
 	echo "https://github.com/serverfarmer"
 }
