@@ -4,10 +4,6 @@ exim4
 exim4-daemon-light
 exim4-base
 exim4-config
-nfs-common
-rpcbind
-libtirpc1
-libnfsidmap2
 systemd-ui
 systemd-sysv
 systemd-shim
