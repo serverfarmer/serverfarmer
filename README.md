@@ -186,6 +186,7 @@ will most probably support it at least partially.
   - Proxmox VE 3.x (based on Debian 7.x)
   - Zentyal Server 3.4 (based on Ubuntu 13.10)
   - Zentyal Server 4.1 (based on Ubuntu 14.04 LTS)
+  - Zentyal Server 5.0 (based on Ubuntu 16.04 LTS)
 
 - RHEL and direct clones:
   - Red Hat Enterprise Linux 5.x

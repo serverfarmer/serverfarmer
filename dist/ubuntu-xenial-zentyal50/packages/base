@@ -1,0 +1,12 @@
+sudo
+bzip2
+unzip
+zip
+ssh
+rsync
+gnupg
+curl
+mc
+tofrodos
+ntpdate
+debsums
