@@ -137,8 +137,12 @@ function print_cpu( $cpu, $dmi )
 	echo "Host CPU:\n";
 	if ( isset($cpu["model name"]) ) {
 		foreach ( $cpu["model name"] as $index => $name ) {
-			$cache = $cpu["cache size"][$index];
-			echo "\tCPU $index: $name [cache $cache]\n";
+			if ( isset($cpu["cache size"]) ) {
+				$cache = $cpu["cache size"][$index];
+				echo "\tCPU $index: $name [cache $cache]\n";
+			} else {
+				echo "\tCPU $index: $name\n";
+			}
 		}
 		$cnt = count( $cpu["model name"] );
 		echo "\t($cnt logical processors)\n";

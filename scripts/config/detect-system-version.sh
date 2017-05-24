@@ -52,6 +52,16 @@ detect_debian_version()
 				;;
 		esac
 
+	elif [ -f /etc/rpi-issue ]; then
+		DATA=`cat /etc/debian_version`
+		case "$DATA" in
+			8.?)
+				echo "raspbian-jessie"
+				;;
+			*)
+				;;
+		esac
+
 	else
 		DATA=`cat /etc/debian_version`
 		case "$DATA" in

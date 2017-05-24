@@ -37,7 +37,7 @@ elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep QEMU`"
 	echo "guest"      # kvm/qemu
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep Google`" != "" ]; then
 	echo "guest"      # kvm/qemu
-elif [ -d /dev/disk/by-id ] && [ "`ls /dev/disk/by-id/ata-* |grep QEMU_HARDDISK`" != "" ]; then
+elif [ -d /dev/disk/by-id ] && [ "`ls /dev/disk/by-id/ata-* 2>/dev/null |grep QEMU_HARDDISK`" != "" ]; then
 	echo "guest"      # kvm/qemu
 
 elif [ -d /sys/class/dmi/id ] && [ "`cat /sys/class/dmi/id/*_vendor |grep Xen`" != "" ]; then

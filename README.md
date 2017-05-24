@@ -203,6 +203,10 @@ will most probably support it at least partially.
   - Elastix 4.0 (based on CentOS 7.x)
   - Elastix MT 3.0 (based on CentOS 6.x)
 
+- hardware appliances:
+  - Raspbian 8.x (Jessie) on Raspberry Pi
+  - Debian all versions listed above since 6.x (Squeeze) on QNAP with ARM CPU
+
 - other systems:
   - FreeBSD 9.x
   - FreeBSD 10.x
