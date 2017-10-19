@@ -2,7 +2,7 @@
 
 detect_os_type()
 {
-	if [ -f /etc/debian_version ]; then
+	if [ -f /etc/debian_version ] || [ -f /etc/devuan_version ]; then
 		echo "debian"
 	elif [ -f /etc/redhat-release ]; then
 		echo "redhat"
@@ -57,6 +57,16 @@ detect_debian_version()
 		case "$DATA" in
 			8.?)
 				echo "raspbian-jessie"
+				;;
+			*)
+				;;
+		esac
+
+	elif [ -f /etc/devuan_version ]; then
+		DATA=`cat /etc/devuan_version`
+		case "$DATA" in
+			jessie)
+				echo "devuan-jessie"
 				;;
 			*)
 				;;

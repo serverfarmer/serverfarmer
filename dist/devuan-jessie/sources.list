@@ -1,0 +1,16 @@
+# 
+
+# deb cdrom:[Debian GNU/Linux 1.0-final _Jessie_ - Official amd64 NETINST Binary-1 20170522-03:42]/ jessie main non-free
+
+#deb cdrom:[Debian GNU/Linux 1.0-final _Jessie_ - Official amd64 NETINST Binary-1 20170522-03:42]/ jessie main non-free
+
+deb http://pl.mirror.devuan.org/merged/ jessie main contrib non-free
+deb-src http://pl.mirror.devuan.org/merged/ jessie main contrib non-free
+
+# jessie-security, previously known as 'volatile'
+deb http://pl.mirror.devuan.org/merged/ jessie-security main contrib non-free
+deb-src http://pl.mirror.devuan.org/merged/ jessie-security main contrib non-free
+
+# jessie-updates, previously known as 'volatile'
+deb http://pl.mirror.devuan.org/merged/ jessie-updates main contrib non-free
+deb-src http://pl.mirror.devuan.org/merged/ jessie-updates main contrib non-free
