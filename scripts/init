@@ -5,4 +5,4 @@ else
 	exit 1
 fi
 
-base=/opt/farm/dist/$OSVER
+base=/opt/farm/ext/repos/lists/$OSVER

@@ -4,13 +4,17 @@
 
 
 if [ ! -f /etc/farmconfig ]; then
+	if [ ! -d /opt/farm/ext/repos ]; then
+		git clone "`extension_repository`/sf-repos" /opt/farm/ext/repos
+	fi
+
 	OSDET=`/opt/farm/scripts/config/detect-system-version.sh`
 	OSTYPE=`/opt/farm/scripts/config/detect-system-version.sh -type`
 	HWTYPE=`/opt/farm/scripts/config/detect-hardware-type.sh |head -n 1`
 	OSVER="`input \"enter operating system version\" $OSDET`"
 	INTERNAL=`internal_domain`
 
-	if [ -d /opt/farm/dist/$OSVER ]; then
+	if [ -d /opt/farm/ext/repos/lists/$OSVER ] || [ -h /opt/farm/ext/repos/lists/$OSVER ]; then
 
 		echo -n "enter server hostname: "
 		read HOST

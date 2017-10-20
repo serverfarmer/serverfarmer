@@ -1,7 +1,0 @@
-subversion
-sqlite
-sqlite3
-apache2-mpm-prefork
-libapache2-mod-python
-libapache2-svn
-trac
