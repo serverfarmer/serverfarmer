@@ -54,7 +54,7 @@ for E in `cat /opt/farm/.private.extensions`; do
 	fi
 done
 
-if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
+if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ -f /etc/rc.local ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
 	gid="`getent group newrelic |cut -d: -f3`"
 	echo "############################################################################"
 	echo "# add the following line to /etc/rc.local file:                            #"

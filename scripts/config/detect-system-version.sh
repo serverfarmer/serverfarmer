@@ -90,6 +90,9 @@ detect_debian_version()
 			8.?)
 				echo "debian-jessie"
 				;;
+			9.?)
+				echo "debian-stretch"
+				;;
 			*)
 				;;
 		esac
