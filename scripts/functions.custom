@@ -31,10 +31,14 @@ ssh_management_key_storage_filename() {
 		domain="lxc"
 	elif [[ $server == *".gw.`external_domain`" ]]; then
 		domain="${server%%.*}"
-	elif ! [[ $server =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
-		domain="${server##*.}"
-	else
+	elif [[ $server =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
 		domain="default"
+	else
+		domain="${server##*.}"
+	fi
+	if [ "$domain" == "pl" ] || [ "$domain" == "com" ]; then
+		tmp="${server%.*}"
+		domain="${tmp##*.}"
 	fi
 	echo "/etc/local/.ssh/id_backup_$domain"
 }
