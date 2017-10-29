@@ -19,6 +19,34 @@ detect_os_type()
 	fi
 }
 
+detect_debian_raw_version()
+{
+	DATA=`cat /etc/debian_version`
+	case "$DATA" in
+		4.0)
+			echo "debian-etch"
+			;;
+		5.0 | 5.0.? | 5.0.10)
+			echo "debian-lenny"
+			;;
+		6.0 | 6.0.? | 6.0.10)
+			echo "debian-squeeze"
+			;;
+		7.?)
+			echo "debian-wheezy"
+			;;
+		8.?)
+			echo "debian-jessie"
+			;;
+		9.?)
+			echo "debian-stretch"
+			;;
+		*)
+			echo "debian-generic"
+			;;
+	esac
+}
+
 detect_debian_version()
 {
 	if [ -f /etc/lsb-release ]; then
@@ -31,26 +59,6 @@ detect_debian_version()
 				echo "ubuntu-$DISTRIB_CODENAME"
 			fi
 		fi
-
-	elif [ -f /etc/pve/.version ]; then
-		DATA=`cat /etc/debian_version`
-		case "$DATA" in
-			7.?)
-				echo "debian-wheezy-pve"
-				;;
-			*)
-				;;
-		esac
-
-	elif [ -f /etc/openattic/settings.py ]; then
-		DATA=`cat /etc/debian_version`
-		case "$DATA" in
-			7.?)
-				echo "debian-wheezy-openattic"
-				;;
-			*)
-				;;
-		esac
 
 	elif [ -f /etc/rpi-issue ]; then
 		DATA=`cat /etc/debian_version`
@@ -72,30 +80,14 @@ detect_debian_version()
 				;;
 		esac
 
+	elif [ -f /etc/pve/.version ]; then
+		echo "`detect_debian_raw_version`-pve"
+	elif [ -d /usr/local/directadmin ]; then
+		echo "`detect_debian_raw_version`-directadmin"
+	elif [ -f /etc/openattic/settings.py ]; then
+		echo "`detect_debian_raw_version`-openattic"
 	else
-		DATA=`cat /etc/debian_version`
-		case "$DATA" in
-			4.0)
-				echo "debian-etch"
-				;;
-			5.0 | 5.0.? | 5.0.10)
-				echo "debian-lenny"
-				;;
-			6.0 | 6.0.? | 6.0.10)
-				echo "debian-squeeze"
-				;;
-			7.?)
-				echo "debian-wheezy"
-				;;
-			8.?)
-				echo "debian-jessie"
-				;;
-			9.?)
-				echo "debian-stretch"
-				;;
-			*)
-				;;
-		esac
+		echo "`detect_debian_raw_version`"
 	fi
 }
 

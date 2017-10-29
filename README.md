@@ -180,6 +180,7 @@ will most probably support it at least partially.
   - Ubuntu 16.04 LTS (Xenial Xerus) - server/cloud
 
 - Debian/Ubuntu clones:
+  - Debian 8.x (Jessie) with DirectAdmin
   - Devuan Jessie (based on Debian 8.x)
   - Linux Mint 17.x (based on Ubuntu 14.04 LTS)
   - openATTIC 1.2 (based on Debian 7.x)
