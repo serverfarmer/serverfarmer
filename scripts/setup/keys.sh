@@ -13,8 +13,3 @@ if [ ! -f /root/.ssh/authorized_keys ] || [ "`grep \"$FULLKEY\" /root/.ssh/autho
 	mkdir -p /root/.ssh
 	echo "$FULLKEY" >>/root/.ssh/authorized_keys
 fi
-
-if [ "$OSTYPE" = "debian" ] && [ "`getent passwd backup |cut -d: -f7`" = "/usr/sbin/nologin" ]; then
-	echo "enabling rsync access for backup user"
-	usermod -s /bin/sh backup
-fi
