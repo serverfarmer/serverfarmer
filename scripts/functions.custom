@@ -12,9 +12,9 @@ internal_domain() {
 }
 
 ssh_dedicated_key_storage_filename() {
-	server=$1
+	host=$1
 	user=$2
-	echo "/etc/local/.ssh/key-$user@$server"
+	echo "/etc/local/.ssh/key-$user@$host"
 }
 
 ssh_management_key_storage_filename() {
