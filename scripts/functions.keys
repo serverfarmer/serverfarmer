@@ -1,0 +1,68 @@
+ssh_dedicated_key_storage_filename() {
+	host=$1
+	user=$2
+	echo "/etc/local/.ssh/key-$user@$host"
+}
+
+ssh_management_key_storage_filename() {
+	server=$1
+	if [[ $server == *"amazonaws.com" ]]; then
+		domain="ec2"
+	elif [[ $server == *"bc.googleusercontent.com" ]]; then
+		domain="gce"
+	elif [[ $server == *"cloudapp.azure.com" ]]; then
+		domain="azure"
+	elif [[ $server == *"e24cloud.com" ]]; then
+		domain="e24"
+	elif [[ $server == *"lxc-"* ]]; then
+		domain="lxc"
+	elif [[ $server == *".gw.`external_domain`" ]]; then
+		domain="${server%%.*}"
+	elif [[ $server =~ ^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$ ]]; then
+		domain="default"
+	else
+		domain="${server##*.}"
+	fi
+	if [ "$domain" == "pl" ] || [ "$domain" == "com" ]; then
+		tmp="${server%.*}"
+		domain="${tmp##*.}"
+	fi
+	echo "/etc/local/.ssh/id_backup_$domain"
+}
+
+ssh_management_key_string() {
+	server=$1
+	if [[ $server == *"amazonaws.com" ]]; then
+		domain="ec2"
+	elif [[ $server == *"bc.googleusercontent.com" ]]; then
+		domain="gce"
+	elif [[ $server == *"cloudapp.azure.com" ]]; then
+		domain="azure"
+	elif [[ $server == *"e24cloud.com" ]]; then
+		domain="e24"
+	elif [[ $server == *"lxc-"* ]]; then
+		domain="lxc"
+	else
+		domain="${server##*.}"
+	fi
+	if [ "$domain" = "biuro" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCf9JW1hoE7oeRNj2oPDDtz58+MaWt20G2sUTpOKDTcfyCt0Tpsd6nIqjM8luiP0ReNyYAxG+Z96bT5MUHlzJy8+98E80BRSfPmK4zH1BT42ymAvUdBsqs1ZKMuTwpdusYdsuOul+R8PF+6JmthYIqax1q6kTwSgpFGEZaW/OvpHjxDQ6qB5fctKR5lX9XKmHhsHVhUBqdQYP8AKRFG3tI+t1PX6pDIFp/WSCsW/ykG57bUFwk8SpLKj1P12GGR/izoqbvnbACcJM1mZCQIEeKv9YW/jDLNoupLSmOFnZ95glEi8Aygg3z+AO6pEYmxbMwM7auLdmfsLr/+xlysO72t"
+	elif [ "$domain" = "dom" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDe2h6OxUljNEf/wqPhrXLYBW6+jfANMCXJu2oWZPk0OwcMjSVd8QRzULW7Ytlstprnx0NqRvvewi+SV3bMJxqE35yhiG+zd2evT6lZx01b0uM/tp/NyfLZ/Kt24OpH12DUSa1a5uP8ic8zHDzUc+dGfa99FpN3TIvux2H7bnaXTFY9HPmkkb4p9j3FcuHtQdtTVVU/a5JUvZT842XawQKDHen+BDg4wR45r7yKTnY4x8VXwg2DAprbjVzFmtILOyLBu5QjlEwSpOWFvuQmEOfY9zQ6KQ7IFgePzGl6BRxdi0I4nqhqj+3oMNEH1T5q7hdRY4yjkh0RXeJzA+eydq6r"
+	elif [ "$domain" = "dc1" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCqyY086f5HgRIlElfxEXcH2fl3Srq0W7zFeYoiCVvV3MePu7kQfP4Lbnz7HQtE+QSXq82ucEx3a9w4v4YwnkY8KQS6ntWNUbiKSy3ABJxlIUVc8iU18bo9Xiu4+cVeHZIWCv2iZgrWtqOvEnmPuWhaS1vTyr4KwR+f2V+bSmPJs3joyStUE9gt2Dca2y3gxpXcCLC4XMmslL1DSX8U8CvpZ+yM/CNmHCh1hSlrOB8VRHMQ+ZZ7Hktvif7UkroNpDHa4/A9PLLHhFlnQ1H/ra+Zzlmc0ItHZoi5GgLTq3FpurAQO4clVfhmxn5BLOV4UqY6ohSHORdsMk0VqhYNxsON"
+	elif [ "$domain" = "ec2" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCrmjdJHmInARp70SS284TfOOqZeN344qKu2FipkYnCrFfDL4oMzpi2k1UB1tomOxNenPIz5NHb2WDm5M0REiSDcE+ke8pewEvuxl+v+QXISzkigPCcms7gNgesc52rhLMWdjSqS89vsnQbW76dsWFSRJDyny6om1up26C+hAduNISlJ73R3oXa1flNUKAMThwjN3SbxiMwwWAPGbYFHrw6AGtw9928Nxd5T5YmHKec/KOZx0ypI/aZzfAHHy6aq3aR9vvYpy3RODW1b+AWIhYNhhm0/m1cm1vuZ8dLTGNUSaIy2Vc9I1nT4fl4hYSx7mNEttu9s23QmAqrg/GcUTOV"
+	elif [ "$domain" = "gce" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQC8bswuNBOH8LRIqmQcJwgR0txkzX0+0EwRx2UI4CFvkEaBAFy9SqUm00FFVJ5io3LOvfLVH23ogS1llJXTNnuMDzKIgiKJfZglGYAiK+c6zRhsTvqg34GQ5PSeHBl3xT9rTXjWBuYQaqJNjU5B+6XpXGkqJI5/MCZ27a8QPvybB6rXG2XAQ8qDgZIuCKX819DBkwbwlOKu66G9HOzn/3AxdOGz31UFHEK5ZaZlIFlT/Ya2fJaLNF+2pug5pNC8COtr7KsETPNy3D4b+FHhesZ+lITNxMbDD9LWj98GBZzXFzLaF827ZirnhGDKZGrtlqobOiu+oLW6kw/5Bkul/KTz"
+	elif [ "$domain" = "e24" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDG5SWOXgs1P5/dyBIh4tpUL04YAXG6JFq+yIRZuStK7iZKfPOIT+qfxC4q+uoZFk7vvcC4rhJ8Y/e1YfnBRptpDNPEW+nbNVVFwkkkDWz8Qq9wf+Q+QK8RZa95DDNZSmZ/PXfnnJeDU0DUfTqr0IFWcsoswsFYrvFdrlVbuw2GufPbFeRzTRoD3qB2Hyrwxh6oeYi9g4sWW5YV0avQWjZDoLVx0zjP8OZe7UXXBreHKlQKZAXK7UMkHjtp9fOJqk4kHPjBLCXRd3MWhtlYImlUtDrpZd/KDB4wcFcV9APf6VAjq9sKguxqtiByxpme4LzahQtDWmoL7W+2+qhkOdXp"
+	elif [ "$domain" = "azure" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQDAS1C9+4+gY+lesu/MF74aHBe7uog8HRVTJD87b/h4/rVCh8tQWTHY2Lt75oVhkVHcw1j4gbYuRod5JHKaUvpaGbWNrt8LGTaP70w7JAWctGSjNgydJow9Q7bB1ABya1sTRoLXM1pzkhIVWTDvFdF3id9fBdtKCoMKiRpKkeHsXupA0XPEv8cR9aijbNtl4PCywVeNSw7TKel5PC0f1Xkft06mU2xLMGTRuw5oxW0ucbyAeIgkgBVwoneBBzgGkJLvRIQwwAPWVjKszLR57TLn/XiNXDTZJTBXrWBwT+4AKYq6u3JXwlBbuTw8kz2LW2cHL9rtHoS0Pk4uMd7hr3h5"
+	elif [ "$domain" = "lxc" ]; then
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQCsqjbvSV92VLuBBoUDtDJk2mhDwc9quM6gtlFg7HluK5QynQNcl1MNkVGQDzarBZmpsuKIpwa6ixP6GokJbTJuVEWBDaSDcfB0FV1cT3tYxzb3cJASp7Mo/X3JPFI9w4mOXMV2DXPt7ZyPOT9NpPpsvlRNQ/fm79Kbj2K2DhEAHY8JA0r37bwyfvRkDr/h5i7vR9YKiiACERnND/jInB8/EAa3TUgrI93UE8O2858+L6mzDtQmgO0eCCJq1Ja1/1Bn+opwPE9aVsq4WjOqSV2ii5YD5KyOJEzLb6tn6Y4Y6yoZzHHRtICzEyKXgawnRZwGFYDt34FXZReYasxHvJLl"
+	else
+		KEY="AAAAB3NzaC1yc2EAAAADAQABAAABAQC1yAlWUC26oJ2TbAfqdk+GFBcLNCU3G1f2iG1pmGFLlFCxdozQ+sz2YGddhZlPPaZTFC6Mba8K7HIHOkl3dxaUV1Toejep8iMr+qUpveDvt+HZPoo/LxgfSdZ7eNpXxRqAsK+eZIPc+oHyeoUtt/Wm2jWrUSoue8sYln2d95Egid75cEMwt/ZVYHTw0AdgWw+/MQjAPsvu2XSS5DTva/MinlJHUWPP7xMd3jNumF34zSfnDqrIvtBxKXn9sq8nTlQHHVGuilBMuPl1+5iwZW/DbQboJiHJ7tH3WgTWWcdjMkWasJ6F7FCDScyRkFKutsjiAUm0m3D14qsjhx3txCn5"
+	fi
+	echo "ssh-rsa $KEY root@sauron.dom"
+}
