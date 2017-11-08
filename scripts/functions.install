@@ -5,10 +5,18 @@ install_copy() {
 	chmod +r $dst
 }
 
+remove_link() {
+	dst=$1
+	if [ -h $dst ]; then
+		rm -f $dst
+	fi
+}
+
 install_link() {
 	src=$1
 	dst=$2
 	ln -sf $src $dst
+	echo "DEPRECATED FUNCTION install_link - USE install_copy INSTEAD (linked $src to $dst)"
 }
 
 install_customize() {
