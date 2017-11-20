@@ -23,7 +23,7 @@ ssh_management_key_storage_filename() {
 	else
 		domain="${server##*.}"
 	fi
-	if [ "$domain" == "pl" ] || [ "$domain" == "com" ]; then
+	if [ "$domain" == "pl" ] || [ "$domain" == "com" ] || [ "$domain" == "net" ]; then
 		tmp="${server%.*}"
 		domain="${tmp##*.}"
 	fi
