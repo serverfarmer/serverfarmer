@@ -11,6 +11,7 @@
 # This is a test script for Travis CI, to check critical files for syntax errors.
 
 HOST=`hostname`
+echo "hostname: $HOST"
 echo "external domain: `external_domain`"
 echo "management ssh key for this host: `ssh_management_key_string $HOST`"
 echo "located on farm manager host at: `ssh_management_key_storage_filename $HOST`"
