@@ -4,13 +4,17 @@
 
 
 if [ ! -f /etc/farmconfig ]; then
+
+	if [ ! -d /opt/farm/ext/system ]; then
+		git clone "`extension_repository`/sf-system" /opt/farm/ext/system
+	fi
 	if [ ! -d /opt/farm/ext/repos ]; then
 		git clone "`extension_repository`/sf-repos" /opt/farm/ext/repos
 	fi
 
-	OSDET=`/opt/farm/scripts/config/detect-system-version.sh`
-	OSTYPE=`/opt/farm/scripts/config/detect-system-version.sh -type`
-	HWTYPE=`/opt/farm/scripts/config/detect-hardware-type.sh |head -n 1`
+	OSDET=`/opt/farm/ext/system/detect-system-version.sh`
+	OSTYPE=`/opt/farm/ext/system/detect-system-version.sh -type`
+	HWTYPE=`/opt/farm/ext/system/detect-hardware-type.sh |head -n 1`
 	OSVER="`input \"enter operating system version\" $OSDET`"
 	INTERNAL=`internal_domain`
 
@@ -54,7 +58,7 @@ if [ ! -f /etc/farmconfig ]; then
 			fi
 		fi
 
-		/opt/farm/scripts/setup/hostname.sh $HOST
+		/opt/farm/ext/system/set-hostname.sh $HOST
 		/opt/farm/scripts/setup/groups.sh
 
 		if [ "$REGENERATE_HOST_KEYS" != "" ]; then
