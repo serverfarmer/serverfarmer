@@ -1,7 +1,11 @@
-ssh_dedicated_key_storage_filename() {
-	host=$1
-	user=$2
-	echo "/etc/local/.ssh/key-$user@$host"
+ssh_management_key_raw_filename() {
+	param=$1
+	echo "/etc/local/.ssh/id_backup_$param"
+}
+
+ssh_network_device_key_storage_filename() {
+	device=$1
+	ssh_management_key_raw_filename $device
 }
 
 ssh_management_key_storage_filename() {
@@ -27,7 +31,12 @@ ssh_management_key_storage_filename() {
 		tmp="${server%.*}"
 		domain="${tmp##*.}"
 	fi
-	echo "/etc/local/.ssh/id_backup_$domain"
+	key=`ssh_management_key_raw_filename $domain`
+	if [ -f $key ] || [ -h $key ]; then
+		echo $key
+	else
+		ssh_dedicated_key_storage_filename $server root
+	fi
 }
 
 ssh_management_key_string() {
