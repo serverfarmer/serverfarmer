@@ -6,10 +6,10 @@
 if [ ! -f /etc/farmconfig ]; then
 
 	if [ ! -d /opt/farm/ext/system ]; then
-		git clone "`extension_repository`/sf-system" /opt/farm/ext/system
+		git clone "`extension_repositories`/sf-system" /opt/farm/ext/system
 	fi
 	if [ ! -d /opt/farm/ext/repos ]; then
-		git clone "`extension_repository`/sf-repos" /opt/farm/ext/repos
+		git clone "`extension_repositories`/sf-repos" /opt/farm/ext/repos
 	fi
 
 	OSDET=`/opt/farm/ext/system/detect-system-version.sh`

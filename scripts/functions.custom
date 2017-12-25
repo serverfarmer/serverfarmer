@@ -1,7 +1,6 @@
 # This file holds implementation of owner-specific logic, eg. custom paths
 # or names. If you want to fork the Server Farmer repository and use it for
-# your own company, this should be the first file to change afterwards
-# (and functions.keys should be the second one).
+# your own company, this should be the first file to change afterwards.
 #
 # See here for the description of each setting:
 # http://serverfarmer.org/configuration.html
@@ -57,8 +56,12 @@ connectivity_check_url() {
 	echo "https://serwer1598662.home.pl/connection.php"
 }
 
-extension_repository() {
+extension_repositories() {
 	echo "https://github.com/serverfarmer"
+}
+
+keys_repository() {
+	echo "https://github.com/serverfarmer/sf-keys"
 }
 
 add_backup_extension() {

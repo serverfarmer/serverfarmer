@@ -11,7 +11,7 @@ else
 fi
 
 
-/opt/farm/scripts/setup/keys.sh
+/opt/farm/scripts/setup/extension.sh sf-keys
 /opt/farm/scripts/setup/extension.sh sf-system
 /opt/farm/scripts/setup/extension.sh sf-repos
 
