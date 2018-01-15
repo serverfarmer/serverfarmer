@@ -49,11 +49,11 @@ cacti_ssh_port() {
 }
 
 heartbeat_url() {
-	echo "https://serwer1598662.home.pl/heartbeat/"
+	echo "https://serverfarmer.home.pl/heartbeat/"
 }
 
 connectivity_check_url() {
-	echo "https://serwer1598662.home.pl/connection.php"
+	echo "https://serverfarmer.home.pl/connection.php"
 }
 
 extension_repositories() {
