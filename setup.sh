@@ -1,7 +1,9 @@
 #!/bin/sh
 . /opt/farm/scripts/functions.custom
 
-/opt/farm/update.sh
+if [ "$1" != "--skip-update" ]; then
+	/opt/farm/update.sh
+fi
 
 if [ -f /etc/farmconfig ]; then
 	. /etc/farmconfig
