@@ -40,7 +40,7 @@ if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/scripts/setup/extension.sh sf-ntp
 fi
 
-if [ ! -d /opt/farm/ext/repos/lists/$OSVER ] || [ "$OSTYPE" = "suse" ]; then
+if [ ! -d /opt/farm/ext/repos/lists/$OSVER ] || [ "$OSTYPE" = "suse" ] || [ "$OSTYPE" = "qnap" ]; then
 	echo "skipping syslog configuration, unsupported system version"
 elif [ "$SYSLOG" != "true" ]; then
 	/opt/farm/scripts/setup/extension.sh sf-log-forwarder
