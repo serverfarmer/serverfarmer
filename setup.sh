@@ -25,6 +25,8 @@ elif [ -f /etc/elastix.conf ]; then
 	echo "skipping mta configuration, system is controlled by Elastix"
 elif [ ! -d /opt/farm/ext/repos/lists/$OSVER ]; then
 	echo "skipping mta configuration, unsupported system version"
+elif [ "$HWTYPE" = "oem" ]; then
+	echo "skipping mta configuration, unsupported OEM platform"
 elif [ "$SMTP" != "true" ]; then
 	/opt/farm/scripts/setup/extension.sh sf-mta-forwarder
 else

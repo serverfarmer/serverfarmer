@@ -11,6 +11,11 @@ if [ "`getent group imapusers`" = "" ]; then
 		pw groupadd mfs -g 140
 		pw groupadd sambashare -g 150
 		pw groupadd imapusers -g 160
+	elif [ "$OSTYPE" = "qnap" ]; then
+		echo "newrelic:x:130:" >>/etc/config/group
+		echo "mfs:x:140:" >>/etc/config/group
+		echo "sambashare:x:150:" >>/etc/config/group
+		echo "imapusers:x:160:" >>/etc/config/group
 	else
 		groupadd -g 130 newrelic
 		groupadd -g 140 mfs
