@@ -37,7 +37,6 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 		if [ "$OSTYPE" = "qnap" ]; then
 			touch /etc/config/farmconfig
 			ln -s /etc/config/farmconfig /etc/farmconfig
-			ln -s /etc/config/crontab /etc/crontab
 		fi
 
 		echo "HOST=$HOST" >/etc/farmconfig

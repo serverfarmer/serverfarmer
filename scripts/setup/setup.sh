@@ -2,6 +2,11 @@
 . /opt/farm/scripts/init
 
 
+if [ -f /etc/config/crontab ] && [ ! -f /etc/crontab ]; then
+	echo "using /etc/config/crontab as system crontab (QNAP workaround)"
+	ln -s /etc/config/crontab /etc/crontab
+fi
+
 /opt/farm/scripts/setup/extension.sh sf-keys
 /opt/farm/scripts/setup/extension.sh sf-system
 /opt/farm/scripts/setup/extension.sh sf-repos
@@ -12,10 +17,10 @@ elif [ -d /usr/local/directadmin ]; then
 	echo "skipping mta configuration, system is controlled by DirectAdmin, with Exim as MTA"
 elif [ -f /etc/elastix.conf ]; then
 	echo "skipping mta configuration, system is controlled by Elastix"
-elif [ ! -d /opt/farm/ext/repos/lists/$OSVER ]; then
-	echo "skipping mta configuration, unsupported system version"
 elif [ "$HWTYPE" = "oem" ]; then
 	echo "skipping mta configuration, unsupported OEM platform"
+elif [ ! -d /opt/farm/ext/repos/lists/$OSVER ]; then
+	echo "skipping mta configuration, unsupported system version"
 elif [ "$SMTP" != "true" ]; then
 	/opt/farm/scripts/setup/extension.sh sf-mta-forwarder
 else
