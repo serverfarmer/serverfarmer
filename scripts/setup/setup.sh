@@ -2,9 +2,9 @@
 . /opt/farm/scripts/init
 
 
-if [ -f /etc/config/crontab ] && [ ! -f /etc/crontab ]; then
-	echo "using /etc/config/crontab as system crontab (QNAP workaround)"
-	ln -s /etc/config/crontab /etc/crontab
+if [ "$OSTYPE" = "qnap" ]; then
+	rm -f /etc/crontab /tmp/cron/crontabs/admin
+	cp /etc/config/crontab /etc/crontab
 fi
 
 /opt/farm/scripts/setup/extension.sh sf-keys
@@ -54,6 +54,12 @@ for E in `cat /opt/farm/.private.extensions`; do
 		/opt/farm/ext/$E/setup.sh
 	fi
 done
+
+if [ "$OSTYPE" = "qnap" ]; then
+	echo "applying changes to QNAP crontab"
+	cat /etc/crontab |sed -e s/root\ //g >/etc/config/crontab
+	/etc/init.d/crond.sh restart
+fi
 
 if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ -f /etc/rc.local ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
 	gid="`getent group newrelic |cut -d: -f3`"
