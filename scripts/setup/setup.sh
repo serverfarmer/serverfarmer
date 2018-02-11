@@ -3,7 +3,7 @@
 
 
 if [ "$OSTYPE" = "qnap" ]; then
-	rm -f /etc/crontab /tmp/cron/crontabs/admin
+	rm -f /etc/crontab
 	cp /etc/config/crontab /etc/crontab
 fi
 
@@ -56,9 +56,7 @@ for E in `cat /opt/farm/.private.extensions`; do
 done
 
 if [ "$OSTYPE" = "qnap" ]; then
-	echo "applying changes to QNAP crontab"
-	cat /etc/crontab |sed -e s/root\ //g >/etc/config/crontab
-	/etc/init.d/crond.sh restart
+	/opt/farm/scripts/setup/extension.sh sf-qnap
 fi
 
 if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ -f /etc/rc.local ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
