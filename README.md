@@ -7,9 +7,9 @@ into a single managed platform.
 As of 2018, Server Farmer has over 10 years of history of managing production
 servers (which is longer than in competing Chef framework), including over
 3 years of being successful open source project. It was used to manage the
-infrastructure for over 150 customers, consisted of over 600 physical/virtual
+infrastructure for over 160 customers, consisted of over 650 physical/virtual
 servers and containers, located in multiple data centers, in almost 10 major
-cities in Poland, at least 2 cities in Germany, and over 100 cloud instances
+cities in Poland, at least 2 cities in Germany, and over 140 cloud instances
 hosted by Amazon Web Services, Microsoft Azure and Rackspace Cloud, physically
 located across the whole world.
 
@@ -102,10 +102,9 @@ Server Farmer supports the following public cloud providers:
 
 Initial setup:
 
-- choose a server for the farm manager role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS)
-- install Server Farmer on it, and configure at least farm manager role (preferably also backup collector role)
-- install Cloud Farmer on it and configure it by editing files in /opt/cloud/credentials directory
-- install command line tools for your chosen cloud provider required by Cloud Farmer and connect them to your account
+- choose a server for the farm manager role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS and 16.04 LTS)
+- install Server Farmer on it, along with sf-farm-manager and sf-farm-provisioning extensions (preferably also sf-backup-collector and sf-farm-inspector)
+- install Cloud Farmer on it and configure it, providing your cloud API keys and other details (interactively)
 
 ```
 git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
@@ -121,38 +120,14 @@ git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 /opt/cloud/create.sh azure testkey2 Standard_A2
 ```
 
-```
-/opt/cloud/create.sh rackspace test_key3 compute1-60
-```
-
-```
-/opt/cloud/create.sh e24cloud testkey4 m1.small
-```
-
-```
-/opt/cloud/create.sh gce testkey5 n1-highcpu-2
-```
-
 - deploy Server Farmer on created instance
 
 ```
-/opt/cloud/deploy.sh ec2-54-123-45-67.compute-1.amazonaws.com /etc/local/.ssh/id_ec2_test_key1
+sf-provision ec2-54-123-45-67.compute-1.amazonaws.com /etc/local/.ssh/id_ec2_test_key1 test_profile
 ```
 
 ```
-/opt/cloud/deploy.sh testkey2-5c82.eastus.cloudapp.azure.com /etc/local/.ssh/id_azure_testkey2
-```
-
-```
-/opt/cloud/deploy.sh 162.209.99.47 /etc/local/.ssh/id_rack_test_key3
-```
-
-```
-/opt/cloud/deploy.sh ip-178-216-203-155.e24cloud.com /etc/local/.ssh/id_rack_testkey4
-```
-
-```
-/opt/cloud/deploy.sh 204.111.199.104.bc.googleusercontent.com /etc/local/.ssh/id_gce_testkey5
+sf-provision testkey2-5c82.eastus.cloudapp.azure.com /etc/local/.ssh/id_azure_testkey2 azure_profile
 ```
 
 ## Compatible operating systems
@@ -210,6 +185,7 @@ will most probably support it at least partially.
 - hardware appliances:
   - Raspbian 8.x (Jessie) on Raspberry Pi
   - Debian all versions listed above since 6.x (Squeeze) on QNAP with ARM CPU
+  - QNAP QTS 4.x (limited compatilibty, without central management)
 
 - other systems:
   - FreeBSD 9.x
