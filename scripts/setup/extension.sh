@@ -24,6 +24,8 @@ if [ ${name:0:3} = "sf-" ]; then
 		git clone $repo /opt/farm/ext/$ext
 	elif [ ! -d /opt/farm/ext/$ext/.git ] && [ ! -d /opt/farm/ext/$ext/.svn ]; then
 		echo "directory /opt/farm/ext/$ext busy, skipping extension $name installation"
+	elif [ "$2" = "--update" ]; then
+		/opt/farm/scripts/git/pull.sh /opt/farm/ext/$ext
 	fi
 
 	if [ -x /opt/farm/ext/$ext/setup.sh ]; then
