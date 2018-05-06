@@ -59,6 +59,8 @@ if [ "$OSTYPE" = "qnap" ]; then
 	/opt/farm/scripts/setup/extension.sh sf-qnap
 fi
 
+/opt/farm/ext/repos/install.sh security
+
 if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ -f /etc/rc.local ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
 	gid="`getent group newrelic |cut -d: -f3`"
 	echo "############################################################################"
