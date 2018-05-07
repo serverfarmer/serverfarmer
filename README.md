@@ -154,6 +154,7 @@ will most probably support it at least partially.
   - Ubuntu 14.04 LTS (Trusty Tahr) - server/desktop/cloud
   - Ubuntu 15.04 (Vivid Vervet)
   - Ubuntu 16.04 LTS (Xenial Xerus) - server/cloud
+  - Ubuntu 18.04 LTS (Bionic Beaver) - server/cloud
 
 - Debian/Ubuntu clones:
   - Devuan Jessie (based on Debian 8.x)
