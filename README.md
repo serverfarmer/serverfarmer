@@ -158,6 +158,7 @@ will most probably support it at least partially.
 
 - Debian/Ubuntu clones:
   - Devuan Jessie (based on Debian 8.x)
+  - Devuan ASCII (based on Debian 9.x)
   - DirectAdmin installed on Debian 8.x (Jessie)
   - Linux Mint 17.x (based on Ubuntu 14.04 LTS)
   - openATTIC 1.2 (based on Debian 7.x)
