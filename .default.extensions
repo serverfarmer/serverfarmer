@@ -1,6 +1,7 @@
 sf-secure-fs
 sf-secure-sshd
 sf-secure-kernel
+sf-secure-system
 sf-ip-allocs
 sf-ip-fw
 sf-backup

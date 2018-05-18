@@ -59,15 +59,5 @@ if [ "$OSTYPE" = "qnap" ]; then
 	/opt/farm/scripts/setup/extension.sh sf-qnap
 fi
 
-/opt/farm/ext/repos/install.sh security
-
-if [ "$OSTYPE" = "debian" ] && [ "$HWTYPE" != "container" ] && [ "$HWTYPE" != "lxc" ] && [ ! -d /usr/local/cpanel ] && [ -f /etc/rc.local ] && [ "`grep /proc /etc/rc.local |grep remount`" = "" ]; then
-	gid="`getent group newrelic |cut -d: -f3`"
-	echo "############################################################################"
-	echo "# add the following line to /etc/rc.local file:                            #"
-	echo "# mount -o remount,rw,nosuid,nodev,noexec,relatime,hidepid=2,gid=$gid /proc #"
-	echo "############################################################################"
-fi
-
 echo -n "finished at "
 date
