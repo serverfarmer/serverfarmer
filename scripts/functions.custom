@@ -20,10 +20,6 @@ ssh_dedicated_key_storage_filename() {
 	echo "/etc/local/.ssh/key-$user@$host"
 }
 
-gpg_backup_key() {
-	echo "backup@tomaszklim.pl"
-}
-
 local_backup_directory() {
 	echo "/backup"
 }

@@ -6,6 +6,5 @@ sf-detect-suspicious
 sf-ip-allocs
 sf-ip-fw
 sf-backup
-sf-gpg
 sf-mc-black
 sf-monitoring-heartbeat
