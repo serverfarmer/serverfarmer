@@ -2,9 +2,7 @@
 . scripts/functions.custom
 . scripts/functions.dialog
 . scripts/functions.install
-. scripts/functions.mount
 . scripts/functions.net
-. scripts/functions.sync
 . scripts/functions.uid
 
 # This is a test script for Travis CI, to check critical files for syntax errors.

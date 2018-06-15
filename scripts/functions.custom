@@ -64,14 +64,6 @@ keys_repository() {
 	echo "https://github.com/serverfarmer/sf-keys"
 }
 
-add_backup_extension() {
-	echo "$1.gpg"
-}
-
-stream_handler() {
-	echo "gpg --encrypt --no-armor --recipient `gpg_backup_key` --batch"
-}
-
 backup_history_index() {
 	echo "%Y%m%d"
 }
