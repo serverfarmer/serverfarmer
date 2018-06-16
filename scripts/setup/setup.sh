@@ -1,6 +1,15 @@
 #!/bin/sh
 . /opt/farm/scripts/init
 
+# Note: the order of installing various components below is NOT random.
+# It is deliberately adapted to nuances related to dependencies between
+# system packages, eg. on Debian/Ubuntu, MTA (Postfix/ssmtp) should be
+# installed before packages that rely on any installed MTA, because if
+# not, then Exim (as the default MTA) will be installed during the setup
+# process. Or if rsyslog will be reconfigured (by sf-log-manager) too
+# early, then in some rare circumstances it may properly receive local
+# messages, but fail to receive messages forwarded from other hosts.
+
 
 if [ "$OSTYPE" = "qnap" ]; then
 	rm -f /etc/crontab
@@ -13,10 +22,12 @@ fi
 /opt/farm/scripts/setup/extension.sh sf-mta-manager
 
 /opt/farm/ext/repos/install.sh base
+/opt/farm/scripts/setup/extension.sh sf-monitoring-heartbeat
 
 if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/ext/repos/install.sh hardware
 	/opt/farm/scripts/setup/extension.sh sf-ntp
+	/opt/farm/scripts/setup/extension.sh sf-monitoring-smart
 fi
 
 /opt/farm/scripts/setup/extension.sh sf-log-manager
