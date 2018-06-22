@@ -3,6 +3,14 @@
 . /opt/farm/scripts/functions.dialog
 
 
+initial_git_clone() {
+	extension=$1
+	if [ ! -d /opt/farm/ext/$extension ]; then
+		git clone "`extension_repositories`/sf-$extension" /opt/farm/ext/$extension
+	fi
+}
+
+
 if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 
 	if [ ! -x /bin/git ] && [ ! -x /opt/bin/git ] && [ ! -x /usr/bin/git ] && [ ! -x /usr/local/bin/git ] && [ -x /opt/bin/ipkg ]; then
@@ -11,12 +19,10 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 		ln -s /usr/bin/git /bin/git
 	fi
 
-	if [ ! -d /opt/farm/ext/system ]; then
-		git clone "`extension_repositories`/sf-system" /opt/farm/ext/system
-	fi
-	if [ ! -d /opt/farm/ext/repos ]; then
-		git clone "`extension_repositories`/sf-repos" /opt/farm/ext/repos
-	fi
+	initial_git_clone system
+	initial_git_clone repos
+	initial_git_clone packages
+	initial_git_clone farm-roles
 
 	OSDET=`/opt/farm/ext/system/detect-system-version.sh`
 	OSTYPE=`/opt/farm/ext/system/detect-system-version.sh -type`
@@ -24,7 +30,7 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 	OSVER="`input \"enter operating system version\" $OSDET`"
 	INTERNAL=`internal_domain`
 
-	if [ -d /opt/farm/ext/repos/lists/$OSVER ] || [ -h /opt/farm/ext/repos/lists/$OSVER ]; then
+	if [ -d /opt/farm/ext/farm-roles/lists/$OSVER ] || [ -h /opt/farm/ext/farm-roles/lists/$OSVER ]; then
 
 		echo -n "enter server hostname: "
 		read HOST

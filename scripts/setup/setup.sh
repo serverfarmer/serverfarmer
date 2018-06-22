@@ -19,13 +19,15 @@ fi
 /opt/farm/scripts/setup/extension.sh sf-keys
 /opt/farm/scripts/setup/extension.sh sf-system
 /opt/farm/scripts/setup/extension.sh sf-repos
+/opt/farm/scripts/setup/extension.sh sf-packages
+/opt/farm/scripts/setup/extension.sh sf-farm-roles
 /opt/farm/scripts/setup/extension.sh sf-mta-manager
 
-/opt/farm/ext/repos/install.sh base
+/opt/farm/ext/farm-roles/install.sh base
 /opt/farm/scripts/setup/extension.sh sf-monitoring-heartbeat
 
 if [ "$HWTYPE" = "physical" ]; then
-	/opt/farm/ext/repos/install.sh hardware
+	/opt/farm/ext/farm-roles/install.sh hardware
 	/opt/farm/scripts/setup/extension.sh sf-ntp
 	/opt/farm/scripts/setup/extension.sh sf-monitoring-smart
 fi
