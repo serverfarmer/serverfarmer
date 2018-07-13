@@ -18,70 +18,84 @@ located across the whole world.
 You can find a lot more information at http://serverfarmer.org/ project page:
 
 1. [Main page](http://serverfarmer.org/)
-2. [Key concepts](http://serverfarmer.org/key-concepts.html)
-3. [Monitoring features](http://serverfarmer.org/monitoring.html)
-4. [Project history](http://serverfarmer.org/history.html)
-5. [Getting started](http://serverfarmer.org/getting-started.html)
-6. [Cloud platforms](http://serverfarmer.org/cloud-platforms.html)
-7. [Cloud integration](http://serverfarmer.org/cloud-integration.html)
-8. [Configuration settings](http://serverfarmer.org/configuration.html)
-9. [List of extensions](http://serverfarmer.org/extensions.html)
+2. [Business overview (for non-technical users)](http://serverfarmer.org/basics.html)
+3. [Key concepts](http://serverfarmer.org/key-concepts.html)
+4. [Monitoring features](http://serverfarmer.org/monitoring.html)
+5. [Project history](http://serverfarmer.org/history.html)
+6. [Getting started](http://serverfarmer.org/getting-started.html)
+7. [Cloud platforms](http://serverfarmer.org/cloud-platforms.html)
+8. [Cloud integration](http://serverfarmer.org/cloud-integration.html)
+9. [Configuration settings](http://serverfarmer.org/configuration.html)
+10. [List of extensions](http://serverfarmer.org/extensions.html)
 
 If you have any technical or non-technical questions about Server Farmer, for
 which you can't find an answer on the project home page, feel free to write
 to support@serverfarmer.org. We will try either to respond you directly, or
 publish an answer on the page, or directly fix any reported issues.
 
-## Advantages of Server Farmer over manual server management
+## Advantages of Server Farmer over managing individual servers
 
 No matter if you manage just a single server, or hundreds of them, installing
 Server Farmer gives you many advantages over default OS configuration:
 
 - consistent and reliable tools to manage many servers at once (or one by one)
-- several monitoring capabilities
+- improved server security in various areas
+- several monitoring and alerting capabilities
 - automatic, possibly encrypted backups
 - working MTA configuration (your servers are now able to send emails)
 - central logging configuration (all logs are stored and processed in one place, enhancing security of your infrastructure)
-- more secure configurations of several system components (depending on OS version)
+- hardened network stack, immune from participation in DDoS attacks
+
+## Differences between Server Farmer and competitive tools
+
+The main difference between Server Farmer and the competitive tools (mostly
+Puppet, Chef, Ansible, Salt and CFEngine) is that **Server Farmer is designed
+to manage a completely heterogeneous environment**, where servers:
+
+- are owned by many different companies
+- have different operating systems
+- have different configurations
+- have different installed services and applications
+- have different system users, groups and permissions
+- have different roles and purposes
+
+To achieve that, Server Farmer is mainly focused on low-level server security
+aspects, and doesn't try to cover the application level at all. As opposite,
+most mentioned tools mentioned tools focus mainly on the application level,
+providing more-or-less complete "Infrastructure As Code" frameworks.
 
 ## Advantages of Server Farmer over competitive tools
 
-There are many similar solutions: Puppet, Chef, Ansible, cfengine are the most
-popular ones. What they have in common is that all of them:
+Most server management tools (Puppet, Chef etc.) are designed with corporate
+mindset ("where the money is"), and follow "one managed application/customer - one
+instance" model, which is suitable mainly for big companies, with lots of servers
+and big applications. Such model is however obviously too expensive for companies
+that have 1-5 servers overall.
 
-- require much more resources just to be run
-- utilize much more resources to handle typical tasks
-- have way more steep learning curve
-- are way more expensive to set up and use
+As opposite to that model, Server Farmer is built from ground up to manage many
+customers, applications etc. using only one instance shared across all customers,
+which is much cheaper, in both technical resources (servers, repositories etc.),
+and man-hours.
 
 Server Farmer basic configuration can be set up just in a few minutes and then
 extended, when your server farm is growing. You can also implement your own
 functional extensions (just like Ansible playbooks or Chef recipes, but much
-more simple), that will cover completely new functionalities.
-
-Server Farmer is the ideal tool to manage customers, who have 1-3 servers each
-(up to let's say 1-20 servers), where most of such servers run well-known
-applications and their configuration is similar to each other and close to
-OS defaults where possible.
+more simple), that will cover completely new functionalities - or you can use
+Server Farmer with Ansible, whichever better fits your needs.
 
 ## How to install Server Farmer on your first server
 
-([see the full manual](http://serverfarmer.org/getting-started.html))
+Server Farmer consists of over 60 Git repositories. But don't worry, you will
+need to fork only 2 of them (this one and `sf-keys`), and start with editing
+just one small file: `scripts/functions.custom`.
 
-- fork this repository
-- edit file scripts/functions.custom, either using GIT or in the browser:
-
-```
-https://github.com/your-github-login/serverfarmer/edit/master/scripts/functions.custom
-```
-
-- clone it to your server, exactly to the /opt/farm directory:
+After forking, clone this repository to `/opt/farm` directory on your server:
 
 ```
 git clone https://github.com/your-github-login/serverfarmer /opt/farm
 ```
 
-- run `setup.sh` script and just follow the simple on-screen instructions:
+Then run `setup.sh` script and just follow the simple on-screen instructions:
 
 ```
 /opt/farm/setup.sh
@@ -94,6 +108,7 @@ Server Farmer supports the following public cloud providers:
 - Amazon EC2
 - Beyond e24cloud.com
 - Google Compute Engine
+- Hetzner Cloud (and also Hetzner "classic" dedicated servers)
 - Microsoft Azure
 - Rackspace Cloud
 - any cloud service based on OpenStack (including public, private and hybrid clouds)
@@ -102,7 +117,7 @@ Server Farmer supports the following public cloud providers:
 
 Initial setup:
 
-- choose a server for the farm manager role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS and 16.04 LTS)
+- choose a server for the farm manager role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS)
 - install Server Farmer on it, along with sf-farm-manager and sf-farm-provisioning extensions (preferably also sf-backup-collector and sf-farm-inspector)
 - install Cloud Farmer on it and configure it, providing your cloud API keys and other details (interactively)
 
@@ -116,18 +131,10 @@ git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
 /opt/cloud/create.sh ec2 test_key1 m4.xlarge
 ```
 
-```
-/opt/cloud/create.sh azure testkey2 Standard_A2
-```
-
 - deploy Server Farmer on created instance
 
 ```
 sf-provision ec2-54-123-45-67.compute-1.amazonaws.com /etc/local/.ssh/id_ec2_test_key1 test_profile
-```
-
-```
-sf-provision testkey2-5c82.eastus.cloudapp.azure.com /etc/local/.ssh/id_azure_testkey2 azure_profile
 ```
 
 ## Compatible operating systems
