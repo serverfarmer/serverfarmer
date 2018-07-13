@@ -205,7 +205,7 @@ will most probably support it at least partially.
 ## How to contribute
 
 We are welcome to contributions of any kind: bug fixes, added code comments,
-support for new operating system versions, GPG keys in sf-gpg extension etc.
+support for new operating system versions or hardware etc.
 
 If you want to contribute:
 - fork this repository and clone it to your machine
