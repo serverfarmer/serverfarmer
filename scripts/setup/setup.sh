@@ -33,6 +33,7 @@ if [ "$HWTYPE" = "physical" ]; then
 fi
 
 /opt/farm/scripts/setup/extension.sh sf-log-manager
+/opt/farm/scripts/setup/extension.sh sf-backup
 
 for E in `cat /opt/farm/.default.extensions`; do
 	/opt/farm/scripts/setup/extension.sh $E
