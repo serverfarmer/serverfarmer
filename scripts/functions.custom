@@ -32,14 +32,6 @@ primary_admin_account() {
 	echo "tomek"
 }
 
-cacti_ssh_target() {
-	echo "cacti.tomaszklim.pl:/external"
-}
-
-cacti_ssh_port() {
-	echo "22000"
-}
-
 heartbeat_url() {
 	echo "https://serverfarmer.home.pl/heartbeat/"
 }
@@ -54,8 +46,4 @@ extension_repositories() {
 
 keys_repository() {
 	echo "https://github.com/serverfarmer/sf-keys"
-}
-
-backup_history_index() {
-	echo "%Y%m%d"
 }
