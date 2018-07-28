@@ -27,8 +27,7 @@ install_customize() {
 }
 
 save_original_config() {
-	file=$1
-	if [ ! -f $file.farmer-orig ]; then
-		cp $file $file.farmer-orig
+	if [ ! -f $1.farmer-orig ]; then
+		cp $1 $1.farmer-orig
 	fi
 }
