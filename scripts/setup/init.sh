@@ -23,6 +23,7 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 	initial_git_clone repos
 	initial_git_clone packages
 	initial_git_clone farm-roles
+	initial_git_clone passwd-utils
 
 	OSDET=`/opt/farm/ext/system/detect-system-version.sh`
 	OSTYPE=`/opt/farm/ext/system/detect-system-version.sh -type`
@@ -62,21 +63,9 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 		chmod 0700 /etc/local/.config /etc/local/.ssh
 		chmod 0711 /etc/local
 
-		if [ ! -x /bin/bash ]; then
-			echo "attempting to install /bin/bash"
-			if [ -x /usr/pkg/bin/pkgin ]; then
-				pkgin update
-				pkgin -y install bash
-				ln -s /usr/pkg/bin/bash /bin/bash
-			elif [ -x /usr/sbin/pkg ]; then
-				pkg update
-				pkg install -y bash
-				ln -s /usr/local/bin/bash /bin/bash
-			fi
-		fi
-
+		/opt/farm/ext/packages/special/bash.sh
 		/opt/farm/ext/system/set-hostname.sh $HOST
-		/opt/farm/scripts/setup/groups.sh
+		/opt/farm/ext/passwd-utils/create-group.sh newrelic 130  # common group for monitoring extensions
 
 		if [ "$REGENERATE_HOST_KEYS" != "" ]; then
 			if [ "$OSTYPE" = "debian" ]; then
