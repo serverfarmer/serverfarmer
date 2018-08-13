@@ -14,12 +14,6 @@ internal_domain() {
 	echo "internal"
 }
 
-ssh_dedicated_key_storage_filename() {
-	host=$1
-	user=$2
-	echo "/etc/local/.ssh/key-$user@$host"
-}
-
 local_backup_directory() {
 	echo "/backup"
 }
