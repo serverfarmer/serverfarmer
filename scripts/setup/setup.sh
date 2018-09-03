@@ -34,6 +34,7 @@ fi
 
 /opt/farm/scripts/setup/extension.sh sf-log-manager
 /opt/farm/scripts/setup/extension.sh sf-backup
+/opt/farm/scripts/setup/extension.sh sf-security
 
 for E in `cat /opt/farm/.default.extensions`; do
 	/opt/farm/scripts/setup/extension.sh $E
