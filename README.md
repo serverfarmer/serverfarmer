@@ -15,18 +15,36 @@ located across the whole world.
 
 ## Documentation
 
-You can find a lot more information at http://serverfarmer.org/ project page:
+You can find a lot more information at http://serverfarmer.org/ project page and in extension repositories:
 
-1. [Main page](http://serverfarmer.org/)
+##### less technical
+
+1. [Home page](http://serverfarmer.org/)
 2. [Business overview (for non-technical users)](http://serverfarmer.org/basics.html)
-3. [Key concepts](http://serverfarmer.org/key-concepts.html)
-4. [Monitoring features](http://serverfarmer.org/monitoring.html)
-5. [Project history](http://serverfarmer.org/history.html)
-6. [Getting started](http://serverfarmer.org/getting-started.html)
-7. [Cloud platforms](http://serverfarmer.org/cloud-platforms.html)
-8. [Cloud integration](http://serverfarmer.org/cloud-integration.html)
-9. [Configuration settings](http://serverfarmer.org/configuration.html)
-10. [List of extensions](http://serverfarmer.org/extensions.html)
+3. [Project history](http://serverfarmer.org/history.html)
+
+##### for the beginners
+
+1. [Getting started](http://serverfarmer.org/getting-started.html)
+2. [Configuration settings](http://serverfarmer.org/configuration.html)
+3. [gpg/ssh key configuration details](https://github.com/serverfarmer/sf-keys)
+4. [List of extensions](http://serverfarmer.org/extensions.html)
+
+##### more advanced
+
+1. [Farm management](https://github.com/serverfarmer/sf-farm-manager)
+2. [Monitoring features](http://serverfarmer.org/monitoring.html)
+3. [Backup architecture (local part)](https://github.com/serverfarmer/sf-backup)
+4. [Backup architecture (storage part)](https://github.com/serverfarmer/sf-backup-collector)
+
+##### integration with cloud
+
+1. [Cloud Farmer tool, and list of supported cloud platforms](https://github.com/serverfarmer/cloudfarmer)
+2. [More detailed comparison of supported cloud platforms](http://serverfarmer.org/cloud-platforms.html)
+
+##### DNS / DHCP management
+
+1. [ZoneMaster tool](https://github.com/tomaszklim/zonemaster)
 
 If you have any technical or non-technical questions about Server Farmer, for
 which you can't find an answer on the project home page, feel free to write
@@ -85,7 +103,7 @@ Server Farmer with Ansible, whichever better fits your needs.
 
 ## How to install Server Farmer on your first server
 
-Server Farmer consists of over 60 Git repositories. But don't worry, you will
+Server Farmer consists of over 80 Git repositories. But don't worry, you will
 need to fork only 2 of them (this one and `sf-keys`), and start with editing
 just one small file: `scripts/functions.custom`.
 
@@ -105,36 +123,44 @@ Then run `setup.sh` script and just follow the simple on-screen instructions:
 
 Server Farmer supports the following public cloud providers:
 
-- Amazon EC2
+- Alibaba Cloud
+- Amazon Web Services
 - Beyond e24cloud.com
-- Google Compute Engine
+- Google Cloud Platform
 - Hetzner Cloud (and also Hetzner "classic" dedicated servers)
 - Microsoft Azure
 - Rackspace Cloud
 - any cloud service based on OpenStack (including public, private and hybrid clouds)
 
-([see the full manual](http://serverfarmer.org/cloud-integration.html))
+([see the full manual](https://github.com/serverfarmer/cloudfarmer))
 
 Initial setup:
 
-- choose a server for the farm manager role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS)
-- install Server Farmer on it, along with sf-farm-manager and sf-farm-provisioning extensions (preferably also sf-backup-collector and sf-farm-inspector)
-- install Cloud Farmer on it and configure it, providing your cloud API keys and other details (interactively)
+- choose a server for the *farm manager* role (no special requirements, except that all management extensions are tested mainly on Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS)
+- install Server Farmer on it ([basic installation](http://serverfarmer.org/getting-started.html) is enough)
+- install Cloud Farmer on it and configure it, providing your cloud API keys and other details (interactively):
 
 ```
 git clone https://github.com/serverfarmer/cloudfarmer /opt/cloud
+/opt/cloud/api/account/setup.sh ec2 myaccount
 ```
 
-- creating new cloud instance
+- create new cloud instance
 
 ```
-/opt/cloud/create.sh ec2 test_key1 m4.xlarge
+/opt/cloud/api/instance/create.sh ec2 myaccount test_key1 m5.xlarge
 ```
 
 - deploy Server Farmer on created instance
 
 ```
 sf-provision ec2-54-123-45-67.compute-1.amazonaws.com /etc/local/.ssh/id_ec2_test_key1 test_profile
+```
+
+- list cloud instances:
+
+```
+/opt/cloud/api/instance/list.sh ec2 myaccount
 ```
 
 ## Compatible operating systems
