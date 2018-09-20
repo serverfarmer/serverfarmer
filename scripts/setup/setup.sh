@@ -36,10 +36,6 @@ fi
 /opt/farm/scripts/setup/extension.sh sf-backup
 /opt/farm/scripts/setup/extension.sh sf-security
 
-for E in `cat /opt/farm/.default.extensions`; do
-	/opt/farm/scripts/setup/extension.sh $E
-done
-
 for E in `cat /opt/farm/.private.extensions`; do
 	if [ -x /opt/farm/ext/$E/setup.sh ]; then
 		/opt/farm/ext/$E/setup.sh
