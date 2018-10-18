@@ -32,3 +32,20 @@ if [ ${name:0:3} = "sf-" ]; then
 		/opt/farm/ext/$ext/setup.sh
 	fi
 fi
+
+if [ ${name:0:10} = "heartbeat-" ]; then
+	ext=${name:10}
+	repo="`extension_repositories`/$name"
+
+	if [ ! -d /opt/heartbeat ]; then
+		git clone $repo /opt/heartbeat
+	elif [ ! -d /opt/heartbeat/.git ] && [ ! -d /opt/heartbeat/.svn ]; then
+		echo "directory /opt/heartbeat busy, skipping $name installation"
+	elif [ "$2" = "--update" ]; then
+		/opt/farm/scripts/git/pull.sh /opt/heartbeat
+	fi
+
+	if [ -x /opt/heartbeat/setup.sh ]; then
+		/opt/heartbeat/setup.sh
+	fi
+fi
