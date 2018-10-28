@@ -33,13 +33,15 @@ You can find a lot more information at http://serverfarmer.org/ project page and
 ##### more advanced
 
 1. [Farm management](https://github.com/serverfarmer/sf-farm-manager)
-2. [Monitoring features](http://serverfarmer.org/monitoring.html)
-3. [Backup architecture (local part)](https://github.com/serverfarmer/sf-backup)
-4. [Backup architecture (storage part)](https://github.com/serverfarmer/sf-backup-collector)
+2. [Backup architecture (local part)](https://github.com/serverfarmer/sf-backup)
+3. [Backup architecture (storage part)](https://github.com/serverfarmer/sf-backup-collector)
+4. [Monitoring features](http://serverfarmer.org/monitoring.html)
+5. [Heartbeat subproject (client)](https://github.com/serverfarmer/heartbeat-linux)
+6. [Heartbeat subproject (server)](https://github.com/serverfarmer/heartbeat-server)
 
 ##### DNS / DHCP management
 
-1. [ZoneMaster tool](https://github.com/tomaszklim/zonemaster)
+1. [Zone Manager tool](https://github.com/zonemanager/zonemanager)
 
 If you have any technical or non-technical questions about Server Farmer, for
 which you can't find an answer on the project home page, feel free to write
