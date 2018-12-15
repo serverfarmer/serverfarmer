@@ -29,7 +29,6 @@ fi
 if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/ext/farm-roles/install.sh hardware
 	/opt/farm/scripts/setup/extension.sh sf-ntp
-	/opt/farm/scripts/setup/extension.sh sf-monitoring-smart
 fi
 
 /opt/farm/scripts/setup/extension.sh sf-log-manager
