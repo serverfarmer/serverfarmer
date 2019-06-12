@@ -26,6 +26,10 @@ fi
 /opt/farm/ext/farm-roles/install.sh base
 /opt/farm/scripts/setup/extension.sh sf-monitoring-heartbeat
 
+if [ ! -s /etc/local/.config/upgrade.disable ]; then
+	/opt/farm/ext/farm-roles/install.sh up2date
+fi
+
 if [ "$HWTYPE" = "physical" ]; then
 	/opt/farm/ext/farm-roles/install.sh hardware
 	/opt/farm/scripts/setup/extension.sh sf-ntp
