@@ -9,7 +9,7 @@ elif ! [[ $1 =~ ^[a-z0-9]+$ ]]; then
 fi
 
 module=$1
-keyfile=/etc/local/.ssh/id_github_$module
+keyfile=/root/.ssh/id_github_$module
 
 if [ ! -f $keyfile ]; then
 	echo "creating new key `basename $keyfile`"

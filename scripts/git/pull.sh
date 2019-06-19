@@ -19,10 +19,10 @@ echo "updating $target"
 DIR="`pwd`"
 cd $target
 
-if grep -q git@ $target/.git/config && [ -f /etc/local/.ssh/id_github_$repo ]; then
+if grep -q git@ $target/.git/config && [ -f /root/.ssh/id_github_$repo ]; then
 	# if possible, use Github deployment key, without ssh-agent
 	# (deployment key can be used only for a single repository, so can't be host-wide)
-	GIT_SSH=/opt/farm/scripts/git/helper.sh GIT_KEY=/etc/local/.ssh/id_github_$repo git pull
+	GIT_SSH=/opt/farm/scripts/git/helper.sh GIT_KEY=/root/.ssh/id_github_$repo git pull
 else
 	git pull
 fi
