@@ -16,10 +16,10 @@ if [ "$OSTYPE" = "qnap" ]; then
 	cp /etc/config/crontab /etc/crontab
 fi
 
-/opt/farm/scripts/setup/extension.sh sf-keys
 /opt/farm/scripts/setup/extension.sh sf-system
 /opt/farm/scripts/setup/extension.sh sf-repos
 /opt/farm/scripts/setup/extension.sh sf-packages
+/opt/farm/scripts/setup/extension.sh sf-keys
 /opt/farm/scripts/setup/extension.sh sf-farm-roles
 /opt/farm/scripts/setup/extension.sh sf-mta-manager
 
