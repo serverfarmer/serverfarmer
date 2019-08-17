@@ -4,12 +4,12 @@ Server Farmer is a lightweight framework designed for companies, that manage
 many servers and services belonging to many different customers, but connected
 into a single managed platform.
 
-As of 2018, Server Farmer has over 10 years of history of managing production
+As of 2019, Server Farmer has over 11 years of history of managing production
 servers (which is longer than in competing Chef framework), including over
-3 years of being successful open source project. It was used to manage the
-infrastructure for over 170 customers, consisted of over 700 physical/virtual
+4 years of being successful open source project. It was used to manage the
+infrastructure for over 200 customers, consisted of over 900 physical/virtual
 servers and containers, located in multiple data centers, in almost 10 major
-cities in Poland, at least 2 cities in Germany, and over 200 cloud instances
+cities in Poland, at least 2 cities in Germany, and over 400 cloud instances
 hosted by Amazon Web Services, Microsoft Azure, Google Cloud Platform, Hetzner
 Cloud and Rackspace Cloud, physically located across the whole world.
 
@@ -178,6 +178,7 @@ will most probably support it at least partially.
   - Debian 7.x (Wheezy)
   - Debian 8.x (Jessie)
   - Debian 9.x (Stretch)
+  - Debian 10.x (Buster)
 
 - Ubuntu:
   - Ubuntu 8.04 LTS (Hardy Heron)
@@ -207,6 +208,7 @@ will most probably support it at least partially.
   - Red Hat Enterprise Linux 5.x
   - Red Hat Enterprise Linux 6.x
   - Red Hat Enterprise Linux 7.x
+  - Red Hat Enterprise Linux 8.x (preliminary)
   - CentOS 5.x
   - CentOS 6.x
   - CentOS 7.x
