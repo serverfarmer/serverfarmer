@@ -208,7 +208,7 @@ will most probably support it at least partially.
   - Red Hat Enterprise Linux 5.x
   - Red Hat Enterprise Linux 6.x
   - Red Hat Enterprise Linux 7.x
-  - Red Hat Enterprise Linux 8.x (preliminary)
+  - Red Hat Enterprise Linux 8.x
   - CentOS 5.x
   - CentOS 6.x
   - CentOS 7.x
