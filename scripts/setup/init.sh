@@ -11,15 +11,20 @@ initial_git_clone() {
 }
 
 
+/opt/farm/scripts/git/bootstrap.sh
+
+initial_git_clone system
+initial_git_clone repos
+initial_git_clone packages
+initial_git_clone farm-roles
+initial_git_clone passwd-utils
+
+mkdir -p   /etc/local/.config /etc/local/.ssh
+chmod 0700 /etc/local/.config /etc/local/.ssh
+chmod 0711 /etc/local
+
+
 if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
-
-	/opt/farm/scripts/git/bootstrap.sh
-
-	initial_git_clone system
-	initial_git_clone repos
-	initial_git_clone packages
-	initial_git_clone farm-roles
-	initial_git_clone passwd-utils
 
 	OSDET=`/opt/farm/ext/system/detect-system-version.sh`
 	OSTYPE=`/opt/farm/ext/system/detect-system-version.sh -type`
@@ -54,10 +59,6 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 		echo "HWTYPE=$HWTYPE" >>/etc/farmconfig
 		echo "SMTP=$SMTP" >>/etc/farmconfig
 		echo "SYSLOG=$SYSLOG" >>/etc/farmconfig
-
-		mkdir -p   /etc/local/.config /etc/local/.ssh
-		chmod 0700 /etc/local/.config /etc/local/.ssh
-		chmod 0711 /etc/local
 
 		/opt/farm/ext/packages/special/bash.sh
 		/opt/farm/ext/system/set-hostname.sh $HOST
