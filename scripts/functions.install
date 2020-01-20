@@ -12,20 +12,6 @@ remove_link() {
 	fi
 }
 
-install_link() {
-	src=$1
-	dst=$2
-	ln -sf $src $dst
-	echo "DEPRECATED FUNCTION install_link - USE install_copy INSTEAD (linked $src to $dst)"
-}
-
-install_customize() {
-	src=$1
-	dst=$2
-	cat $src |sed s/%%host%%/`hostname`/g >$dst
-	echo "DEPRECATED FUNCTION install_customize"
-}
-
 save_original_config() {
 	if [ ! -f $1.farmer-orig ]; then
 		cp $1 $1.farmer-orig
