@@ -66,18 +66,7 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 		/opt/farm/ext/packages/special/bash.sh
 		/opt/farm/ext/system/set-hostname.sh $HOST
 		/opt/farm/ext/passwd-utils/create-group.sh newrelic 130  # common group for monitoring extensions
-
-		if [ "$REGENERATE_HOST_KEYS" != "" ]; then
-			if [ "$OSTYPE" = "debian" ]; then
-				rm -f /etc/ssh/ssh_host_*
-				dpkg-reconfigure openssh-server
-			elif [ -x /usr/sbin/sshd-keygen ]; then
-				rm -f /etc/ssh/ssh_host_*
-				/usr/sbin/sshd-keygen   # RHEL 7.x
-			else
-				echo "unable to regenerate host ssh keys, skipping this step"
-			fi
-		fi
+		/opt/farm/ext/packages/special/regenerate-ssh-host-keys.sh
 
 		echo "initial configuration done, now run /opt/farm/setup.sh once again"
 	else
