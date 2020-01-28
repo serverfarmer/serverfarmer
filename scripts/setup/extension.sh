@@ -6,7 +6,7 @@
 
 if [ "$1" = "" ]; then
 	echo "usage: $0 <name>"
-	exit
+	exit 1
 fi
 
 name=$1

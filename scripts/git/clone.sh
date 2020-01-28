@@ -24,3 +24,5 @@ fi
 if [ -x $path/setup.sh ]; then
 	$path/setup.sh
 fi
+
+/opt/farm/scripts/links/create.sh $path
