@@ -13,5 +13,9 @@
 # its "gw" subdomain, eg. yourserver.gw.yourdomain, someclient.gw.yourdomain etc.
 # (however this behavior can be tuned by modyfing scripts in your forked version
 # of sf-keys repository).
+#
+# Also, some monitoring-related extensions are using this domain to create or
+# discover addresses of external monitoring tools, eg. cacti.yourdomain.
+
 
 echo "tomaszklim.pl"

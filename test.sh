@@ -1,5 +1,4 @@
 #!/bin/bash
-. scripts/functions.custom
 . scripts/functions.dialog
 . scripts/functions.install
 
@@ -7,4 +6,4 @@
 
 HOST=`hostname`
 echo "hostname: $HOST"
-echo "external domain: `external_domain`"
+echo "external domain: `/opt/farm/config/get-external-domain.sh`"

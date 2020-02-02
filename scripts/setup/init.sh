@@ -1,12 +1,11 @@
 #!/bin/sh
-. /opt/farm/scripts/functions.custom
 . /opt/farm/scripts/functions.dialog
 
 
 initial_git_clone() {
 	extension=$1
 	if [ ! -d /opt/farm/ext/$extension ]; then
-		git clone "`extension_repositories`/sf-$extension" /opt/farm/ext/$extension
+		git clone "`/opt/farm/config/get-url-extension-repositories.sh`/sf-$extension" /opt/farm/ext/$extension
 	fi
 }
 
@@ -30,7 +29,7 @@ if [ ! -f /etc/farmconfig ] && [ ! -f /etc/config/farmconfig ]; then
 	OSTYPE=`/opt/farm/ext/system/detect-system-version.sh -type`
 	HWTYPE=`/opt/farm/ext/system/detect-hardware-type.sh |head -n 1`
 	OSVER="`input \"enter operating system version\" $OSDET`"
-	INTERNAL=`internal_domain`
+	INTERNAL=`/opt/farm/config/get-internal-domain.sh`
 
 	if [ -d /opt/farm/ext/farm-roles/lists/$OSVER ] || [ -h /opt/farm/ext/farm-roles/lists/$OSVER ]; then
 

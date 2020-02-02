@@ -1,14 +1,6 @@
-# This file holds implementation of owner-specific logic, eg. custom paths
-# or names. If you want to fork the Server Farmer repository and use it for
-# your own company, this should be the first file to change afterwards.
-#
-# See here for the description of each setting:
-# http://serverfarmer.org/configuration.html
-
-
-# Since Feb 2020 this file is DEPRECATED and will become rewritten with
-# calls to new configuration scripts located in /opt/farm/config directory.
-# Please move your configuration there.
+# Since Feb 2020 this file is DEPRECATED and will be deleted soon.
+# If you see this while debugging git merge conflict, please move
+# your custom Server Farmer configuration to config/ subdirectory.
 
 
 external_domain() {
@@ -24,25 +16,25 @@ local_backup_directory() {
 }
 
 management_public_ip_range() {
-	echo "88.99.100.17"
+	echo "`/opt/farm/config/get-management-public-ip-range.sh`"
 }
 
 primary_admin_account() {
-	echo "tomek"
+	echo "`/opt/farm/config/get-primary-admin-account.sh`"
 }
 
 heartbeat_url() {
-	echo "https://serverfarmer.home.pl/heartbeat/"
+	echo "`/opt/farm/config/get-url-heartbeat.sh`"
 }
 
 connectivity_check_url() {
-	echo "https://serverfarmer.home.pl/connection.php"
+	echo "`/opt/farm/config/get-url-connectivity-check.sh`"
 }
 
 extension_repositories() {
-	echo "https://github.com/serverfarmer"
+	echo "`/opt/farm/config/get-url-extension-repositories.sh`"
 }
 
 keys_repository() {
-	echo "https://github.com/serverfarmer/sf-keys"
+	echo "`/opt/farm/config/get-url-keys-repository.sh`"
 }
