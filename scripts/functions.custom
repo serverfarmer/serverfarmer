@@ -6,16 +6,21 @@
 # http://serverfarmer.org/configuration.html
 
 
+# Since Feb 2020 this file is DEPRECATED and will become rewritten with
+# calls to new configuration scripts located in /opt/farm/config directory.
+# Please move your configuration there.
+
+
 external_domain() {
-	echo "tomaszklim.pl"
+	echo "`/opt/farm/config/get-external-domain.sh`"
 }
 
 internal_domain() {
-	echo "internal"
+	echo "`/opt/farm/config/get-internal-domain.sh`"
 }
 
 local_backup_directory() {
-	echo "/backup"
+	echo "`/opt/farm/config/get-local-backup-directory.sh`"
 }
 
 management_public_ip_range() {

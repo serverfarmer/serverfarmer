@@ -102,7 +102,7 @@ Server Farmer with Ansible, whichever better fits your needs.
 
 Server Farmer consists of over 80 Git repositories. But don't worry, you will
 need to fork only 2 of them (this one and `sf-keys`), and start with editing
-just one small file: `scripts/functions.custom`.
+small files in `config` directory.
 
 After forking, clone this repository to `/opt/farm` directory on your server:
 
