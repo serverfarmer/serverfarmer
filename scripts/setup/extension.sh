@@ -22,6 +22,12 @@ if [ ${name:0:3} = "sf-" ]; then
 	/opt/farm/scripts/git/clone.sh $name $repo /opt/farm/ext/$ext "extension $name" $2
 fi
 
+if [ ${name:0:3} = "sm-" ]; then
+	ext=${name:3}
+	repo="`/opt/farm/config/get-url-extension-repositories.sh`/$name"
+	/opt/farm/scripts/git/clone.sh $name $repo /opt/farm/mgr/$ext "extension $name" $2
+fi
+
 if [ ${name:0:10} = "heartbeat-" ]; then
 	ext=${name:10}
 	repo="`/opt/farm/config/get-url-extension-repositories.sh`/$name"
