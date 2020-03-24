@@ -32,9 +32,9 @@ You can find a lot more information at http://serverfarmer.org/ project page and
 
 ##### more advanced
 
-1. [Farm management](https://github.com/serverfarmer/sf-farm-manager)
+1. [Farm management](https://github.com/serverfarmer/sm-farm-manager)
 2. [Backup architecture (local part)](https://github.com/serverfarmer/sf-backup)
-3. [Backup architecture (storage part)](https://github.com/serverfarmer/sf-backup-collector)
+3. [Backup architecture (storage part)](https://github.com/serverfarmer/sm-backup-collector)
 4. [Monitoring features](http://serverfarmer.org/monitoring.html)
 5. [Heartbeat subproject (client)](https://github.com/serverfarmer/heartbeat-linux)
 6. [Heartbeat subproject (server)](https://github.com/serverfarmer/heartbeat-server)
@@ -120,7 +120,7 @@ Then run `setup.sh` script and just follow the simple on-screen instructions:
 
 Server Farmer uses [Polynimbus](https://github.com/polynimbus/polynimbus)
 multi-cloud infrastructure management tool to launch and manage cloud instances,
-and `sf-farm-provisioning` extension to provision them.
+and `sm-farm-provisioning` extension to provision them.
 
 It supports:
 

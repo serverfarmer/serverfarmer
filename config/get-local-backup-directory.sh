@@ -3,7 +3,7 @@
 # Local backup directory:
 #
 # - it is used to create and store backup archives from current host, until they are fetched
-#   by central server called "backup collector" (see https://github.com/serverfarmer/sf-backup-collector)
+#   by central server called "backup collector" (see https://github.com/serverfarmer/sm-backup-collector)
 #
 # - it acts as a temporary directory, and also contains 3 subdirectories: daily, weekly and custom
 #
