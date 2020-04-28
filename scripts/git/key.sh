@@ -16,7 +16,7 @@ if [ ! -f $keyfile ]; then
 	ssh-keygen -N "" -C $module@`hostname` -f $keyfile
 fi
 
-if [ ! -f $keyfile ]; then
+if [ ! -f $keyfile.pub ]; then
 	echo "no public key associated with `basename $keyfile`"
 else
 	cat $keyfile.pub
