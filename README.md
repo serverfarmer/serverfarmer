@@ -187,10 +187,11 @@ will most probably support it at least partially.
   - Ubuntu 10.10 (Maverick Meerkat)
   - Ubuntu 12.04 LTS (Precise Pangolin)
   - Ubuntu 13.10 (Saucy Salamander)
-  - Ubuntu 14.04 LTS (Trusty Tahr) - server/desktop/cloud
+  - Ubuntu 14.04 LTS (Trusty Tahr)
   - Ubuntu 15.04 (Vivid Vervet)
-  - Ubuntu 16.04 LTS (Xenial Xerus) - server/cloud
-  - Ubuntu 18.04 LTS (Bionic Beaver) - server/cloud
+  - Ubuntu 16.04 LTS (Xenial Xerus)
+  - Ubuntu 18.04 LTS (Bionic Beaver)
+  - Ubuntu 20.04 LTS (Focal Fossa)
 
 - Debian/Ubuntu clones:
   - Devuan Jessie (based on Debian 8.x)
