@@ -18,8 +18,8 @@ initial_git_clone packages
 initial_git_clone farm-roles
 initial_git_clone passwd-utils
 
-mkdir -p   /etc/local/.config /etc/local/.ssh
-chmod 0700 /etc/local/.config /etc/local/.ssh
+mkdir -p   /etc/local/.config
+chmod 0700 /etc/local/.config
 chmod 0711 /etc/local
 
 
