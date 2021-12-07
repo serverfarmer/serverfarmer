@@ -179,6 +179,7 @@ will most probably support it at least partially.
   - Debian 8.x (Jessie)
   - Debian 9.x (Stretch)
   - Debian 10.x (Buster)
+  - Debian 11.x (Bullseye)
 
 - Ubuntu:
   - Ubuntu 8.04 LTS (Hardy Heron)
@@ -248,7 +249,7 @@ If you want to contribute:
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | Tomasz Klim (<opensource@tomaszklim.pl>) |
-| **Copyright:**       | Copyright 2008-2020 Tomasz Klim          |
+| **Copyright:**       | Copyright 2008-2021 Tomasz Klim          |
 | **License:**         | MIT                                      |
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
