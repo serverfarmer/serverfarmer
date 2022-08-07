@@ -17,7 +17,7 @@ if [ -x /opt/farm/ext/system/detect-internal-domain.sh ]; then
 	detected=`/opt/farm/ext/system/detect-internal-domain.sh`
 fi
 
-if [ "$detected" != "" ]; then
+if [ "$detected" != "" ] && [ "$detected" != "." ]; then
 	echo $detected
 else
 	echo $internal_domain

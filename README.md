@@ -1,17 +1,21 @@
 [![Build Status](https://travis-ci.org/serverfarmer/serverfarmer.png?branch=master)](https://travis-ci.org/serverfarmer/serverfarmer)
 
-Server Farmer is a lightweight framework designed for companies, that manage
-many servers and services belonging to many different customers, but connected
-into a single managed platform.
+Server Farmer is a lightweight framework designed for (mainly small and/or IT outsourcing) companies, that manage many servers for different customers, where:
 
-As of 2020, Server Farmer has over 12 years of history of managing production
-servers (which is longer than in competing Chef framework), including over
-5 years of being successful open source project. It was used to manage the
-infrastructure for over 200 customers, consisted of over 1000 physical/virtual
-servers and containers, located in multiple data centers, in almost 10 major
-cities in Poland, at least 2 cities in Germany, and over 500 cloud instances
-hosted by Amazon Web Services, Microsoft Azure, Google Cloud Platform, Hetzner
-Cloud and Rackspace Cloud, physically located across the whole world.
+- each customer has separate employees, permissions, compliance requirements, end users etc.
+- typical customer has between 1 and 15-20 servers
+- each server has different purpose, users and set of services
+- many servers are "snowflakes" (that still need to be automatically managed, where possible)
+- connecting them to a single Ansible or Puppet instances would be either completely impossible, or way too expensive
+- maintaining separare Ansible or Puppet instances for each customer would be too expensive for most customers
+
+As of 2022, Server Farmer has over 14 years of history of managing production servers, including over 7 years of being successful open source project.
+
+It was used just by its author to manage the infrastructure:
+
+- for over 250 customers
+- consisted of almost 2000 physical/virtual servers and containers
+- located in over 30 countries (including cloud instances in all major public cloud providers)
 
 ## Documentation
 
@@ -193,6 +197,7 @@ will most probably support it at least partially.
   - Ubuntu 16.04 LTS (Xenial Xerus)
   - Ubuntu 18.04 LTS (Bionic Beaver)
   - Ubuntu 20.04 LTS (Focal Fossa)
+  - Ubuntu 22.04 LTS (Jammy Jellyfish)
 
 - Debian/Ubuntu clones:
   - Devuan Jessie (based on Debian 8.x)
@@ -249,7 +254,7 @@ If you want to contribute:
 |                      |                                          |
 |:---------------------|:-----------------------------------------|
 | **Author:**          | Tomasz Klim (<opensource@tomaszklim.pl>) |
-| **Copyright:**       | Copyright 2008-2021 Tomasz Klim          |
+| **Copyright:**       | Copyright 2008-2022 Tomasz Klim          |
 | **License:**         | MIT                                      |
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
