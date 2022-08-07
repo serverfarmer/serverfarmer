@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/serverfarmer/serverfarmer.png?branch=master)](https://travis-ci.org/serverfarmer/serverfarmer)
 
-Server Farmer is a lightweight framework designed for (mainly small and/or IT outsourcing) companies, that manage many servers for different customers, where:
+Server Farmer is a lightweight server management framework, designed for companies, that **manage many servers for different customers**, where:
 
 - each customer has separate employees, permissions, compliance requirements, end users etc.
 - typical customer has between 1 and 15-20 servers
@@ -8,6 +8,11 @@ Server Farmer is a lightweight framework designed for (mainly small and/or IT ou
 - many servers are "snowflakes" (that still need to be automatically managed, where possible)
 - connecting them to a single Ansible or Puppet instances would be either completely impossible, or way too expensive
 - maintaining separare Ansible or Puppet instances for each customer would be too expensive for most customers
+
+It is useful mainly for:
+
+- IT outsourcing companies
+- software houses and similar companies that manage particular servers as part of bigger project
 
 As of 2022, Server Farmer has over 14 years of history of managing production servers, including over 7 years of being successful open source project.
 
